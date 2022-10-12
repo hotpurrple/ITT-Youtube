@@ -23,7 +23,7 @@ export default function Header() {
                    <TextField id="outlined-basic" className='searchbar' size='small' placeholder='Search' variant="outlined" 
                    InputProps={{
                     endAdornment: (
-                      <InputAdornment>
+                      <InputAdornment position="end">
                         <IconButton>
                           <SearchIcon />
                         </IconButton>
