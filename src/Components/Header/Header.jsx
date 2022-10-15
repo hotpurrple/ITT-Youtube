@@ -9,11 +9,15 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { useLocation, Link } from 'react-router-dom';
 
 export default function Header() {
+
+    const location = useLocation()
+    let pageWithoutHeader = location.pathname.match(/login|register/gi)
     return (
         <>
-            <header className='header'>
+           {!pageWithoutHeader &&  <header className='header'>
                 <div className='headerLeft'>
                     <MenuIcon />
                     <img className='ytlogo' src={YoutubeLogo} alt="logo" />
@@ -34,12 +38,12 @@ export default function Header() {
 
                 <div className='headerRight'>
                     <MoreVertIcon/>
-                    <Button className='userButton' variant="outlined">
+                   <Link to="/login"> <Button className='userButton' variant="outlined">
                         <AccountCircleIcon/>
-                        Sign in</Button>
+                        Sign in</Button></Link>
                 </div>
             </header>
-
+ }
         </>
 
     )

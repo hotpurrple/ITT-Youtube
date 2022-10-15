@@ -1,0 +1,63 @@
+* {
+    font-family: "Google Sans","Noto Sans Myanmar UI",arial,sans-serif;
+    color: #202124;
+    
+}
+
+* a {
+    color: #174ea6;
+    text-decoration: none;
+}
+
+.regcontainer {
+    width: 100vw;
+    height: 94vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.regform {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 40px 36px;
+    border: 0.1px solid grey;
+    border-radius: 10px;
+
+}
+
+.regform img {
+    width: 6rem;
+}
+
+.regdetails {
+    width: 19vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    margin-bottom: 5vh;
+}
+
+.logHref {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7vw;
+    bottom: 5%;
+}
+
+.regmessage {
+    margin-top: -10vh;
+    font-size: 1.6em;
+    line-height: 4vh;
+}
+
+.regcontinue {
+    font-size: 0.7em;
+}

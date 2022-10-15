@@ -9,17 +9,21 @@ import {
   ChannelDetail,
   SearchFeed,
   ErrorPage,
+  Login,
+  Register,
 } from "./Components"; //simple import
 function App() {
   return (
     <BrowserRouter>
-      <Header />
+        <Header />
       <Routes>
         <Route path="/" element={<Feed />} />
         <Route path="/video/:id" element={<VideoDetail />} />
         <Route path="/channel/:id" element={<ChannelDetail />} />
         <Route path="/search/:searchTerm" element={<SearchFeed />} />
         <Route path="*" element={<ErrorPage />} />
+        <Route path="login" element={<Login/>}/>
+        <Route path="register" element={<Register/>}/>
       </Routes>
     </BrowserRouter>
   );
