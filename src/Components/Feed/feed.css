@@ -1,5 +1,5 @@
 .feedMainContainer {
-    /* inside are sideBar and the container with categories bar + videos container */
+
     display: flex;
     flex-direction: row;
     background-color: #f9f9f9;
@@ -8,7 +8,7 @@
 
 .resultsPlusCategoriesContainer {
     display: flex;
-    height: 92vh;
+
     flex-direction: column;
 }
 
@@ -23,12 +23,14 @@
 
 .resultsContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: center;
     width: 100%;
     overflow-y: auto;
-    /* height: 92vh; */
+    height: 90vh;
     align-items: center;
     background-color: "#ffffff";
-    padding: 20px;
+    padding-top: 15px;
 }
