@@ -16,7 +16,7 @@ export default function CategoriesBar(props) {
 
   return (
     //Ширината на този box трябва да се доизмисли
-    <Box sx={{ maxWidth: "1682px", backgroundColor: "#ffffff" /*"#202020"*/ }}>
+    <Box sx={{ maxWidth: "1725px", backgroundColor: "#ffffff" /*"#202020"*/ }}>
       <Tabs
         value={value}
         onChange={handleChange}
