@@ -3,7 +3,7 @@ import { Stack, Box } from "@mui/material";
 import { MainVideoCard /*MainChannelCard*/ } from "../";
 
 function Videos(props) {
-  console.log(props.videos);
+  // console.log(props.videos);
   return (
     <Stack direction={"row"} flexWrap="wrap" justifyContent={"start"} gap={2}>
       {props.videos.map((vid, idx) => (

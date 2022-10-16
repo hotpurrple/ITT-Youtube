@@ -13,7 +13,7 @@ export default function fetchFromApi(uri) {
   return fetch(BASE_URL + uri, options).then((res) => {
     if (!res.ok) {
       //ако статуса е в неуспешния диапазон - 4xx - 5xx, хвърли тази грешка, за да може после да се влезе в catch
-      throw new Error(`Something went wrong: ${res.status}`);
+      throw new Error(`Error: ${res.status}. Message: ${res.message}`);
     }
     return res.json();
   });
