@@ -1,0 +1,28 @@
+.searchFeedMainContainer {
+
+    display: flex;
+    flex-direction: row;
+    background-color: #f9f9f9;
+    /* padding: 15px 0px 0px 0px; */
+}
+
+.searchFeedSidebarContainer {
+    color: "#fff";
+    background-Color: "#ffffff";
+    height: 92vh;
+    border-right: 1px solid #3d3d3d;
+    padding: 0 2px 0 2px;
+}
+
+.searchResultsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* justify-content: center; */
+    width: 100%;
+    overflow-y: auto;
+    height: 92vh;
+    align-items: center;
+    background-color: "#ffffff";
+    padding-top: 15px;
+}

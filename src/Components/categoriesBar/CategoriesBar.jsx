@@ -24,7 +24,10 @@ export default function CategoriesBar(props) {
         scrollButtons
         allowScrollButtonsMobile
         aria-label="scrollable auto tabs example"
-    
+        sx={{
+          pt: "5px",
+          pb: "5px",
+        }}
       >
         {categoriesForCategoriesBar.map((c) => (
           <Tab

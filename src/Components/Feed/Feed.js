@@ -1,16 +1,17 @@
 import React from "react";
+import "./feed.css";
 import { useState, useEffect } from "react";
-import { Box, Stack, Typography } from "@mui/material";
-import { Sidebar, Videos, CategoriesBar } from "..";
+import { Sidebar, CategoriesBar, MainVideoCard, MainChannelCard } from "..";
 
 import fetchFromAPI from "../../utils/fetchFromAPI";
 
 import { demoVideosResponse } from "../../utils/constants";
 
-export default function Feed() {
-  const [selectedCategory, setSelectedCategory] = useState("New"); //първоначално ни зарежда видеа от категория New
+export default function Feed(props) {
+  const [selectedCategory, setSelectedCategory] = useState("new"); //първоначално ни зарежда видеа от категория New
   const [videos, setVideos] = useState([]);
 
+<<<<<<< HEAD
   //!За реални резултати от заявка, според категория от таба с категории, разкоментирай това и закоментирай следващия useEffect
 //   useEffect(() => {
 //     fetchFromAPI(
@@ -24,60 +25,49 @@ export default function Feed() {
   useEffect(() => {
     setVideos(demoVideosResponse);
   }, [selectedCategory, videos]); //когато някое от тези двете в масива се промени, изпълни callback ф-ята в useEffect()
+=======
+  // !За реални резултати от заявка, според категория от таба с категории, разкоментирай това и закоментирай следващия useEffect
+  useEffect(() => {
+    console.log("update");
+    console.log(selectedCategory);
+    fetchFromAPI(
+      `/search?part=snippet&q=${selectedCategory}&maxResults=20`
+    ).then((data) => {
+      console.log(data.items);
+      setVideos(data.items);
+    });
+  }, [selectedCategory]); //когато selectedCategory се промени, изпълни callback ф-ята в useEffect()
+
+  // // //!Разкоментирай това, за да зарежда само demoVideosResponse и да не хаби заявки
+  // useEffect(() => {
+  //   setVideos(demoVideosResponse);
+  // }, [selectedCategory]); //когато някое от тези двете в масива се промени, изпълни callback ф-ята в useEffect()
+>>>>>>> 6444246e28789d08282651feff349473c38eb6df
 
   return (
-    <Stack
-      sx={{
-        // backgroundColor: "#181818",
-        flexDirection: "row", //default direction of mui Stack is column
-      }}
-    >
-      <Box
-        sx={{
-          color: "#fff",
-          backgroundColor: "#ffffff", //"#212121", ///dark
-          height: "92vh",
-          borderRight: "1px solid #3d3d3d",
-          px: 2, //за малки екрани padding horizontal
-        }}
-      >
+    <div className="feedMainContainer">
+      <div className="feedSidebarContainer">
         <Sidebar />
+      </div>
 
-        {/*Typography is just a simple component that is used for all text elements - instead of p and h1,2,3,4.. */}
-        <Typography // The Typography component makes it easy to apply a default set of font weights and sizes in your application.
-          variant="body2"
-          sx={{ mt: 1.5, color: "#909090" /*"#fff"*/ }}
-        >
-          © 2022 Google LLC
-        </Typography>
-      </Box>
-
-      <Box //the container for categories tab bar and videos container
-        sx={{
-          flexDirection: "column",
-        }}
-      >
+      <div className="resultsPlusCategoriesContainer">
         <CategoriesBar //categories tab bar with tabs
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
         />
 
-        <Box //the videos container
-          p={2}
-          sx={{
-            flexDirection: "row",
-            flexWrap: "wrap",
-            overflowY: "auto",
-            height: "90vh",
-            flex: 2,
-            backgroundColor: "#ffffff",
-          }}
-        >
-          <Videos //the videos component
-            videos={videos}
-          />
-        </Box>
-      </Box>
-    </Stack>
+        <div className="resultsContainer">
+          {videos.map((vid, idx) => {
+            if (vid.id.videoId) {
+              //значи е видео, а не канал
+              return <MainVideoCard video={vid} key={idx} />;
+            } else {
+              //значи е канал, а не видео
+              return <MainChannelCard channelDetails={vid} key={idx} />;
+            }
+          })}
+        </div>
+      </div>
+    </div>
   );
 }

@@ -9,6 +9,11 @@ export { default as Register } from "./Register/Register";
 
 export { default as Sidebar } from "./sidebar/Sidebar";
 export { default as CategoriesBar } from "./categoriesBar/CategoriesBar";
-export { default as Videos } from "./videosComponent/Videos";
+
+//Картичките, които се показват, когато се натиска бутон от categories bat компонента
 export { default as MainVideoCard } from "./mainVideoCard/MainVideoCard";
 export { default as MainChannelCard } from "./mainChannelCard/MainChannelCard";
+//
+
+export { default as SearchBar } from "./searchBar/SearchBar";
+export { default as SearchResultCard } from "./SearchResultCard/SearchResultCard";
