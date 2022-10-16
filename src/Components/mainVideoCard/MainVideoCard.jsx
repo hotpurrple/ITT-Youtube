@@ -19,7 +19,7 @@ export default function MainVideoCard(props) {
       <Link
         to={
           videoData.id.videoId
-            ? `/video/:${videoData.id.videoId}`
+            ? `/videos/${videoData.id.videoId}`
             : demoVideoUrl
         }
       >

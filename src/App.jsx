@@ -23,7 +23,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Feed />} />
-          <Route path="/video/:id" element={<VideoDetail />} />
+          <Route path="/videos/:id" element={<VideoDetail />} />
           <Route path="/channel/:id" element={<ChannelDetail />} />
           <Route path="/search/:searchTerm" element={<SearchFeed />} />
           <Route path="*" element={<ErrorPage />} />

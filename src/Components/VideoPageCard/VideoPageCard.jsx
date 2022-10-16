@@ -9,7 +9,7 @@ export default function VideoPageCard(props) {
 
     return (
         <>
-           <Link to={`/video/:${url}`}> <div className='videoPageCard'>
+           <Link to={`/videos/${url}`}> <div className='videoPageCard'>
                 <div className='videoPageCardThumbnail'>
                 <img src={thumbnail} alt="" />
                 </div>

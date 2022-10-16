@@ -13,7 +13,12 @@ import { useState } from "react";
 
 function VideoDetail() {
     const path = useLocation()
-    const url = path.pathname.match(/[^/:]{1,}$/gi)[0]
+    console.log(path.pathname);
+    const url = path.pathname.split("/videos/")[1]
+
+    // const url = path.pathname.match(/[^videos/]{1,}$/gi)[0]
+    // console.log(url);
+    // console.log(url);
     const [videoDetails, setVideoDetails] = useState({})
     const [channelDetails, setChannelDetails] = useState({})
     const [recommendedVideos, setRecommendedVideos] = useState([])
