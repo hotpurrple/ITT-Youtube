@@ -14,3 +14,6 @@ export { default as CategoriesBar } from "./categoriesBar/CategoriesBar";
 export { default as MainVideoCard } from "./mainVideoCard/MainVideoCard";
 export { default as MainChannelCard } from "./mainChannelCard/MainChannelCard";
 //
+
+export { default as SearchBar } from "./searchBar/SearchBar";
+export { default as SearchResultCard } from "./SearchResultCard/SearchResultCard";

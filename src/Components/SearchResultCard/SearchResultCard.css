@@ -1,0 +1,10 @@
+.mainSearchCard {
+    display: flex;
+    width: 855px;
+
+}
+
+.mainSearchCardImg {
+    width: 360px;
+    height: 202px;
+}

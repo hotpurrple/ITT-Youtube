@@ -1,0 +1,17 @@
+.search-bar {
+    width: 25vw;
+    height: 4vh;
+    font-size: 1.2rem;
+
+}
+
+.search-bar {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+}
+
+.search-bar:focus {
+    outline: none;
+}
