@@ -20,7 +20,7 @@ export default function Header() {
            {!pageWithoutHeader &&  <header className='header'>
                 <div className='headerLeft'>
                     <MenuIcon />
-                    <img className='ytlogo' src={YoutubeLogo} alt="logo" />
+                    <Link to="/"><img className='ytlogo' src={YoutubeLogo} alt="logo" /></Link>
                 </div>
 
                 <div className="headerCenter">

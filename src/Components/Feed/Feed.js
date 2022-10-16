@@ -12,18 +12,18 @@ export default function Feed() {
   const [videos, setVideos] = useState([]);
 
   //!За реални резултати от заявка, според категория от таба с категории, разкоментирай това и закоментирай следващия useEffect
-  useEffect(() => {
-    fetchFromAPI(
-      `/search?part=snippet&q=${selectedCategory}&maxResults=20`
-    ).then((data) => {
-      setVideos(data.items);
-    });
-  }, [selectedCategory, videos]); //когато някое от тези двете в масива се промени, изпълни callback ф-ята в useEffect()
+//   useEffect(() => {
+//     fetchFromAPI(
+//       `/search?part=snippet&q=${selectedCategory}&maxResults=20`
+//     ).then((data) => {
+//       setVideos(data.items);
+//     });
+//   }, [selectedCategory, videos]); //когато някое от тези двете в масива се промени, изпълни callback ф-ята в useEffect()
 
   //!Разкоментирай това, за да зарежда само demoVideosResponse и да не хаби заявки
-  // useEffect(() => {
-  //   setVideos(demoVideosResponse);
-  // }, [selectedCategory, videos]); //когато някое от тези двете в масива се промени, изпълни callback ф-ята в useEffect()
+  useEffect(() => {
+    setVideos(demoVideosResponse);
+  }, [selectedCategory, videos]); //когато някое от тези двете в масива се промени, изпълни callback ф-ята в useEffect()
 
   return (
     <Stack

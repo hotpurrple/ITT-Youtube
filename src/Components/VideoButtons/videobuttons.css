@@ -1,0 +1,23 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #0f0f0f;
+}
+
+.videoButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2vw;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 51.5%;
+    height: 4vh;
+}
+
+.singleVideoButton {
+    display: flex;
+    align-items: center;
+    gap: 0.3vw;
+}

@@ -1,7 +1,7 @@
 .header {
     width: 100vw;
     height: 6.1vh;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -9,6 +9,7 @@
 
 .ytlogo {
     width: 5vw;
+    display: block;
 }
 
 .headerLeft {
@@ -20,8 +21,13 @@
     gap: 1vw;
 }
 
+
 .headerCenter {
     height: 4vh;
+}
+
+.headerLeft a {
+    height: unset;
 }
 
 .searchbar {

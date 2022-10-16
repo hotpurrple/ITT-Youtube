@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.descriptionContainer {
+    position: relative;
+    margin-top: 2vh;
+    width: 100%;
+    height: 20vh;
+
+}
+
+.channelInformation {
+    position: relative;
+    width: 100%;
+    height: 5.3vh;
+
+}
+
+.channelInformationLeft {
+    width: 33%;
+    display: flex;
+    align-items: center;
+    gap: 0.7vw;
+}
+
+.channelInformationLeft img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+
+.channelInformationLeft p {
+    color: 606060;
+    font-size: 0.75rem;
+}
+
+.channelSubscribeArea {
+    position: absolute;
+    right: 0;
+    bottom: 10%;
+}
+
+.descriptionTextWrapper {
+    font-size: 0.9rem;
+    padding-left: 5%;
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    border-bottom: 2px solid #0000001a;
+    padding-bottom: 1.3vh;
+
+}
+
+.descriptionText {
+    text-overflow: ellipsis;
+    width: 50%;
+}
+
+h6 {
+    padding-left: 0.5vw;
+    margin-top: 2vh;
+    color: #606060;
+    cursor: pointer;
+    width: 64vw;
+    font-size: 0.9rem;
+
+}

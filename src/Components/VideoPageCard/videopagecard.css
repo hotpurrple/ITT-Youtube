@@ -1,0 +1,16 @@
+.videoPageCard {
+    display: flex;
+    font-size: 0.8rem;
+    gap: 0.4vw;
+    text-overflow: ellipsis;
+    margin-bottom: 0.5vh;
+}
+
+.videoPageCard p {
+    color: #606060;
+}
+
+.videoPageCard img {
+    width: 168px;
+    height: 94px;
+}

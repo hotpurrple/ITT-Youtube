@@ -1,0 +1,35 @@
+
+.commentCard {
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 3vh;
+    /* border: 1px solid green; */
+    display: flex;
+    font-size: 0.9rem;
+    gap: 2vh;
+}
+
+.commentCardDate, .commentCardReply {
+    color: #606060;
+}
+
+.commentCardInformation {
+    position: relative;
+}
+
+.commentLikeDislike {
+    position: absolute;
+    display: flex;
+    gap: 1vw;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+}
+
+.likeButtonLikeAmount {
+    display: flex;
+    gap: 0.5vw;
+}
+.commentText {
+    margin-bottom: 3vh;
+}
