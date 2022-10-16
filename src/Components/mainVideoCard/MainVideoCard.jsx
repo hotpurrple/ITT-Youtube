@@ -15,7 +15,11 @@ export default function MainVideoCard(props) {
   let videoData = props.video;
 
   return (
-    <Card>
+    <Card
+      sx={{
+        width: 360,
+      }}
+    >
       <Link
         to={
           videoData.id.videoId
