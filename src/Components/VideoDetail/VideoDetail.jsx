@@ -9,11 +9,12 @@ import VideoPageCard from "../VideoPageCard/VideoPageCard";
 import alternativeFetch from "../../utils/alternativeFetch"
 import VideoComments from "../VideoComments/VideoComments";
 import { useState } from "react";
+import numberFormatter from "../../utils/numberFormatter"
 //bring back the old api key
 
 function VideoDetail() {
     const path = useLocation()
-    console.log(path.pathname);
+  
     const url = path.pathname.split("/videos/")[1]
 
     // const url = path.pathname.match(/[^videos/]{1,}$/gi)[0]
@@ -28,8 +29,8 @@ function VideoDetail() {
         fetchFromApi(`/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${url}`)
             .then(data => {
                 let title = data.items[0].snippet.title
-                let views = data.items[0].statistics.viewCount
-                let likes = data.items[0].statistics.likeCount
+                let views = numberFormatter(data.items[0].statistics.viewCount)
+                let likes = numberFormatter(data.items[0].statistics.likeCount)
                 let creationDate = data.items[0].snippet.publishedAt.split("T")[0].split("-").reverse().join(".")
                 let shortDescription = data.items[0].snippet.description.slice(0, 200)
                 let obj = { title, views, likes, creationDate, shortDescription }
@@ -40,7 +41,7 @@ function VideoDetail() {
                 fetchFromApi(`/channels?part=snippet%2Cstatistics&id=${res[0]}`)
                     .then(data => {
                         let channelName = data.items[0].snippet.title
-                        let subsCount = data.items[0].statistics.viewCount
+                        let subsCount = numberFormatter(data.items[0].statistics.viewCount)
                         let channelThumbnail = data.items[0].snippet.thumbnails.default.url
                         let shortDescription = res[1]
                         let obj = { channelName, subsCount, channelThumbnail, shortDescription }
@@ -65,7 +66,7 @@ function VideoDetail() {
             })
     }, [url])
 
-    
+
 
 
     return (
@@ -75,7 +76,7 @@ function VideoDetail() {
                     <VideoPlayer link={url} />
                     <VideoInformation props={videoDetails} />
                     <VideoDescription props={channelDetails} />
-                    <VideoComments props={commentsList}/>
+                    <VideoComments props={commentsList} />
                 </div>
                 <div className="recommended">
                     {recommendedVideos.map(e => {

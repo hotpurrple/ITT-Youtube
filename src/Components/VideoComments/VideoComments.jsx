@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import CommentCard from "../CommentCard/CommentCard"
 
 export default function VideoComments(props) {
-    
+    console.log(props);
     return (
         <>
             <div className='commentsWrapper'>
