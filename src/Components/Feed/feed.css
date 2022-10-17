@@ -1,25 +1,15 @@
 .feedMainContainer {
-
     display: flex;
     flex-direction: row;
     background-color: #f9f9f9;
-    /* padding: 15px 0px 0px 0px; */
 }
 
 .resultsPlusCategoriesContainer {
     display: flex;
-
     flex-direction: column;
+    width: 97%;
 }
 
-
-.feedSidebarContainer {
-    color: "#fff";
-    background-Color: "#ffffff";
-    height: 92vh;
-    border-right: 1px solid #3d3d3d;
-    padding: 0 2px 0 2px;
-}
 
 .resultsContainer {
     display: flex;

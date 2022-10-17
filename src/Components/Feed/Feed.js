@@ -30,9 +30,7 @@ export default function Feed(props) {
 
   return (
     <div className="feedMainContainer">
-      <div className="feedSidebarContainer">
-        <Sidebar />
-      </div>
+      <Sidebar />
 
       <div className="resultsPlusCategoriesContainer">
         <CategoriesBar //categories tab bar with tabs
