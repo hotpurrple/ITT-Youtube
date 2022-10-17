@@ -11,10 +11,6 @@ export default function Feed(props) {
   const [selectedCategory, setSelectedCategory] = useState("new"); //първоначално ни зарежда видеа от категория New
   const [videos, setVideos] = useState([]);
 
-    //changes title when redirected to home page
-    useEffect(() => {
-        document.title = "YouTube"
-    }, [])
 
   // !За реални резултати от заявка, според категория от таба с категории, разкоментирай това и закоментирай следващия useEffect
 //   useEffect(() => {

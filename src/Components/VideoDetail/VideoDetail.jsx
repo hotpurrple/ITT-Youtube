@@ -57,6 +57,9 @@ function VideoDetail() {
             .then(data => {
                 setRecommendedVideos([...data.items])
             })
+            return function() {
+                document.title = "YouTube"
+            }
     }, [url])
 
     useEffect(() => {
