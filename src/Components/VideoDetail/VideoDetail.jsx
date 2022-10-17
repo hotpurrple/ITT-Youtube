@@ -29,6 +29,7 @@ function VideoDetail() {
         fetchFromApi(`/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${url}`)
             .then(data => {
                 let title = data.items[0].snippet.title
+                document.title = title
                 let views = numberFormatter(data.items[0].statistics.viewCount)
                 let likes = numberFormatter(data.items[0].statistics.likeCount)
                 let creationDate = data.items[0].snippet.publishedAt.split("T")[0].split("-").reverse().join(".")
@@ -48,7 +49,7 @@ function VideoDetail() {
                         setChannelDetails({ ...obj })
                     })
             })
-
+            
     }, [url])
 
     useEffect(() => {
@@ -65,9 +66,6 @@ function VideoDetail() {
                 setCommentsList([...arr])
             })
     }, [url])
-
-
-
 
     return (
         <>
