@@ -9,7 +9,6 @@ export default function VideoPageCard(props) {
     const formattedDate = dateCalculator(publishedAt)
     //api doesnt return recommended video views 
     const randomViews = numberFormatter(Math.floor(Math.random() * (900000 - 100 + 1)) + 100)
-    console.log(randomViews);
     const thumbnail = props.props.thumbnails.medium.url
     let url = props.url 
 

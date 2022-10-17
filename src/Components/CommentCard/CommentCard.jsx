@@ -15,7 +15,8 @@ export default function CommentCard(props) {
                 <CommentProfilePic profilePic={authorProfileImageUrl} />
                 <div className='commentCardInformation'>
                         <b>{authorDisplayName}</b> <span className='commentCardDate'>{formattedDate}</span>
-                        <p className='commentText'>{textDisplay}</p>
+                        <p className='commentText' dangerouslySetInnerHTML={{__html: textDisplay}}></p> 
+                        {/* ^escapes html tags in the comments - not very secure(hence not a great practice), but we're brave. */}
                         <span className='commentLikeDislike'>
                             <span className='likeButtonLikeAmount'><ThumbUpOutlinedIcon fontSize="small"/>{likeCount}</span>
                             <ThumbDownOutlinedIcon fontSize="small"/>

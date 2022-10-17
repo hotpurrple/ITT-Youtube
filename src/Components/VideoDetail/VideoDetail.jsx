@@ -42,7 +42,7 @@ function VideoDetail() {
                 fetchFromApi(`/channels?part=snippet%2Cstatistics&id=${res[0]}`)
                     .then(data => {
                         let channelName = data.items[0].snippet.title
-                        let subsCount = numberFormatter(data.items[0].statistics.viewCount)
+                        let subsCount = numberFormatter(data.items[0].statistics.subscriberCount)
                         let channelThumbnail = data.items[0].snippet.thumbnails.default.url
                         let shortDescription = res[1]
                         let obj = { channelName, subsCount, channelThumbnail, shortDescription }
