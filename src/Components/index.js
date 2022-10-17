@@ -16,4 +16,6 @@ export { default as MainChannelCard } from "./mainChannelCard/MainChannelCard";
 //
 
 export { default as SearchBar } from "./searchBar/SearchBar";
-export { default as SearchResultCard } from "./SearchResultCard/SearchResultCard";
+
+export { default as SearchVideoCard } from "./SearchVideoCard/SearchVideoCard";
+export { default as SearchChannelCard } from "./SearchChannelCard/SearchChannelCard";

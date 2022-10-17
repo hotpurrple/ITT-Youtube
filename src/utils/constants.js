@@ -34,6 +34,8 @@ export const demoVideoTitle =
   "New Russian attacks hit Zaporizhzhia and other parts of Ukraine";
 export const demoProfilePicture =
   "https://yt3.ggpht.com/Iv4QbKjK63MB70UvQ22FnTWF8KN3-2qZ2FqeFDiI-HVmidR7GJKo6UrVSwR6vsyHvmdm1pfirrg=s88-c-k-c0x00ffffff-no-rj";
+export const demoVideoDescription =
+  "No kitchen for a week challenge! lol, that's basically what this turned into, luckily we were able to turn it into some fun!";
 
 //demo response with 20 videos, за да не изхабим дневните заявки към API-то - трябва да се закоментира първия useEffect() във feed компонента, и да се откоментира втория useEffect()
 export const demoVideosResponse = [

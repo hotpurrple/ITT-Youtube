@@ -1,11 +1,10 @@
 import React from "react";
 import "./searchFeed.css";
 import fetchFromAPI from "../../utils/fetchFromAPI";
-
 import { useEffect, useState } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import { useParams } from "react-router-dom"; //за да можем да вземем query search параметрите от search bar-а
-import { SearchResultCard } from "..";
+import { SearchVideoCard, SearchChannelCard } from "../";
 // import { demoSearchResultsResponse } from "../../utils/constants";
 
 export default function SearchFeed() {
@@ -22,19 +21,21 @@ export default function SearchFeed() {
   }, [searchTerm]);
   return (
     <div className="searchFeedMainContainer">
-      <div className="searchFeedSidebarContainer">
-        <Sidebar />
-      </div>
+      <Sidebar />
 
-      <div className="searchResultsContainer">
-        {searchResults.map((searchResult, idx) => {
-          if (searchResult.id.videoId) {
-            //значи е видео, а не канал
-            return <SearchResultCard video={searchResult} key={idx} />;
-          } else {
-            return <div key={idx}>It's a channel</div>;
-          }
-        })}
+      <div className="searchCardContainer">
+        <div className="searchCardsScrollContainer">
+          {searchResults.map((searchResult, idx) => {
+            if (searchResult.id.videoId) {
+              //значи е видео, а не канал
+              return <SearchVideoCard video={searchResult} key={idx} />;
+            } else {
+              return (
+                <SearchChannelCard channelDetails={searchResult} key={idx} />
+              );
+            }
+          })}
+        </div>
       </div>
     </div>
   );

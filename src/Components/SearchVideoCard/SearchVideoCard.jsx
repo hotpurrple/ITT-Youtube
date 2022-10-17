@@ -9,22 +9,25 @@ import {
   demoVideoTitle,
   demoChannelUrl,
   demoChannelTitle,
+  demoVideoDescription,
 } from "../../utils/constants";
 
-export default function MainVideoCard(props) {
+export default function SearchVideoCard(props) {
   let videoData = props.video;
 
   return (
     <Card
       sx={{
-        width: 360,
+        width: 900,
+        display: "flex",
+        flexDirection: "row",
+        mt: "15px",
+        mb: "15px",
       }}
     >
       <Link
         to={
-          videoData.id.videoId
-            ? `/videos/${videoData.id.videoId}`
-            : demoVideoUrl
+          videoData.id.videoId ? `/videos/${videoData.id.videoId}` : demoVideoUrl
         }
       >
         <CardMedia
@@ -36,16 +39,19 @@ export default function MainVideoCard(props) {
           }}
         />
       </Link>
+
       <CardContent
         sx={{
           backgroundColor: "#f9f9f9", //"#181818", //dark
-          height: "94px",
+          height: 202,
+          width: "100%",
         }}
       >
         <Link
+          style={{ textDecoration: "none" }}
           to={
             videoData.id.videoId
-              ? `/videos/:${videoData.id.videoId}`
+              ? `/videos/${videoData.id.videoId}`
               : demoVideoUrl
           }
         >
@@ -54,11 +60,13 @@ export default function MainVideoCard(props) {
             fontWeight="bold"
             color="#030303" /*"#fff"*/
           >
-            {videoData?.snippet.title.slice(0, 40) || //за да не става прекалено дълго заглавието
+            {videoData?.snippet.title.slice(0, 40) ||
               demoVideoTitle.slice(0, 40)}
           </Typography>
         </Link>
+
         <Link
+          style={{ textDecoration: "none" }}
           to={
             videoData.snippet?.channelId
               ? `/channel/:${videoData.snippet.channelId}`
@@ -66,7 +74,7 @@ export default function MainVideoCard(props) {
           }
         >
           <Typography variant="subtitle2" fontWeight="bold" color="#6c6c6c">
-            {videoData?.snippet.channelTitle.slice(0, 40) || //за да не става прекалено дълго заглавието
+            {videoData?.snippet.channelTitle.slice(0, 40) ||
               demoChannelTitle.slice(0, 40)}
             <CheckCircle
               sx={{
@@ -75,6 +83,11 @@ export default function MainVideoCard(props) {
                 color: "#aaaaaa",
               }}
             />
+          </Typography>
+
+          <Typography variant="body2" color="#606265">
+            {videoData?.snippet.description.slice(0, 70) ||
+              demoVideoDescription.slice(0, 70)}
           </Typography>
         </Link>
       </CardContent>
