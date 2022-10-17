@@ -9,7 +9,6 @@ import dateCalculator from "../../utils/dateCalculator"
 export default function CommentCard(props) {
     const {likeCount, publishedAt, authorDisplayName, textDisplay, authorProfileImageUrl} = props.props.snippet.topLevelComment.snippet
     const formattedDate = dateCalculator(publishedAt)
-    console.log(formattedDate);
     return (
         <>
             <div className='commentCard'>
