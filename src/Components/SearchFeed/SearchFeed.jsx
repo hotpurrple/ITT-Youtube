@@ -30,9 +30,7 @@ export default function SearchFeed() {
               //значи е видео, а не канал
               return <SearchVideoCard video={searchResult} key={idx} />;
             } else {
-              return (
-                <SearchChannelCard channelDetails={searchResult} key={idx} />
-              );
+              return <SearchChannelCard channelDetails={searchResult} key={idx} />;
             }
           })}
         </div>

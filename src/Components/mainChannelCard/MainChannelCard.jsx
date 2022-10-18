@@ -39,7 +39,7 @@ function MainChannelCard(props) {
               mb: 2,
             }}
           />
-          <Typography variant="h6">
+          <Typography variant="h5">
             {props.channelDetails?.snippet?.title}
             <CheckCircle
               sx={{
