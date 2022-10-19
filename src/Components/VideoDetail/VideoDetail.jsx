@@ -10,11 +10,13 @@ import alternativeFetch from "../../utils/alternativeFetch"
 import VideoComments from "../VideoComments/VideoComments";
 import { useState } from "react";
 import numberFormatter from "../../utils/numberFormatter"
+import { useSelector } from "react-redux";
 //bring back the old api key
 
 function VideoDetail() {
     const path = useLocation()
-  
+    const user = useSelector(state => state.loggedUser.user)
+    console.log(user);
     const url = path.pathname.split("/videos/")[1]
 
     // const url = path.pathname.match(/[^videos/]{1,}$/gi)[0]
