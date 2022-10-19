@@ -8,7 +8,7 @@ import {
   Box,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
-// import "./searchBar.css";
+import "./searchBar.css";
 
 import fetchFromAPI from "../../utils/fetchFromAPI";
 // import debounce from "lodash.debounce";
@@ -62,6 +62,12 @@ export default function SearchBar() {
       sx={{
         backgroundColor: "#ffffff",
         display: "flex",
+        border: "1px solid gray",
+        borderRadius: "10px",
+        width: "450px",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "0px 0px 0px 5px",
       }}
       onSubmit={handleSubmit}
     >
@@ -77,9 +83,8 @@ export default function SearchBar() {
           <TextField
             {...params}
             sx={{
-              // "& fieldset": { border: "none" },
-              width: 500,
-              boxSizing: "border-box",
+              "& fieldset": { border: "none" },
+             
             }}
           />
         )}
