@@ -35,24 +35,30 @@ export default function SearchBar() {
   };
 
   useEffect(() => {
-    fetchFromAPI(`/search?part=snippet&q=${searchTerm}&maxResults=10`).then(
-      (suggestedData) => {
-        let suggestedTitles = suggestedData.items.map((el) => el.snippet.title);
-        console.log(suggestedTitles);
-        setSuggestions(suggestedTitles);
-      }
-    );
-  }, [searchTerm]); //когато selectedCategory се промени, изпълни callback ф-ята в useEffect()
+    if (searchTerm) {
+      fetchFromAPI(`/search?part=snippet&q=${searchTerm}&maxResults=15`).then(
+        (suggestedData) => {
+          let suggestedTitles = suggestedData.items.map(
+            (el) => el.snippet.title
+          );
+          console.log(suggestedTitles);
+          setSuggestions(suggestedTitles);
+        }
+      );
+    }
+  }, [searchTerm]); //когато searchTerm се промени, изпълни callback ф-ята в useEffect()
 
   let debounceInput = myDebounce(handleInput, 1000);
 
   //оn submit
   const handleSubmit = (e) => {
+    console.log("in handleSubmit");
     e.preventDefault(); //защото компонента се води форма и бутона е събмит
 
     if (searchTerm) {
       navigate(`/search/${searchTerm}`); //променяме url-то, за да активираме /search/:searchTerm path, за да ни се зареди searchFeed компонента
       setSearchTerm(""); //накрая зачистваме searchTerm
+      setSuggestions([]);
     }
   };
 
@@ -64,16 +70,16 @@ export default function SearchBar() {
         display: "flex",
         border: "1px solid gray",
         borderRadius: "10px",
-        width: "450px",
+        width: "360px",
         justifyContent: "center",
-        alignItems: "center",
         padding: "0px 0px 0px 5px",
       }}
       onSubmit={handleSubmit}
     >
       <Autocomplete
-        // value={searchTerm}
+        value={searchTerm}
         // open={searchTerm.length > 2}
+        onChange={handleSubmit}
         freeSolo={true}
         onInput={debounceInput}
         options={suggestions}
@@ -84,7 +90,6 @@ export default function SearchBar() {
             {...params}
             sx={{
               "& fieldset": { border: "none" },
-             
             }}
           />
         )}
