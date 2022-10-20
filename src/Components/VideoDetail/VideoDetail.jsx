@@ -11,21 +11,16 @@ import VideoComments from "../VideoComments/VideoComments";
 import { useState } from "react";
 import numberFormatter from "../../utils/numberFormatter"
 import { useSelector } from "react-redux";
+import RecommendedVideos from "../RecommendedVideos/RecommendedVideos";
 //bring back the old api key
-
 function VideoDetail() {
     const path = useLocation()
     const user = useSelector(state => state.loggedUser.user)
-    console.log(user);
     const url = path.pathname.split("/videos/")[1]
 
     // const url = path.pathname.match(/[^videos/]{1,}$/gi)[0]
-    // console.log(url);
-    // console.log(url);
     const [videoDetails, setVideoDetails] = useState({})
     const [channelDetails, setChannelDetails] = useState({})
-    const [recommendedVideos, setRecommendedVideos] = useState([])
-    const [commentsList, setCommentsList] = useState([])
 
     useEffect(() => {
         fetchFromApi(`/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${url}`)
@@ -54,24 +49,6 @@ function VideoDetail() {
             
     }, [url])
 
-    useEffect(() => {
-        fetchFromApi(`/search?relatedToVideoId=${url}&part=id%2Csnippet&type=video&maxResults=25`)
-            .then(data => {
-                setRecommendedVideos([...data.items])
-            })
-            return function() {
-                document.title = "YouTube"
-            }
-    }, [url])
-
-    useEffect(() => {
-        fetchFromApi(`/commentThreads?part=snippet&videoId=${url}&maxResults=25`)
-            .then(data => {
-                let arr = data.items.slice(0, 25)
-                setCommentsList([...arr])
-            })
-    }, [url])
-
     return (
         <>
             <div className="videoPageContainer">
@@ -79,12 +56,10 @@ function VideoDetail() {
                     <VideoPlayer link={url} />
                     <VideoInformation props={videoDetails} />
                     <VideoDescription props={channelDetails} />
-                    <VideoComments props={commentsList} />
+                    <VideoComments url={url}/>
                 </div>
                 <div className="recommended">
-                    {recommendedVideos.map(e => {
-                        return <VideoPageCard url={e.id.videoId} key={e.id.videoId} props={e.snippet} />
-                    })}
+                    <RecommendedVideos url={url}/>
                 </div>
             </div>
         </>

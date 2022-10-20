@@ -3,10 +3,11 @@
 }
 
 .commentsWrapper {
-    height: 80vh;
+    position: relative;
+    height: fit-content;
     width: 100%;
     /* border: 1px solid red; */
-   
+
 }
 
 .personalComment {
@@ -54,10 +55,17 @@
 }
 
 .otherComments {
+    position: relative;
     margin-top: 1vh;
     width: 100%;
-    height: 400vh;
+    height: fit-content;
     /* border: 1px solid blue; */
     display: flex;
     flex-direction: column;
 }
+
+/* .commentsScrollSpinner {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+} */

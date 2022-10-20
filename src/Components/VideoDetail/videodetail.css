@@ -21,7 +21,7 @@
 }
 
 .recommended {
-    height: 280vh;
+    height: fit-content;
     width: 402px;
     /* border: 1px solid green; */
 }
