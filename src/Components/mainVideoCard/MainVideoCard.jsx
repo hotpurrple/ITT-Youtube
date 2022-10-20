@@ -45,7 +45,7 @@ export default function MainVideoCard(props) {
         <Link
           to={
             videoData.id.videoId
-              ? `/videos/:${videoData.id.videoId}`
+              ? `/videos/${videoData.id.videoId}`
               : demoVideoUrl
           }
         >
@@ -61,7 +61,7 @@ export default function MainVideoCard(props) {
         <Link
           to={
             videoData.snippet?.channelId
-              ? `/channel/:${videoData.snippet.channelId}`
+              ? `/channel/${videoData.snippet.channelId}`
               : demoChannelUrl
           }
         >

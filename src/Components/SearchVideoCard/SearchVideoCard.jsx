@@ -69,7 +69,7 @@ export default function SearchVideoCard(props) {
           style={{ textDecoration: "none" }}
           to={
             videoData.snippet?.channelId
-              ? `/channel/:${videoData.snippet.channelId}`
+              ? `/channel/${videoData.snippet.channelId}`
               : demoChannelUrl
           }
         >
