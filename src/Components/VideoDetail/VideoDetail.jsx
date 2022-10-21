@@ -10,14 +10,17 @@ import alternativeFetch from "../../utils/alternativeFetch"
 import VideoComments from "../VideoComments/VideoComments";
 import { useState } from "react";
 import numberFormatter from "../../utils/numberFormatter"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import RecommendedVideos from "../RecommendedVideos/RecommendedVideos";
+import updateVideosHistory from "../../store/loggedUser"
+import addToVideosHistory from "../../server/updateUserData";
+
 //bring back the old api key
 function VideoDetail() {
     const path = useLocation()
     const user = useSelector(state => state.loggedUser.user)
     const url = path.pathname.split("/videos/")[1]
-
+    const dispatch = useDispatch()
     // const url = path.pathname.match(/[^videos/]{1,}$/gi)[0]
     const [videoDetails, setVideoDetails] = useState({})
     const [channelDetails, setChannelDetails] = useState({})
@@ -26,12 +29,19 @@ function VideoDetail() {
         fetchFromApi(`/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${url}`)
             .then(data => {
                 let title = data.items[0].snippet.title
+                let thumbnail = data.items[0].snippet.thumbnails.medium.url
+                let channelTitle = data.items[0].snippet.channelTitle
                 document.title = title
                 let views = numberFormatter(data.items[0].statistics.viewCount)
                 let likes = numberFormatter(data.items[0].statistics.likeCount)
+                let published_accurately = data.items[0].snippet.publishedAt
+
                 let creationDate = data.items[0].snippet.publishedAt.split("T")[0].split("-").reverse().join(".")
                 let shortDescription = data.items[0].snippet.description.slice(0, 200)
                 let obj = { title, views, likes, creationDate, shortDescription }
+                // let toBeDispatched = {url, creationDate, title, thumbnail, channelTitle}
+                addToVideosHistory(url, published_accurately, title, thumbnail, channelTitle)
+
                 setVideoDetails({ ...obj },)
                 return [data.items[0].snippet.channelId, shortDescription]
             })

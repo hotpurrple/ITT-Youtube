@@ -41,13 +41,14 @@
 .libraryVideoPageCards {
     height: fit-content;
     display: flex;
-    justify-content: space-between;
-
+    flex-wrap: wrap;
+    gap: 2%;
 }
 
 .libraryPageCard {
     height: 210px;
-    width: 97%;
+    margin-top: 5vh;
+    width: 13vw;
     font-size: 0.8rem;
     text-overflow: ellipsis;
 }

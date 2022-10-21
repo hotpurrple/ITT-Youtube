@@ -8,10 +8,11 @@ import { Provider } from 'react-redux'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+    //Apparently, there are some side effects to strict mode - some components render twice, for example.
+//   <React.StrictMode>
     <Provider store={store}>
     <App />
     </Provider>
-  </React.StrictMode>
+//   </React.StrictMode>
 );
 
