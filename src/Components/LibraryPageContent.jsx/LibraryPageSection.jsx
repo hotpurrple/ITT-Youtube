@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button';
-import dateCalculator from '../../utils/dateCalculator.mjs'
-import numberFormatter from '../../utils/numberFormatter'
 import VideoPageCard from '../VideoPageCard/VideoPageCard.jsx';
-import pseudoRecommended from '../../utils/pseudoRecommended.mjs';
+// import pseudoRecommended from '../../utils/pseudoRecommended.mjs';
+
 
 export default function LibraryPageSection(props) {
-    let arr = pseudoRecommended
-    
+    // let arr = pseudoRecommended
+   
     return (
         <>
             <div className='singleLibrarySection'>
@@ -17,7 +16,7 @@ export default function LibraryPageSection(props) {
                     <Button className='libraryButton' variant="text">SEE ALL</Button>
                 </div>
                 <div className='libraryVideoPageCards'>
-                    {arr.map(e => {
+                    {props.vidsToShow.map(e => {
                         return <VideoPageCard layoutClass="libraryPageCard" url={e.id.videoId} key={e.id.videoId} props={e.snippet} />
                     })}
                 </div>

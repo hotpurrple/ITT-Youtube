@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { logUser, logOutUsers, currentUser } from '../server/serverLogin'
+import addToVideosHistory from '../server/updateUserData'
+
 const current = currentUser() || ""
 
 const initialState = {
@@ -21,10 +23,11 @@ export const loggedUser = createSlice({
     mahniGo: (state) => {
         logOutUsers()
         state.user = ""
-    }
+    },
+    
   },
 })
 
-export const { logniGo, mahniGo } = loggedUser.actions
+export const { logniGo, mahniGo} = loggedUser.actions
 
 export default loggedUser.reducer
