@@ -40,6 +40,27 @@
 }
 
 
+.sidebar-menu-Library {
+    background-color: #f9f9f9;
+    opacity: 1;
+    width: 170px;
+    height: 88vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 6vh;
+    left: -100%;
+    transition: 850ms;
+
+}
+
+.sidebar-menu-Library.active {
+    left: 0;
+    transition: 350ms;
+}
+
+
+
 .item-text {
     display: flex;
     justify-content: start;

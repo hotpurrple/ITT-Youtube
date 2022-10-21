@@ -41,7 +41,10 @@ function App() {
           <Route path="*" element={<ErrorPage />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="library" element={<LibraryPage/>} />
+          <Route
+            path="library"
+            element={<LibraryPage showSideBar={sideBar} />}
+          />
         </Routes>
       </BrowserRouter>
     </>
