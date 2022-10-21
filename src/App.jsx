@@ -13,6 +13,7 @@ import {
   ErrorPage,
   Login,
   Register,
+  LibraryPage,
 } from "./Components"; //simple import
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path="*" element={<ErrorPage />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="library" element={<LibraryPage/>} />
         </Routes>
       </BrowserRouter>
     </>

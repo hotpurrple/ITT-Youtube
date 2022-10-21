@@ -1,0 +1,27 @@
+.libraryPageWrapper {
+    display: flex;
+    background-color: #f9f9f9;
+
+}
+
+.notLoggedIn {
+    height: 80vh;
+    width: 100%;
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    text-align: center;
+}
+
+.VideoLibraryOutlinedIcon {
+    transform: scale(5);
+    margin-bottom: 4vh;
+}
+
+.enjoy {
+    font-size: 1.6rem;
+    margin-bottom: 1vh;
+}

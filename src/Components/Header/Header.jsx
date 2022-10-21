@@ -23,7 +23,7 @@ export default function Header(props) {
   const user = useSelector((state) => state.loggedUser.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+    
   const handleLoginFromHomePage = (ev) => {
     //if there's an active user, call the function to log out and update the state to 0 logged users
     if (user) {
