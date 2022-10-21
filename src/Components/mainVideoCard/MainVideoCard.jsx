@@ -17,6 +17,7 @@ export default function MainVideoCard(props) {
 
   return (
     <Card
+      className="card"
       sx={{
         width: 360,
       }}

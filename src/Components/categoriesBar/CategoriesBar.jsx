@@ -3,7 +3,6 @@ import { categoriesForCategoriesBar } from "../../utils/constants";
 
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
 import { useState } from "react";
 
 export default function CategoriesBar(props) {
@@ -26,6 +25,9 @@ export default function CategoriesBar(props) {
         pt: "5px",
         pb: "5px",
         width: "100%",
+        "& .MuiTabs-indicator": {
+          display: "none",
+        },
       }}
     >
       {categoriesForCategoriesBar.map((c) => (
@@ -33,6 +35,10 @@ export default function CategoriesBar(props) {
           label={c.name}
           variant="outlined"
           sx={{
+            margin: "0px 5px 0px 5px",
+            minHeight: "25px",
+            maxHeight: "35px",
+            padding: "5px 5px 5px 5px",
             borderRadius: "20px",
             color: "#444444" /*"#dddddd"*/,
             fontSize: "14px",

@@ -16,3 +16,10 @@
     outline: none;
 } */
 
+
+.MuiAutocomplete-inputRoot {
+    flex-wrap: nowrap !important;
+    height: 44px !important;
+    padding: 10px 5px 10px 5px !important;
+
+}

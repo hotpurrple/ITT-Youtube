@@ -67,7 +67,6 @@ export default function SearchBar() {
     if (searchTerm) {
       navigate(`/search/${searchTerm}`); //променяме url-то, за да активираме /search/:searchTerm path, за да ни се зареди searchFeed компонента
       setSearchTerm(""); //накрая зачистваме searchTerm
-      
       setSuggestions([]);
     }
   };
@@ -87,7 +86,15 @@ export default function SearchBar() {
       onSubmit={handleSubmit}
     >
       <Autocomplete
-        style={{ width: 500, backgroundColor: "#ffffff" }}
+        style={{
+          width: 500,
+          backgroundColor: "#ffffff",
+        }}
+        // key={somethingMeaningful}
+        // Luckily it is a react component, so it have a "key" prop. When the key prop changes,
+        // the component is re-rendered with the default values ( which is an empty array since nothing is selected).
+        // I used hooks in the parent component and passed the values to the key prop, whenever reset is needed.
+
         //value={searchTerm}
         //open={searchTerm.length > 2}
         //PopperComponen={компонент/елемент}
@@ -124,6 +131,7 @@ export default function SearchBar() {
             sx={{
               "& fieldset": { border: "none" },
             }}
+            // size="small"
           />
         )}
       />

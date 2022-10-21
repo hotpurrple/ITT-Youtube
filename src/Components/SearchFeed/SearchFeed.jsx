@@ -1,7 +1,7 @@
 import React from "react";
 import "./searchFeed.css";
 import fetchFromAPI from "../../utils/fetchFromAPI";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import { useParams } from "react-router-dom"; //за да можем да вземем query search параметрите от search bar-а
 import { SearchVideoCard, SearchChannelCard } from "../";
@@ -10,15 +10,44 @@ import { SearchVideoCard, SearchChannelCard } from "../";
 export default function SearchFeed(props) {
   const { searchTerm } = useParams(); //searchTerm ще вземе това, което имаме след search/ в url bar-а, а то трябва да се промени от search bar-а в head
   const [searchResults, setSearchResults] = useState([]);
+  let newResults = 20;
+
+  const scrollDiv = useRef();
+
+  const loadMoreSearchResults = () => {
+    fetchFromAPI(
+      `/search?part=snippet&q=${searchTerm}&maxResults=${newResults}`
+    ).then((data) => {
+      setSearchResults((oldResults) => [
+        ...oldResults,
+        ...data.items.slice(oldResults.length + 1), //отново получаваме и вече показани резултати, затова трябва да ги изрежем, за да не се дублират. Просто апи-то няма възможност да ни покаже следващите
+      ]);
+    });
+    newResults += 20;
+  };
+
+  const handleScroll = (e) => {
+    // console.log(scrollDiv.current.scrollHeight);
+    // console.log(scrollDiv.current.offsetHeight);
+    // console.log(scrollDiv.current.scrollTop);
+    if (
+      scrollDiv.current.scrollHeight - scrollDiv.current.offsetHeight ===
+      scrollDiv.current.scrollTop
+    ) {
+      console.log("sdfsf");
+      loadMoreSearchResults();
+    }
+  };
 
   useEffect(() => {
-    fetchFromAPI(`/search?part=snippet&q=${searchTerm}&maxResults=20`).then(
-      (data) => {
-        console.log(data.items);
-        setSearchResults(data.items);
-      }
-    );
+    loadMoreSearchResults();
+    scrollDiv.current.addEventListener("scroll", handleScroll);
+
+    // return () => {
+    //   scrollDiv.current.removeEventListener("scroll", handleScroll);
+    // };
   }, [searchTerm]);
+
   return (
     <div className="searchFeedMainContainer">
       <Sidebar
@@ -30,7 +59,7 @@ export default function SearchFeed(props) {
       />
 
       <div className="searchCardContainer">
-        <div className="searchCardsScrollContainer">
+        <div className="searchCardsScrollContainer" ref={scrollDiv}>
           {searchResults.map((searchResult, idx) => {
             if (searchResult.id.videoId) {
               //значи е видео, а не канал

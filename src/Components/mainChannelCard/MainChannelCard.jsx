@@ -9,6 +9,7 @@ function MainChannelCard(props) {
   console.log(props.channelDetails);
   return (
     <Box
+      className="card"
       sx={{
         display: "flex",
         justifyContent: "center",

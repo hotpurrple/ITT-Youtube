@@ -17,6 +17,7 @@ export default function SearchVideoCard(props) {
 
   return (
     <Card
+      className="card"
       sx={{
         width: 900,
         display: "flex",
@@ -27,7 +28,9 @@ export default function SearchVideoCard(props) {
     >
       <Link
         to={
-          videoData.id.videoId ? `/videos/${videoData.id.videoId}` : demoVideoUrl
+          videoData.id.videoId
+            ? `/videos/${videoData.id.videoId}`
+            : demoVideoUrl
         }
       >
         <CardMedia

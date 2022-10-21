@@ -8,6 +8,7 @@ export default function SearchChannelCard(props) {
   //props.channelDetail идва от Videos component, където принтираме всички картички
   return (
     <Box
+      className="card"
       sx={{
         display: "flex",
         justifyContent: "center",
