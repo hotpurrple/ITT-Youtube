@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 13vh;
+    top: 12vh;
     left: -100%;
     transition: 850ms;
 

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Typography, Card, CardContent, CardMedia } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
+import "./mainVideoCard.css";
 
 import {
   demoThumbnailUrl,
@@ -50,12 +51,13 @@ export default function MainVideoCard(props) {
           }
         >
           <Typography
+            className="hover"
             variant="subtitle1"
             fontWeight="bold"
             color="#030303" /*"#fff"*/
           >
-            {videoData?.snippet.title.slice(0, 40) || //за да не става прекалено дълго заглавието
-              demoVideoTitle.slice(0, 40)}
+            {videoData?.snippet.title.slice(0, 30) || //за да не става прекалено дълго заглавието
+              demoVideoTitle.slice(0, 30)}
           </Typography>
         </Link>
         <Link
@@ -66,8 +68,8 @@ export default function MainVideoCard(props) {
           }
         >
           <Typography variant="subtitle2" fontWeight="bold" color="#6c6c6c">
-            {videoData?.snippet.channelTitle.slice(0, 40) || //за да не става прекалено дълго заглавието
-              demoChannelTitle.slice(0, 40)}
+            {videoData?.snippet.channelTitle.slice(0, 30) || //за да не става прекалено дълго заглавието
+              demoChannelTitle.slice(0, 30)}
             <CheckCircle
               sx={{
                 fontSize: 12,
