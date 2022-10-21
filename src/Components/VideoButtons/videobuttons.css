@@ -22,3 +22,13 @@
     align-items: center;
     gap: 0.3vw;
 }
+
+.videoDialogPlaylists {
+    margin-top: 2vh;
+    width: 13vw;
+    height: 45vh;
+    display: flex;
+    margin-left: 2vh;
+    flex-direction: column;
+}
+

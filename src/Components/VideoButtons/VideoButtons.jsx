@@ -8,9 +8,11 @@ import PlaylistAddOutlinedIcon from '@mui/icons-material/PlaylistAddOutlined';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 
 export default function VideoButtons(props) {
-    const icons = [<ThumbUpOutlinedIcon />, <ThumbDownOffAltOutlinedIcon />, <SendOutlinedIcon />, <PlaylistAddOutlinedIcon />,
+    const icons = [<ThumbUpOutlinedIcon />, <ThumbDownOffAltOutlinedIcon />, <SendOutlinedIcon />, 
+    <PlaylistAddOutlinedIcon />,
     <MoreHorizOutlinedIcon />
     ]
+   
     const likeAmount = props.likes
     const names = [`${props.likes}`, "Dislike", "Share", "Save"]
     return (

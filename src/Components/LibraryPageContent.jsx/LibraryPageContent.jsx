@@ -2,6 +2,9 @@ import React from 'react'
 import LibraryPageSection from './LibraryPageSection'
 import "./librarypagecontent.css"
 import { Divider } from '@mui/material'
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import RestoreIcon from '@mui/icons-material/Restore';
+import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
 
 export default function LibraryPageContent() {
     return (
@@ -9,11 +12,11 @@ export default function LibraryPageContent() {
             <div className='libraryPageContentWrapper'>
                 <div className='libraryPageInnerSections'>
                     <div className='LikedSeenPlaylists'>
-                    <LibraryPageSection className={"libraryPageSection"} name={"History"} />
+                    <LibraryPageSection icon={<RestoreIcon fontSize='large'/>} className={"libraryPageSection"} name={"History"} />
                     <Divider/>
-                    <LibraryPageSection className={"libraryPageSection"} name={"Liked Videos"} />
+                    <LibraryPageSection icon={<AccessTimeIcon fontSize='large'/>} className={"libraryPageSection"} name={"Liked Videos"} />
                     <Divider/>
-                    <LibraryPageSection className={"libraryPageSection"} name={"Playlists"} />
+                    <LibraryPageSection icon={<PlaylistPlayIcon fontSize='large'/>} className={"libraryPageSection"} name={"Playlists"} />
                     <Divider/>
                     </div>
                 </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import RestoreIcon from '@mui/icons-material/Restore';
 import Button from '@mui/material/Button';
 import dateCalculator from '../../utils/dateCalculator.mjs'
 import numberFormatter from '../../utils/numberFormatter'
@@ -13,7 +12,7 @@ export default function LibraryPageSection(props) {
         <>
             <div className='singleLibrarySection'>
                 <div className='singleLibrarySectionHead'>
-                    <div className='libraryIconAndTitle'><RestoreIcon fontSize='large' /> <h4>{props.name}</h4></div>
+                    <div className='libraryIconAndTitle'>{props.icon} <h4>{props.name}</h4></div>
                     <div className='middledivplaceholder'></div>
                     <Button className='libraryButton' variant="text">SEE ALL</Button>
                 </div>
