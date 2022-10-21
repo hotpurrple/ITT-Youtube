@@ -12,6 +12,10 @@ export default function RecommendedVideos(props) {
         hasMore: true
     })
 
+    const layoutClasses = "videoPageCard"
+        
+    
+
     useEffect(() => {
         fetchFromApi(`/search?relatedToVideoId=${url}&part=id%2Csnippet&type=video&maxResults=100`)
             .then(data => {
@@ -71,7 +75,7 @@ export default function RecommendedVideos(props) {
                     </p>
                 }>
                 {recVideos.items.map(e => {
-                    return <VideoPageCard url={e.id.videoId} key={e.id.videoId} props={e.snippet} />
+                    return <VideoPageCard layoutClass="videoPageCard" url={e.id.videoId} key={e.id.videoId} props={e.snippet} />
                 })}
             </InfiniteScroll>
         </>

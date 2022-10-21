@@ -11,11 +11,12 @@ export default function VideoPageCard(props) {
     const randomViews = numberFormatter(Math.floor(Math.random() * (900000 - 100 + 1)) + 100)
     const thumbnail = props.props.thumbnails.medium.url
     let url = props.url 
+    console.log(props);
 
 
     return (
         <>
-           <Link to={`/videos/${url}`}> <div className='videoPageCard'>
+           <Link to={`/videos/${url}`}> <div className={`${props.layoutClass}`}>
                 <div className='videoPageCardThumbnail'>
                 <img src={thumbnail} alt="" />
                 </div>

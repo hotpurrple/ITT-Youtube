@@ -1,0 +1,66 @@
+.libraryPageContentWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.libraryPageInnerSections {
+    margin-left: 7vh;
+    width: 75%;
+    height: 95%;
+}
+
+.LikedSeenPlaylists {
+    margin-left: 2vh;
+    width: 83.5%;
+    height: 100%;
+}
+.singleLibrarySectionHead {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+
+.middledivplaceholder {
+    width: 50%;
+}
+
+.libraryIconAndTitle {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+
+.libraryButton {
+    font-size: 1.1rem;
+}
+
+.libraryVideoPageCards {
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.libraryPageCard {
+    height: 210px;
+    width: 97%;
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
+}
+
+.libraryPageCard img {
+    width: 100%;
+    height: 117.8px;
+}
+
+.libraryPageCard p {
+    color: #606060;
+}
+
+.singleLibrarySection {
+    margin-bottom: 5vh;
+}
