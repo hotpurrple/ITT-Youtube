@@ -21,6 +21,7 @@
 }
 
 .recommended {
+    position: relative;
     height: fit-content;
     width: 402px;
     /* border: 1px solid green; */
@@ -34,4 +35,11 @@
 
 .placeholderdiv {
     height: 10vh;
+}
+
+.recommendedVideosSpinner{ 
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+
 }

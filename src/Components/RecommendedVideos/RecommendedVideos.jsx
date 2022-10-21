@@ -63,7 +63,7 @@ export default function RecommendedVideos(props) {
                 dataLength={recVideos.items.length} //This is important field to render the next data
                 next={loadMore}
                 hasMore={recVideos.hasMore}
-                loader={<CircularProgress className='commentsScrollSpinner' size={20} color="inherit" />}
+                loader={<CircularProgress className='recommendedVideosSpinner' size={20} color="inherit" />}
                 scrollThreshold={0.5}
                 endMessage={
                     <p style={{ textAlign: 'center' }}>
