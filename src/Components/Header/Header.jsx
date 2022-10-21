@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { SearchBar } from "../";
 import { mahniGo } from "../../store/loggedUser";
 
-export default function Header() {
+export default function Header(props) {
   const location = useLocation();
 
   let pageWithoutHeader = location.pathname.match(/login|register/gi);
@@ -37,7 +37,13 @@ export default function Header() {
       {!pageWithoutHeader && (
         <header className="header">
           <div className="headerLeft">
-            <MenuIcon />
+            <IconButton onClick={props.handleMenuButtonClick}>
+              <MenuIcon
+                sx={{
+                  color: "black",
+                }}
+              />
+            </IconButton>
             <Link to={`/`}>
               <img className="ytlogo" src={YoutubeLogo} alt="logo" />
             </Link>

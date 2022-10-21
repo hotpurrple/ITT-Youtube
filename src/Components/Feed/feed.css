@@ -7,7 +7,7 @@
 .resultsPlusCategoriesContainer {
     display: flex;
     flex-direction: column;
-    width: 97%;
+    width: 100%;
 }
 
 

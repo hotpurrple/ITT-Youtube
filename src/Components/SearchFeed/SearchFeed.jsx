@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom"; //за да можем да взе
 import { SearchVideoCard, SearchChannelCard } from "../";
 // import { demoSearchResultsResponse } from "../../utils/constants";
 
-export default function SearchFeed() {
+export default function SearchFeed(props) {
   const { searchTerm } = useParams(); //searchTerm ще вземе това, което имаме след search/ в url bar-а, а то трябва да се промени от search bar-а в head
   const [searchResults, setSearchResults] = useState([]);
 
@@ -21,7 +21,13 @@ export default function SearchFeed() {
   }, [searchTerm]);
   return (
     <div className="searchFeedMainContainer">
-      <Sidebar />
+      <Sidebar
+        theClass={
+          props.showSideBar
+            ? `sidebar-menu-SearchFeed active`
+            : `sidebar-menu-SearchFeed`
+        }
+      />
 
       <div className="searchCardContainer">
         <div className="searchCardsScrollContainer">
@@ -30,7 +36,9 @@ export default function SearchFeed() {
               //значи е видео, а не канал
               return <SearchVideoCard video={searchResult} key={idx} />;
             } else {
-              return <SearchChannelCard channelDetails={searchResult} key={idx} />;
+              return (
+                <SearchChannelCard channelDetails={searchResult} key={idx} />
+              );
             }
           })}
         </div>

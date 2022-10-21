@@ -7,7 +7,7 @@
 .searchCardContainer {
     display: flex;
 
-    height: 94vh;
+    height: 93vh;
     width: 100%;
 
 }
@@ -15,5 +15,5 @@
 .searchCardsScrollContainer {
     overflow-y: scroll;
     width: 100%;
-    padding-left: 14%;
+    padding-left: 25%;
 }

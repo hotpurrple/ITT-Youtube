@@ -30,7 +30,11 @@ export default function Feed(props) {
 
   return (
     <div className="feedMainContainer">
-      <Sidebar />
+      <Sidebar
+        theClass={
+          props.showSideBar ? `sidebar-menu-Feed active` : `sidebar-menu-Feed`
+        }
+      />
 
       <div className="resultsPlusCategoriesContainer">
         <CategoriesBar //categories tab bar with tabs
