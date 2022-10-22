@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { logUser, logOutUsers, currentUser } from '../server/serverLogin'
+import { logUser, logOutUsers, currentUser } from '../server/serverLogin.js'
 import addToVideosHistory from '../server/updateUserData'
 
 const current = currentUser() || ""

@@ -1,14 +1,18 @@
+
 export const registerUser = (username, password) => {
     const userList = JSON.parse(localStorage.getItem("userList")) || []
 
     return localStorage.setItem("userList", JSON.stringify([...userList, {
         username: username,
         password: password,
+        "profile_pic": "https://yt3.ggpht.com/a/default-user=s48-c-k-c0x00ffffff-no-rj",
         "liked_videos": [],
         "videos_history": [],
         "liked_comments": [],
         "playlists": [],
-        "is_logged": false
+        "comments_list": [],
+        "is_logged": false,
+
     }]))
 }
 

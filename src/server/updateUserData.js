@@ -1,5 +1,15 @@
+const currentUser = () => {
+    const userList = JSON.parse(localStorage.getItem("userList")) || []
+
+    return userList.find(e => e.is_logged)
+}
+
+
+
 const addToVideosHistory = (VIDEO_ID, PUBLISHED_AT, TITLE, THUMBNAIL_URL, CHANNEL_TITLE) => {
-    let userList = JSON.parse(localStorage.getItem("userList"))
+    let is_anyone_logged = currentUser()
+    if (is_anyone_logged) {
+        let userList = JSON.parse(localStorage.getItem("userList"))
     let currentUser = userList.find(e => e.is_logged)
     let videoDetails = {
         "id": {
@@ -22,5 +32,6 @@ const addToVideosHistory = (VIDEO_ID, PUBLISHED_AT, TITLE, THUMBNAIL_URL, CHANNE
     }
         currentUser.videos_history.unshift(videoDetails)
         return localStorage.setItem("userList", JSON.stringify(userList))
+    }
 }
 export default addToVideosHistory

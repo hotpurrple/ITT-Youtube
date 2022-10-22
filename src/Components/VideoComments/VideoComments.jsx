@@ -12,17 +12,35 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { Button } from '@mui/material';
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import AddUserComment, { GetUserComments, UserComment } from '../../server/addUserComment.mjs';
 import { useRef } from 'react';
 
 export default function VideoComments(props) {
 
+    const url = props.url
+    const commentTextField = useRef()
     const currentUser = useSelector(state => state.loggedUser.user)
     const [showAddCommentButton, setShowAddCommentButton] = useState(false)
     const [disabled, setDisabled] = useState(true)
+    
 
     const navigate = useNavigate()
     const handleAddCommentFocus = () => {
         currentUser ? setShowAddCommentButton(true) : navigate("/login")
+    }
+
+    const addNewComment = () => {
+        let pfp = currentUser.profile_pic
+        let username = currentUser.username
+        let time = new Date()
+        let text = commentTextField.current.value
+        let likes = 0
+        AddUserComment(url, text, username, pfp, likes, time)
+        setCommentsList({
+            allItems: [...commentsList.allItems],
+            items: [UserComment(url, text, username, pfp, likes, time), ...commentsList.items],
+            hasMore: false
+        })
     }
 
     const [commentsList, setCommentsList] = useState({
@@ -30,26 +48,26 @@ export default function VideoComments(props) {
         items: [],
         hasMore: true
     })
-    const url = props.url
-    
+
     useEffect(() => {
         setShowAddCommentButton(false)
         setDisabled(true)
     }, [url])
 
-   
+
     const handleUserTypingComment = (ev) => {
         ev.target.value ? setDisabled(false) : setDisabled(true)
     }
-    
+
     useEffect(() => {
         fetchFromApi(`/commentThreads?part=snippet&videoId=${url}&maxResults=100`)
             .then(data => {
+               
                 let arr = [...data.items]
                 let partialArr = arr.slice(0, 15)
                 setCommentsList({
                     allItems: [...arr],
-                    items: [...partialArr],
+                    items: [...GetUserComments(), ...partialArr],
                     hasMore: true
                 })
             })
@@ -94,14 +112,15 @@ export default function VideoComments(props) {
 
                     <div className='addCommentSection'>
                         <CommentProfilePic profilePic={Guest} />
-                        <TextField onFocus={handleAddCommentFocus} onInput={handleUserTypingComment} 
-                        className='addOwnComment' id="standard-basic" label="Add a comment..." variant="standard" />
+                        <TextField inputRef={commentTextField} onFocus={handleAddCommentFocus} onInput={handleUserTypingComment}
+
+                            className='addOwnComment' id="standard-basic" label="Add a comment..." variant="standard" />
 
                     </div>
                     {showAddCommentButton &&
                         <div className='AddCommentButtons'>
                             <Button onClick={() => setShowAddCommentButton(false)} variant="text">CANCEL</Button>
-                            <Button disabled={disabled} variant="contained">COMMENT</Button>
+                            <Button onClick={addNewComment} disabled={disabled} variant="contained">COMMENT</Button>
                         </div>
                     }
                 </div>

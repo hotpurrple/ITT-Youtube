@@ -8,33 +8,16 @@ const pseudoComments = [
         },
         "items": [
           {
-            "kind": "youtube#commentThread",
-            "id": "Ugxl_DSJw2d4Rz6T0xx4AaABAg",
             "snippet": {
-              "videoId": "7ghhRHRP6t4",
               "topLevelComment": {
-                "kind": "youtube#comment",
-                "id": "Ugxl_DSJw2d4Rz6T0xx4AaABAg",
                 "snippet": {
-                  "videoId": "7ghhRHRP6t4",
                   "textDisplay": "My opinion, this song sequel story from “She will be love” who Kelly Preston passed away on July 2020. Maybe tribute for Kelly Preston 🙏🏻",
-                  "textOriginal": "My opinion, this song sequel story from “She will be love” who Kelly Preston passed away on July 2020. Maybe tribute for Kelly Preston 🙏🏻",
                   "authorDisplayName": "Bays Stellar Wulan Bourges",
                   "authorProfileImageUrl": "https://yt3.ggpht.com/ytc/AMLnZu8leS0fJ5TLY3J9UcSk8e8JFsu-1uDqAN_zzQuT4C4=s48-c-k-c0x00ffffff-no-rj",
-                  "authorChannelUrl": "http://www.youtube.com/channel/UCIvBxvFFJW1JohPaDrmG-eA",
-                  "authorChannelId": {
-                    "value": "UCIvBxvFFJW1JohPaDrmG-eA"
-                  },
-                  "canRate": true,
-                  "viewerRating": "none",
                   "likeCount": 0,
                   "publishedAt": "2022-10-18T13:22:50Z",
-                  "updatedAt": "2022-10-18T13:22:50Z"
                 }
-              },
-              "canReply": true,
-              "totalReplyCount": 0,
-              "isPublic": true
+              }
             }
           },
           {
