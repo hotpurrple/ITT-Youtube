@@ -1,6 +1,5 @@
 const currentUser = () => {
     const userList = JSON.parse(localStorage.getItem("userList")) || []
-
     return userList.find(e => e.is_logged)
 }
 
@@ -40,9 +39,7 @@ export const GetUserComments = (url) => {
         userList.forEach(e => {
             allUsersComments.push(...e.comments_list)
         })
-        // let current = userList.find(e => e.is_logged)
         return allUsersComments.filter(e => e.videoUrl === url)
-        // return current.comments_list.filter(e => e.videoUrl === url)
     }
     return []
 }

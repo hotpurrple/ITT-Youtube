@@ -13,7 +13,6 @@ export default function VideoInformation(props) {
                 <h4 className="videoTitle">{title}</h4>
                 <p className="videoViews">{views} Views - {creationDate}</p>
                 <VideoButtons likes={likes}/>
-                
             </div>
         </div>
     </>
