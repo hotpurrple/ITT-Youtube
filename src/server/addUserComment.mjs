@@ -32,13 +32,19 @@ const AddUserComment = (VIDEO_URL, TEXT_DISPLAY, AUTHOR_DISPLAY_NAME, AUTHOR_PRO
     return localStorage.setItem("userList", JSON.stringify(userList))
 }
 
-export const GetUserComments = () => {
+export const GetUserComments = (url) => {
     let is_anyone_logged = currentUser()
     if (is_anyone_logged) {
         let userList = JSON.parse(localStorage.getItem("userList"))
-        let current = userList.find(e => e.is_logged)
-        return current.comments_list
+        let allUsersComments = []
+        userList.forEach(e => {
+            allUsersComments.push(...e.comments_list)
+        })
+        // let current = userList.find(e => e.is_logged)
+        return allUsersComments.filter(e => e.videoUrl === url)
+        // return current.comments_list.filter(e => e.videoUrl === url)
     }
+    return []
 }
 
 export default AddUserComment

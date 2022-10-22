@@ -41,6 +41,8 @@ export default function VideoComments(props) {
             items: [UserComment(url, text, username, pfp, likes, time), ...commentsList.items],
             hasMore: false
         })
+        commentTextField.current.value = ""
+        setShowAddCommentButton(false)
     }
 
     const [commentsList, setCommentsList] = useState({
@@ -65,9 +67,11 @@ export default function VideoComments(props) {
                
                 let arr = [...data.items]
                 let partialArr = arr.slice(0, 15)
+
                 setCommentsList({
                     allItems: [...arr],
-                    items: [...GetUserComments(), ...partialArr],
+                   
+                    items: [...GetUserComments(url), ...partialArr],
                     hasMore: true
                 })
             })
