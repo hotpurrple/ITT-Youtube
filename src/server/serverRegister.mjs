@@ -7,6 +7,7 @@ export const registerUser = (username, password) => {
         password: password,
         "profile_pic": "https://yt3.ggpht.com/a/default-user=s48-c-k-c0x00ffffff-no-rj",
         "liked_videos": [],
+        "disliked_videos": [],
         "videos_history": [],
         "liked_comments": [],
         "playlists": [],

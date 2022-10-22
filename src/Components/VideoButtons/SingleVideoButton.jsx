@@ -10,6 +10,10 @@ import { useLocation } from 'react-router-dom';
 import updateUserLikedVideos, { isCurrentVideoLiked } from '../../server/updateUserLikedVideos';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import updateUserDislikedVideos from '../../server/updateUserDislikedVideos';
+import isVideoDisliked from '../../server/isVideoDisliked';
+import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 
 
 export default function SingleVideoButton(props) {
@@ -21,9 +25,13 @@ export default function SingleVideoButton(props) {
     const videoButtonFunction = () => {
         switch (index_number) {
             case 0:
-               updateUserLikedVideos(url)
-               props.setCurrentVidLiked(isCurrentVideoLiked(url) ?<ThumbUpAltIcon /> : <ThumbUpOutlinedIcon />)
-               return
+                updateUserLikedVideos(url)
+                props.setCurrentVidLiked(isCurrentVideoLiked(url) ? <ThumbUpAltIcon /> : <ThumbUpOutlinedIcon />)
+                return
+            case 1:
+                updateUserDislikedVideos(url)
+                props.setCurrentVidDisliked(isVideoDisliked(url) ? <ThumbDownIcon /> : <ThumbDownOffAltOutlinedIcon />)
+                return
             case 3:
                 return setDialogShown(!dialogShown)
 

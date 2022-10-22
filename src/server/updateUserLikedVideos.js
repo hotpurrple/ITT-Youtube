@@ -9,12 +9,13 @@ const updateUserLikedVideos = (url) => {
 }
 
 export const isCurrentVideoLiked = (url) => {
-    let userList = JSON.parse(localStorage.getItem("userList"))
+    let userList = JSON.parse(localStorage.getItem("userList")) || []
     let current = userList.find(e => e.is_logged)
+
     if (current) {
         return current.liked_videos.find(e => e === url)
     } else {
-        return "Not logged in"
+        return ""
     }
 
 }

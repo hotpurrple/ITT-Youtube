@@ -12,13 +12,18 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import getAllUserLikesForAVideo from "../../server/getAllUserLikesForAVideo";
+import isVideoDisliked from "../../server/isVideoDisliked";
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 
 export default function VideoButtons(props) {
 
     const url = useLocation().pathname.split("/videos/")[1]
 
     const [currentVidLiked, setCurrentVidLiked] = useState(isCurrentVideoLiked(url) ?<ThumbUpAltIcon /> : <ThumbUpOutlinedIcon />)
-    const icons = [currentVidLiked, <ThumbDownOffAltOutlinedIcon />, <SendOutlinedIcon />,
+    const [currentVidDisliked, setCurrentVidDisliked] = useState(isVideoDisliked(url) ? <ThumbDownIcon/> : 
+    <ThumbDownOffAltOutlinedIcon />)
+
+    const icons = [currentVidLiked, currentVidDisliked, <SendOutlinedIcon />,
         <PlaylistAddOutlinedIcon />,
         <MoreHorizOutlinedIcon />,
     ]
@@ -26,12 +31,12 @@ export default function VideoButtons(props) {
 
     let allUserLikes = getAllUserLikesForAVideo(url)
     const sumOfLikes = Number(props.likes) + Number(allUserLikes)
-    const names = [sumOfLikes, "Dislike", "Share", "Save"]
+    const names = [`${sumOfLikes}`, "Dislike", "Share", "Save"]
     return (
         <>
             <div className="videoButtons">
                 {icons.map((e, i) => {
-                    return <SingleVideoButton currentVidLiked={currentVidLiked} setCurrentVidLiked={setCurrentVidLiked} 
+                    return <SingleVideoButton setCurrentVidDisliked={setCurrentVidDisliked} setCurrentVidLiked={setCurrentVidLiked} 
                     key={i} index_number={i} 
                     icon={e} name={names[i]} />
                 })}
