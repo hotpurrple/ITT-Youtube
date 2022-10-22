@@ -9,8 +9,21 @@ import pseudoComments from "../../utils/pseudoComments"
 import InfiniteScroll from 'react-infinite-scroll-component';
 import fetchFromApi from '../../utils/fetchFromAPI';
 import CircularProgress from '@mui/material/CircularProgress';
+import { Button } from '@mui/material';
+import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { useRef } from 'react';
 
 export default function VideoComments(props) {
+
+    const currentUser = useSelector(state => state.loggedUser.user)
+    const [showAddCommentButton, setShowAddCommentButton] = useState(false)
+    const [disabled, setDisabled] = useState(true)
+
+    const navigate = useNavigate()
+    const handleAddCommentFocus = () => {
+        currentUser ? setShowAddCommentButton(true) : navigate("/login")
+    }
 
     const [commentsList, setCommentsList] = useState({
         allItems: [],
@@ -18,7 +31,17 @@ export default function VideoComments(props) {
         hasMore: true
     })
     const url = props.url
+    
+    useEffect(() => {
+        setShowAddCommentButton(false)
+        setDisabled(true)
+    }, [url])
 
+   
+    const handleUserTypingComment = (ev) => {
+        ev.target.value ? setDisabled(false) : setDisabled(true)
+    }
+    
     useEffect(() => {
         fetchFromApi(`/commentThreads?part=snippet&videoId=${url}&maxResults=100`)
             .then(data => {
@@ -71,8 +94,16 @@ export default function VideoComments(props) {
 
                     <div className='addCommentSection'>
                         <CommentProfilePic profilePic={Guest} />
-                        <TextField className='addOwnComment' id="standard-basic" label="Add a comment..." variant="standard" />
+                        <TextField onFocus={handleAddCommentFocus} onInput={handleUserTypingComment} 
+                        className='addOwnComment' id="standard-basic" label="Add a comment..." variant="standard" />
+
                     </div>
+                    {showAddCommentButton &&
+                        <div className='AddCommentButtons'>
+                            <Button onClick={() => setShowAddCommentButton(false)} variant="text">CANCEL</Button>
+                            <Button disabled={disabled} variant="contained">COMMENT</Button>
+                        </div>
+                    }
                 </div>
 
 
