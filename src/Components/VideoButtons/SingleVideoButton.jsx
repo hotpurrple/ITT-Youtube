@@ -26,15 +26,26 @@ export default function SingleVideoButton(props) {
         switch (index_number) {
             case 0:
                 updateUserLikedVideos(url)
+
+                if (isVideoDisliked(url)) {
+                    updateUserDislikedVideos(url)
+                    props.setCurrentVidDisliked(isVideoDisliked(url) ? <ThumbDownIcon /> : <ThumbDownOffAltOutlinedIcon />)
+                }
+
                 props.setCurrentVidLiked(isCurrentVideoLiked(url) ? <ThumbUpAltIcon /> : <ThumbUpOutlinedIcon />)
                 return
             case 1:
                 updateUserDislikedVideos(url)
+                
+                if (isCurrentVideoLiked(url)) {
+                    updateUserLikedVideos(url)
+                    props.setCurrentVidLiked(isCurrentVideoLiked(url) ? <ThumbUpAltIcon /> : <ThumbUpOutlinedIcon />)
+                }
+
                 props.setCurrentVidDisliked(isVideoDisliked(url) ? <ThumbDownIcon /> : <ThumbDownOffAltOutlinedIcon />)
                 return
             case 3:
                 return setDialogShown(!dialogShown)
-
         }
 
 
