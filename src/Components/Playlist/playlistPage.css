@@ -1,0 +1,49 @@
+.playlistsPage {
+    width: 100%;
+    display: flex;
+
+}
+
+.playlistPageLeft {
+    width: 20%;
+    height: 93vh;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    position: fixed;
+    /* z-index: 1; */
+}
+
+.playlistPageRight {
+    width: 80%;
+    height: 93vh;
+    overflow-y: scroll;
+    background-color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px 10px 0px 10px;
+    margin-left: 20%;
+}
+
+.playlistMainCard {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.playlistMainCard img {
+    width: 100%;
+}
+
+.playlistMainCardUsernameContainer {
+    display: flex;
+}

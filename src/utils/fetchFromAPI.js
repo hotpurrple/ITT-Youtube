@@ -10,7 +10,8 @@ const options = {
     // "X-RapidAPI-Key": "4810b08f52msh8dc3e3709d6b9aap174b4ajsn1bab90c421fa",
     // "X-RapidAPI-Key": "33506328d3msh98631daf5531085p1fbbf1jsn0f525a5e83a3",
     //dilqn keys
-    // "X-RapidAPI-Key": "9dd777b31amsh28d11da5c2da2dfp1d637bjsn2822c09bd916", //"db5e890b89msh9e5aa2e53caf0f8p1d4dd0jsn5dd31367be36",
+    // "X-RapidAPI-Key": "9dd777b31amsh28d11da5c2da2dfp1d637bjsn2822c09bd916",
+    "X-RapidAPI-Key": "db5e890b89msh9e5aa2e53caf0f8p1d4dd0jsn5dd31367be36",
     "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
   },
 };

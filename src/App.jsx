@@ -14,6 +14,7 @@ import {
   Login,
   Register,
   LibraryPage,
+  Playlist,
 } from "./Components"; //simple import
 
 function App() {
@@ -44,6 +45,10 @@ function App() {
           <Route
             path="library"
             element={<LibraryPage showSideBar={sideBar} />}
+          />
+          <Route
+            path="/playlist"
+            element={<Playlist showSideBar={sideBar} />}
           />
         </Routes>
       </BrowserRouter>
