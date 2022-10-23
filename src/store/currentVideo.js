@@ -14,7 +14,7 @@ export const currentVideo = createSlice({
   initialState,
   reducers: {
     setCurrentVideo: (state, action) => {
-        state.currentVideo = action.payload
+        state.currentVideo = {...state.payload,...action.payload}
     }
     
   },
