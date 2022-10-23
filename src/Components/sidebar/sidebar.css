@@ -10,7 +10,7 @@
     top: 12vh;
     left: -100%;
     transition: 850ms;
-
+    z-index: 11;
 }
 
 .sidebar-menu-Feed.active {
