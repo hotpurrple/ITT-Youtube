@@ -6,7 +6,7 @@ import "./playlistCard.css";
 function PlaylistCard({ videoData }) {
   return (
     <div className="playlistCard">
-      <Link to={`/video/${videoData.items[0].id}`}>
+      <Link to={`/videos/${videoData.items[0].id}`}>
         <img
           className="playlistCardImg"
           src={videoData.items[0].snippet.thumbnails.high.url}
@@ -15,7 +15,7 @@ function PlaylistCard({ videoData }) {
       </Link>
 
       <div className="playlistCardRightPart">
-        <Link to={`/video/${videoData.items[0].id}`}>
+        <Link to={`/videos/${videoData.items[0].id}`}>
           <Typography variant="h6" className="playlistCardTitle">
             {videoData.items[0].snippet.title}
           </Typography>

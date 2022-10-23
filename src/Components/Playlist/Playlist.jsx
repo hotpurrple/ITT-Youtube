@@ -77,6 +77,75 @@ export default function Playlist(props) {
           return <PlaylistCard videoData={vid} />;
         })} */}
         <div className="playlistCard">
+          <Link to={`/videos/oMR0E1Yijvs`}>
+            <img
+              className="playlistCardImg"
+              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
+              alt="videoImage"
+            ></img>
+          </Link>
+
+          <div className="playlistCardRightPart">
+            <Link to={`/videos/oMR0E1Yijvs`}>
+              <Typography variant="h6" className="playlistCardTitle">
+                Video reveals a major problem for new Russian soldiers
+              </Typography>
+            </Link>
+
+            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
+              <Typography variant="subtitle2" className="playlistCardSubtitle">
+                CNN
+              </Typography>
+            </Link>
+          </div>
+        </div>
+        <div className="playlistCard">
+          <Link to={`/video/oMR0E1Yijvs`}>
+            <img
+              className="playlistCardImg"
+              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
+              alt="videoImage"
+            ></img>
+          </Link>
+
+          <div className="playlistCardRightPart">
+            <Link to={`/videos/oMR0E1Yijvs`}>
+              <Typography variant="h6" className="playlistCardTitle">
+                Video reveals a major problem for new Russian soldiers
+              </Typography>
+            </Link>
+
+            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
+              <Typography variant="subtitle2" className="playlistCardSubtitle">
+                CNN
+              </Typography>
+            </Link>
+          </div>
+        </div>
+        <div className="playlistCard">
+          <Link to={`/videos/oMR0E1Yijvs`}>
+            <img
+              className="playlistCardImg"
+              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
+              alt="videoImage"
+            ></img>
+          </Link>
+
+          <div className="playlistCardRightPart">
+            <Link to={`/videos/oMR0E1Yijvs`}>
+              <Typography variant="h6" className="playlistCardTitle">
+                Video reveals a major problem for new Russian soldiers
+              </Typography>
+            </Link>
+
+            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
+              <Typography variant="subtitle2" className="playlistCardSubtitle">
+                CNN
+              </Typography>
+            </Link>
+          </div>
+        </div>
+        <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
               className="playlistCardImg"
@@ -121,7 +190,7 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>{" "}
+        </div>
         <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
@@ -144,7 +213,7 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>{" "}
+        </div>
         <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
@@ -167,7 +236,7 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>{" "}
+        </div>
         <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
@@ -190,7 +259,7 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>{" "}
+        </div>
         <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
@@ -213,7 +282,7 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>{" "}
+        </div>
         <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
@@ -236,7 +305,7 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>{" "}
+        </div>
         <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
@@ -259,7 +328,7 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>{" "}
+        </div>
         <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
@@ -282,7 +351,7 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>{" "}
+        </div>
         <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
@@ -305,76 +374,7 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>{" "}
-        <div className="playlistCard">
-          <Link to={`/video/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/video/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>{" "}
-        <div className="playlistCard">
-          <Link to={`/video/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/video/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>{" "}
-        <div className="playlistCard">
-          <Link to={`/video/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/video/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>{" "}
+        </div>
         <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img

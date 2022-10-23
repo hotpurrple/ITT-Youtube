@@ -1,12 +1,12 @@
 .playlistCard {
     display: flex;
     padding: 10px;
-    width: 80%;
+    width: 85%;
     height: 13vh;
 }
 
 .playlistCardImg {
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
 }
 
