@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import RecommendedVideos from "../RecommendedVideos/RecommendedVideos";
 import updateVideosHistory from "../../store/loggedUser"
 import addToVideosHistory from "../../server/updateUserData";
+import { setCurrentVideo } from "../../store/currentVideo";
 
 //bring back the old api key
 function VideoDetail() {
@@ -24,6 +25,7 @@ function VideoDetail() {
     // const url = path.pathname.match(/[^videos/]{1,}$/gi)[0]
     const [videoDetails, setVideoDetails] = useState({})
     const [channelDetails, setChannelDetails] = useState({})
+    const currentVideo = useSelector(state => state.currentVideo.currentVideo)
 
     useEffect(() => {
         fetchFromApi(`/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${url}`)
@@ -41,7 +43,22 @@ function VideoDetail() {
                 let obj = { title, views, likes, creationDate, shortDescription }
                 // let toBeDispatched = {url, creationDate, title, thumbnail, channelTitle}
                 addToVideosHistory(url, published_accurately, title, thumbnail, channelTitle)
-
+                dispatch(setCurrentVideo({
+                    url, 
+                    id: {
+                        videoId: url
+                    },
+                    snippet: {
+                        publishedAt: published_accurately,
+                        title, 
+                        channelTitle,
+                        thumbnails: {
+                            medium: {
+                                url: thumbnail
+                            }
+                        }
+                    }
+                }))
                 setVideoDetails({ ...obj },)
                 return [data.items[0].snippet.channelId, shortDescription]
             })
@@ -54,10 +71,11 @@ function VideoDetail() {
                         let shortDescription = res[1]
                         let obj = { channelName, subsCount, channelThumbnail, shortDescription }
                         setChannelDetails({ ...obj })
+
                     })
             })
-            
-    }, [url])
+
+    }, [url, currentVideo])
 
     return (
         <>
@@ -66,10 +84,10 @@ function VideoDetail() {
                     <VideoPlayer link={url} />
                     <VideoInformation props={videoDetails} />
                     <VideoDescription props={channelDetails} />
-                    <VideoComments url={url}/>
+                    <VideoComments url={url} />
                 </div>
                 <div className="recommended">
-                    <RecommendedVideos url={url}/>
+                    <RecommendedVideos url={url} />
                 </div>
             </div>
         </>

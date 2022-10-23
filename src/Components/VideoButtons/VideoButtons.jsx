@@ -14,14 +14,24 @@ import getAllUserLikesForAVideo from "../../server/getAllUserLikesForAVideo";
 import isVideoDisliked from "../../server/isVideoDisliked";
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentVideo } from "../../store/currentVideo";
 
 export default function VideoButtons(props) {
-
+    const currentVideo = useSelector(state => state.currentVideo.currentVideo)
+    const [currentVidLiked, setCurrentVidLiked] = useState(<ThumbUpOutlinedIcon />)
     const url = useLocation().pathname.split("/videos/")[1]
-
-    const [currentVidLiked, setCurrentVidLiked] = useState(isCurrentVideoLiked(url) ?<ThumbUpAltIcon /> : <ThumbUpOutlinedIcon />)
-    const [currentVidDisliked, setCurrentVidDisliked] = useState(isVideoDisliked(url) ? <ThumbDownIcon/> : 
-    <ThumbDownOffAltOutlinedIcon />)
+    // isCurrentVideoLiked(currentVideo) ?<ThumbUpAltIcon /> : 
+    // isVideoDisliked(currentVideo) ? <ThumbDownIcon/> : 
+    const [currentVidDisliked, setCurrentVidDisliked] = useState(<ThumbDownOffAltOutlinedIcon />)
+    
+    useEffect(() => {
+        isCurrentVideoLiked(currentVideo) && setCurrentVidLiked(<ThumbUpAltIcon /> )
+        
+    }, [url, currentVideo])
+    useEffect(() => {
+        isVideoDisliked(currentVideo) && setCurrentVidDisliked(<ThumbDownIcon/> )
+    }, [url, currentVideo])
 
     const icons = [currentVidLiked, currentVidDisliked, <SendOutlinedIcon />,
         <PlaylistAddOutlinedIcon />,
@@ -29,8 +39,8 @@ export default function VideoButtons(props) {
     ]
 
 
-    let allUserLikes = getAllUserLikesForAVideo(url)
-    const sumOfLikes = Number(props.likes) + Number(allUserLikes)
+    let allUserLikes = getAllUserLikesForAVideo(currentVideo)
+    const sumOfLikes = (Number(props.likes) + Number(allUserLikes)) || props.likes
     const names = [`${sumOfLikes}`, "Dislike", "Share", "Save"]
     return (
         <>
