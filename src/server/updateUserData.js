@@ -30,7 +30,9 @@ const addToVideosHistory = (VIDEO_ID, PUBLISHED_AT, TITLE, THUMBNAIL_URL, CHANNE
             "channelTitle": CHANNEL_TITLE,
         }
     }
-        currentUser.videos_history.unshift(videoDetails)
+        if (currentUser.videos_history.length === 0 || currentUser.videos_history[0].id.videoId !== VIDEO_ID) {
+            currentUser.videos_history.unshift(videoDetails)
+        }
         return localStorage.setItem("userList", JSON.stringify(userList))
     }
 }
