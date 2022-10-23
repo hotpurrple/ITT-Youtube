@@ -20,4 +20,7 @@ export { default as SearchBar } from "./searchBar/SearchBar";
 export { default as SearchVideoCard } from "./SearchVideoCard/SearchVideoCard";
 export { default as SearchChannelCard } from "./SearchChannelCard/SearchChannelCard";
 
-export {default as LibraryPage} from "./LibraryPage/LibraryPage"
+export { default as LibraryPage } from "./LibraryPage/LibraryPage";
+
+export { default as Playlist } from "./Playlist/Playlist";
+export { default as PlaylistCard } from "./PlaylistCard/PlaylistCard";

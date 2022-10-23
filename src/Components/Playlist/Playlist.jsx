@@ -76,7 +76,6 @@ export default function Playlist(props) {
         {/* {currentPlaylistVideos.map((vid) => {
           return <PlaylistCard videoData={vid} />;
         })} */}
-
         <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
@@ -122,7 +121,8 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>        <div className="playlistCard">
+        </div>{" "}
+        <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
               className="playlistCardImg"
@@ -144,7 +144,8 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>        <div className="playlistCard">
+        </div>{" "}
+        <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
               className="playlistCardImg"
@@ -166,7 +167,8 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>        <div className="playlistCard">
+        </div>{" "}
+        <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
               className="playlistCardImg"
@@ -188,7 +190,8 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>        <div className="playlistCard">
+        </div>{" "}
+        <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
               className="playlistCardImg"
@@ -210,7 +213,8 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>        <div className="playlistCard">
+        </div>{" "}
+        <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
               className="playlistCardImg"
@@ -232,7 +236,8 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>        <div className="playlistCard">
+        </div>{" "}
+        <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
               className="playlistCardImg"
@@ -254,7 +259,8 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>        <div className="playlistCard">
+        </div>{" "}
+        <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
               className="playlistCardImg"
@@ -276,7 +282,8 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>        <div className="playlistCard">
+        </div>{" "}
+        <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
               className="playlistCardImg"
@@ -298,7 +305,8 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>        <div className="playlistCard">
+        </div>{" "}
+        <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
               className="playlistCardImg"
@@ -320,7 +328,8 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>        <div className="playlistCard">
+        </div>{" "}
+        <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
               className="playlistCardImg"
@@ -342,7 +351,8 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>        <div className="playlistCard">
+        </div>{" "}
+        <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
               className="playlistCardImg"
@@ -364,7 +374,8 @@ export default function Playlist(props) {
               </Typography>
             </Link>
           </div>
-        </div>        <div className="playlistCard">
+        </div>{" "}
+        <div className="playlistCard">
           <Link to={`/video/oMR0E1Yijvs`}>
             <img
               className="playlistCardImg"

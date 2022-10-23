@@ -12,8 +12,8 @@ import "./sidebar.css";
 import { useSelector } from "react-redux";
 
 export default function Sidebar(props) {
-  const activeUser = useSelector((state) => state.activeUser);
-  console.log(props);
+  // const activeUser = useSelector((state) => state.activeUser);
+  // console.log(props);
   return (
     <div className={props.theClass}>
       <ul className="sidebar-ul">
@@ -27,68 +27,48 @@ export default function Sidebar(props) {
             </li>
           );
         })} */}
-
-        {activeUser ? (
-          <>
-            <li className="item-text">
-              <Link to={"/"} className="sideBar-link">
-                <AiIcons.AiFillHome />
-                <span>Home</span>
-              </Link>
-            </li>
-            <li className="item-text">
-              <Link to={"/library"} className="sideBar-link">
-                <MdIcons.MdOutlineVideoLibrary />
-                <span>Library</span>
-              </Link>
-            </li>
-            <li className="item-text">
-              <Link to={"/history"} className="sideBar-link">
-                <AiIcons.AiOutlineHistory />
-                <span>History</span>
-              </Link>
-            </li>
-            <li className="item-text">
-              <Link to={"/liked"} className="sideBar-link">
-                <AiIcons.AiOutlineLike />
-                <span>Liked</span>
-              </Link>
-            </li>
-            <li className="item-text">
-              <Link to={"/playlist"} className="sideBar-link">
-                <CgIcons.CgPlayList />
-                <span>Playlist</span>
-              </Link>
-            </li>
-            <li className="item-text">
-              <Link to={"/counter"} className="sideBar-link">
-                <MdIcons.MdOutlineTimer3 />
-                <span>Counter demo</span>
-              </Link>
-            </li>
-          </>
-        ) : (
-          <>
-            <li className="item-text">
-              <Link to={"/counter"} className="sideBar-link">
-                <MdIcons.MdOutlineTimer3 />
-                <span>Counter demo</span>
-              </Link>
-            </li>
-            <li className="item-text">
-              <Link to={"/login"} className="sideBar-link">
-                <MdIcons.MdLogin />
-                <span>Login</span>
-              </Link>
-            </li>
-            <li className="item-text">
-              <Link to={"/register"} className="sideBar-link">
-                <FiIcons.FiUserPlus />
-                <span>Register</span>
-              </Link>
-            </li>
-          </>
-        )}
+        <li className="item-text">
+          <Link to={"/"} className="sideBar-link">
+            <AiIcons.AiFillHome />
+            <span>Home</span>
+          </Link>
+        </li>
+        <li className="item-text">
+          <Link to={"/library"} className="sideBar-link">
+            <MdIcons.MdOutlineVideoLibrary />
+            <span>Library</span>
+          </Link>
+        </li>
+        <li className="item-text">
+          <Link to={"/history"} className="sideBar-link">
+            <AiIcons.AiOutlineHistory />
+            <span>History</span>
+          </Link>
+        </li>
+        <li className="item-text">
+          <Link to={"/liked"} className="sideBar-link">
+            <AiIcons.AiOutlineLike />
+            <span>Liked</span>
+          </Link>
+        </li>
+        <li className="item-text">
+          <Link to={"/playlist"} className="sideBar-link">
+            <CgIcons.CgPlayList />
+            <span>Playlist</span>
+          </Link>
+        </li>
+        <li className="item-text">
+          <Link to={"/login"} className="sideBar-link">
+            <MdIcons.MdLogin />
+            <span>Login</span>
+          </Link>
+        </li>
+        <li className="item-text">
+          <Link to={"/register"} className="sideBar-link">
+            <FiIcons.FiUserPlus />
+            <span>Register</span>
+          </Link>
+        </li>
       </ul>
     </div>
   );
