@@ -7,6 +7,7 @@ export const UserComment = (VIDEO_URL, TEXT_DISPLAY, AUTHOR_DISPLAY_NAME, AUTHOR
 
     let obj = {
         "videoUrl": VIDEO_URL,
+        "id": VIDEO_URL + TEXT_DISPLAY + AUTHOR_DISPLAY_NAME+PUBLISHED_AT,
         "snippet": {
             "topLevelComment": {
                 "snippet": {

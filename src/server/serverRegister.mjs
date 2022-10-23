@@ -10,6 +10,7 @@ export const registerUser = (username, password) => {
         "disliked_videos": [],
         "videos_history": [],
         "liked_comments": [],
+        "disliked_comments": [],
         "playlists": [],
         "comments_list": [],
         "is_logged": false,
