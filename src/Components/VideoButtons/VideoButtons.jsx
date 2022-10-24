@@ -14,11 +14,8 @@ import getAllUserLikesForAVideo from "../../server/getAllUserLikesForAVideo";
 import isVideoDisliked from "../../server/isVideoDisliked";
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import { useDispatch, useSelector } from "react-redux";
-import { isVidDisliked, isVidLiked, setCurrentVideo } from "../../store/currentVideo";
 
 export default function VideoButtons(props) {
-    const currentVideo = useSelector(state => state.currentVideo.currentVideo)
     let currentVid = props.currentVid
     const url = useLocation().pathname.split("/videos/")[1]
 
@@ -37,7 +34,7 @@ export default function VideoButtons(props) {
     ]
 
 
-    let allUserLikes = getAllUserLikesForAVideo(currentVideo)
+    let allUserLikes = getAllUserLikesForAVideo(currentVid)
     const sumOfLikes = (Number(props.likes) + Number(allUserLikes)) || props.likes
     const names = [`${sumOfLikes}`, "Dislike", "Share", "Save"]
     return (

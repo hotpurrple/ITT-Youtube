@@ -1,8 +1,6 @@
 import "./videoinformation.css"
 import VideoButtons from "../VideoButtons/VideoButtons"
-//fill with actual data
-
-import React, { useState } from 'react'
+import React from 'react'
 
 export default function VideoInformation(props) {
     const {title, views, creationDate, likes} = props.props

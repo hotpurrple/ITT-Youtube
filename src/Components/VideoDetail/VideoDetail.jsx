@@ -5,27 +5,18 @@ import "./videodetail.css"
 import VideoInformation from "../VideoInformation/VideoInformation"
 import VideoDescription from "../VideoDescription/VideoDescription"
 import fetchFromApi from "../../utils/fetchFromAPI";
-import VideoPageCard from "../VideoPageCard/VideoPageCard";
-import alternativeFetch from "../../utils/alternativeFetch"
 import VideoComments from "../VideoComments/VideoComments";
 import { useState } from "react";
 import numberFormatter from "../../utils/numberFormatter"
 import { useDispatch, useSelector } from "react-redux";
 import RecommendedVideos from "../RecommendedVideos/RecommendedVideos";
-import updateVideosHistory from "../../store/loggedUser"
 import addToVideosHistory from "../../server/updateUserData";
-import { setCurrentVideo } from "../../store/currentVideo";
 
-//bring back the old api key
 function VideoDetail() {
     const path = useLocation()
-    const user = useSelector(state => state.loggedUser.user)
     const url = path.pathname.split("/videos/")[1]
-    const dispatch = useDispatch()
-    // const url = path.pathname.match(/[^videos/]{1,}$/gi)[0]
     const [videoDetails, setVideoDetails] = useState({})
     const [channelDetails, setChannelDetails] = useState({})
-    const currentVideo = useSelector(state => state.currentVideo.currentVideo)
     const [currentVid, setCurrentVid] = useState({})
 
     useEffect(() => {
@@ -46,8 +37,6 @@ function VideoDetail() {
                 setCurrentVid({
                     url, 
                     likes: likes,
-                    is_liked: false,
-                    is_disliked: false,
                     id: {
                         videoId: url
                     },

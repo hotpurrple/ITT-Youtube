@@ -14,26 +14,24 @@ import updateUserDislikedVideos from '../../server/updateUserDislikedVideos';
 import isVideoDisliked from '../../server/isVideoDisliked';
 import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import { useDispatch, useSelector } from "react-redux"
-import { dislikeCurrentVideo, likeCurrentVideo } from '../../store/currentVideo';
 
 export default function SingleVideoButton(props) {
     const { name, icon, index_number } = props
     const [dialogShown, setDialogShown] = useState(false)
-    const location = useLocation()
-    const url = location.pathname.split("/videos/")[1]
-    const currentVideo = useSelector(state => state.currentVideo)
     let currentVid = props.currentVid
+
     const videoButtonFunction = () => {
         switch (index_number) {
             case 0:
                 updateUserLikedVideos(currentVid)
+
                 isCurrentVideoLiked(currentVid.url) ? props.setCurrentVidLiked(<ThumbUpAltIcon />) :
-                props.setCurrentVidLiked(<ThumbUpOutlinedIcon />)
+                    props.setCurrentVidLiked(<ThumbUpOutlinedIcon />)
                 props.setCurrentVidDisliked(<ThumbDownOffAltOutlinedIcon />)
                 return
             case 1:
                 updateUserDislikedVideos(currentVid)
+                
                 isVideoDisliked(currentVid.url) ? props.setCurrentVidDisliked(<ThumbDownIcon />) :
                     props.setCurrentVidDisliked(<ThumbDownOffAltOutlinedIcon />)
                 props.setCurrentVidLiked(<ThumbUpOutlinedIcon />)
