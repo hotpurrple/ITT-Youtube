@@ -49,6 +49,10 @@ export default function Playlist(props) {
   //   });
   // });
 
+  const removeVideoFromPlaylist = (vidId) => {
+    console.log(vidId);
+  };
+
   return (
     <div className="playlistsPage">
       <Sidebar
@@ -84,7 +88,12 @@ export default function Playlist(props) {
 
       <div className="playlistPageRight">
         {currentPlaylistVideos.map((vid) => {
-          return <PlaylistCard videoData={vid} />;
+          return (
+            <PlaylistCard
+              videoData={vid}
+              removeVideoFromPlaylist={removeVideoFromPlaylist}
+            />
+          );
         })}
       </div>
     </div>

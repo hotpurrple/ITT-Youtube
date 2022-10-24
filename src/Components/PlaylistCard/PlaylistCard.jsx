@@ -1,33 +1,44 @@
-import { Typography } from "@mui/material";
+import { Typography, IconButton } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./playlistCard.css";
 
-function PlaylistCard({ videoData }) {
+import * as AiIcons from "react-icons/ai";
+// AiFillDelete
+
+function PlaylistCard({ videoData, removeVideoFromPlaylist }) {
   console.log(videoData);
   return (
     <div className="playlistCard">
-      <Link to={`/videos/${videoData.id.videoId}`}>
-        <img
-          className="playlistCardImg"
-          src={videoData.snippet.thumbnails.high.url}
-          alt="videoImage"
-        ></img>
-      </Link>
-
-      <div className="playlistCardRightPart">
+      <div className="playlistCardInnerDiv">
         <Link to={`/videos/${videoData.id.videoId}`}>
-          <Typography variant="h6" className="playlistCardTitle">
-            {videoData.snippet.title}
-          </Typography>
+          <img
+            className="playlistCardImg"
+            src={videoData.snippet.thumbnails.high.url}
+            alt="videoImage"
+          ></img>
         </Link>
 
-        <Link to={`/channel/${videoData.snippet.channelId}`}>
-          <Typography variant="subtitle2" className="playlistCardSubtitle">
-            {videoData.snippet.channelTitle}
-          </Typography>
-        </Link>
+        <div className="playlistCardRightPart">
+          <Link to={`/videos/${videoData.id.videoId}`}>
+            <Typography variant="h6" className="playlistCardTitle">
+              {videoData.snippet.title}
+            </Typography>
+          </Link>
+
+          <Link to={`/channel/${videoData.snippet.channelId}`}>
+            <Typography variant="subtitle2" className="playlistCardSubtitle">
+              {videoData.snippet.channelTitle}
+            </Typography>
+          </Link>
+        </div>
       </div>
+      <IconButton
+        aria-label=""
+        onClick={() => removeVideoFromPlaylist(videoData.id.videoId)}
+      >
+        <AiIcons.AiFillDelete />
+      </IconButton>
     </div>
   );
 }

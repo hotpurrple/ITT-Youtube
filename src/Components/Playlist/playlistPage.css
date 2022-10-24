@@ -5,7 +5,7 @@
 }
 
 .playlistPageLeft {
-    width: 20%;
+    width: 15%;
     height: 93vh;
     background-color: #f9f9f9;
     display: flex;
@@ -18,7 +18,7 @@
 }
 
 .playlistPageRight {
-    width: 80%;
+    width: 85%;
     height: 93vh;
     overflow-y: scroll;
     background-color: #f1f1f1;
@@ -28,7 +28,7 @@
     justify-content: flex-start;
     gap: 10px;
     padding: 10px 10px 0px 10px;
-    margin-left: 20%;
+    margin-left: 15%;
 }
 
 .playlistMainCard {

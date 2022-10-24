@@ -1,8 +1,14 @@
 .playlistCard {
     display: flex;
+    justify-content: space-between;
     padding: 10px;
     width: 85%;
     height: 13vh;
+}
+
+.playlistCardInnerDiv {
+    display: flex;
+
 }
 
 .playlistCardImg {
@@ -14,8 +20,9 @@
     padding: 5px 10px 10px 10px;
 }
 
-.playlistCardTitle {}
 
-.playlistCardSubtitle {
-    
+.playlistCardTitle {
+    width: 100%;
 }
+
+.playlistCardSubtitle {}
