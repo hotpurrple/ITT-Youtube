@@ -13,6 +13,7 @@ import getUserPlaylistsNames from "../../server/getUserPlaylistsNames";
 
 //!В props има целите данни за конкретното видео
 export default function MainVideoCardDotsBtn(props) {
+  console.log(props);
   const [dialogShown, setDialogShown] = useState(false);
   const [showHiddenMenu, setShowHiddenMenu] = useState(false);
 
@@ -51,7 +52,8 @@ export default function MainVideoCardDotsBtn(props) {
         variant="contained"
         onClick={() => setDialogShown(!dialogShown)}
       >
-        <HiIcons.HiDotsHorizontal />
+        {props.icon}
+        {/* <HiIcons.HiDotsHorizontal /> */}
       </IconButton>
 
       <Dialog onClose={() => setDialogShown(!dialogShown)} open={dialogShown}>

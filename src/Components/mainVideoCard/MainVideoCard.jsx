@@ -12,6 +12,7 @@ import {
   demoChannelUrl,
   demoChannelTitle,
 } from "../../utils/constants";
+import * as HiIcons from "react-icons/hi";
 
 export default function MainVideoCard(props) {
   let videoData = props.video;
@@ -88,6 +89,7 @@ export default function MainVideoCard(props) {
         <MainVideoCardDotsBtn
           className="MainVidCardDotsBtn"
           vidData={videoData}
+          icon={<HiIcons.HiDotsHorizontal />}
         />
       )}
     </Card>

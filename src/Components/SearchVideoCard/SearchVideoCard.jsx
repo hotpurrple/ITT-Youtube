@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Typography, Card, CardContent, CardMedia } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
+import * as HiIcons from "react-icons/hi";
 
 import {
   demoThumbnailUrl,
@@ -11,6 +12,7 @@ import {
   demoChannelTitle,
   demoVideoDescription,
 } from "../../utils/constants";
+import MainVideoCardDotsBtn from "../MainVideoCardDotsBtn/MainVideoCardDotsBtn";
 
 export default function SearchVideoCard(props) {
   let videoData = props.video;
@@ -94,6 +96,11 @@ export default function SearchVideoCard(props) {
           </Typography>
         </Link>
       </CardContent>
+      <MainVideoCardDotsBtn
+        className="MainVidCardDotsBtn"
+        vidData={videoData}
+        icon={<HiIcons.HiDotsHorizontal />}
+      />
     </Card>
   );
 }
