@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 import "./playlistCard.css";
 
 import * as AiIcons from "react-icons/ai";
-// AiFillDelete
 
 function PlaylistCard({ videoData, removeVideoFromPlaylist }) {
-  console.log(videoData);
+  // console.log(videoData);
   return (
     <div className="playlistCard">
       <div className="playlistCardInnerDiv">

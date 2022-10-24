@@ -6,50 +6,27 @@ import Typography from "@mui/material/Typography";
 import { demoPlaylistIds } from "../../utils/constants";
 import fetchFromApi from "../../utils/fetchFromAPI";
 import getPlaylistVideos from "../../server/getPlaylistVideos";
+import { Divider } from "@mui/material";
+import { useSelector } from "react-redux";
 
+//тук в props ще дойде името на плейлиста, по който ще бъдат открити видеата
 export default function Playlist(props) {
-  //1.Влизаме на Playlist и взимаме от activeUser всички видеа за този playlist
+  const user = useSelector((state) => state.loggedUser.user);
 
-  // const demoAlbum = {
-  //   title: "Demo album name",
-  //   videosIds: demoPlaylistIds,
-  // };
-
-  //2.После правим PromiseAll със всяко едно videoId
-  // const [currentPlaylistVideos, setCurrentPlaylistVideos] = useState([]);
-  const [playlistImage, setPlaylistImage] = useState("");
-  const [playlistTitle, setPlaylistTitle] = useState("");
-  const [playlistVideosCount, setPlatlistVideosCount] = useState("");
-
-  // setCurrentPlaylistVideos(getPlaylistVideos("Playlist 1"));
-  // useEffect(() => {
-  //   setCurrentPlaylistVideos(getPlaylistVideos("Playlist 1"));
-  // }, []);
-  // console.log(currentPlaylistVideos);
-  // setPlaylistImage(
-  //   currentPlaylistVideos[0].items[0].snippet.thumbnails.high.url
-  // );
-
-  let currentPlaylistVideos = getPlaylistVideos("Playlist 1");
-  // console.log(currentPlaylistVideos);
-  // useEffect(() => {
-  //   Promise.all(
-  //     demoAlbum.videosIds.map((vidId) =>
-  //       fetchFromApi(
-  //         `/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${vidId}`
-  //       )
-  //     )
-  //   ).then((videosFromPlaylistRes) => {
-  //     setCurrentPlaylistVideos(videosFromPlaylistRes);
-  //     setPlaylistImage(
-  //       currentPlaylistVideos[0].items[0].snippet.thumbnails.high.url
-  //     );
-  //     setPlaylistTitle(demoAlbum.title);
-  //     setPlatlistVideosCount(currentPlaylistVideos.length);
-  //   });
-  // });
+  const [currentPlaylistVideos, setCurrentPlaylistVideos] = useState(
+    getPlaylistVideos("Playlist 1")
+  );
+  const [playlistImage, setPlaylistImage] = useState(
+    currentPlaylistVideos[0].snippet.thumbnails.high.url
+  );
+  const [playlistTitle, setPlaylistTitle] = useState("Playlist 1");
+  const [playlistVideosCount, setPlatlistVideosCount] = useState(
+    currentPlaylistVideos.length
+  );
 
   const removeVideoFromPlaylist = (vidId) => {
+    //!delete the video from the playlist
+    //!някаква ф-я
     console.log(vidId);
   };
 
@@ -64,24 +41,20 @@ export default function Playlist(props) {
       />
       <div className="playlistPageLeft">
         <div className="playlistMainCard">
-          <img
-            // src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-            src={playlistImage}
-            alt="somePic"
-          ></img>
+          <img src={playlistImage} alt="somePic"></img>
           <Typography variant="h5" color="initial">
             {playlistTitle}
           </Typography>
-          <Typography variant="subtitle1" color="initial">
+          <Typography variant="subtitle2" color="initial">
             {playlistVideosCount} videos
           </Typography>
-          <hr></hr>
+          <Divider />
           <Typography
             className="playlistMainCardUsernameContainer"
             variant="h5"
             color="initial"
           >
-            Username
+            {user.username}
           </Typography>
         </div>
       </div>
@@ -90,6 +63,7 @@ export default function Playlist(props) {
         {currentPlaylistVideos.map((vid) => {
           return (
             <PlaylistCard
+              key={vid.id.videoId}
               videoData={vid}
               removeVideoFromPlaylist={removeVideoFromPlaylist}
             />
@@ -101,82 +75,53 @@ export default function Playlist(props) {
 }
 
 // {
-//   "kind": "youtube#videoListResponse",
-//   "items": [
-//       {
-//           "kind": "youtube#video",
-//           "id": "oMR0E1Yijvs",
-//           "snippet": {
-//               "publishedAt": "2022-10-13T12:03:48Z",
-//               "channelId": "UCupvZG-5ko_eiXAupbDfxWw",
-//               "title": "Video reveals a major problem for new Russian soldiers",
-//               "description": "In a new video posted to social media, newly mobilized Russian soldiers are complaining about their lack of training before being sent to the war with Ukraine.  #CNN #News",
-//               "thumbnails": {
-//                   "default": {
-//                       "url": "https://i.ytimg.com/vi/oMR0E1Yijvs/default.jpg",
-//                       "width": 120,
-//                       "height": 90
-//                   },
-//                   "medium": {
-//                       "url": "https://i.ytimg.com/vi/oMR0E1Yijvs/mqdefault.jpg",
-//                       "width": 320,
-//                       "height": 180
-//                   },
-//                   "high": {
-//                       "url": "https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg",
-//                       "width": 480,
-//                       "height": 360
-//                   },
-//                   "standard": {
-//                       "url": "https://i.ytimg.com/vi/oMR0E1Yijvs/sddefault.jpg",
-//                       "width": 640,
-//                       "height": 480
-//                   },
-//                   "maxres": {
-//                       "url": "https://i.ytimg.com/vi/oMR0E1Yijvs/maxresdefault.jpg",
-//                       "width": 1280,
-//                       "height": 720
-//                   }
-//               },
-//               "channelTitle": "CNN",
-//               "tags": [
-//                   "latest News",
-//                   "Happening Now",
-//                   "CNN",
-//                   "Russia",
-//                   "Ukraine",
-//                   "Radio Free Europe",
-//                   "Erin Burnett",
-//                   "World News"
-//               ],
-//               "categoryId": "25",
-//               "liveBroadcastContent": "none",
-//               "defaultLanguage": "en",
-//               "localized": {
-//                   "title": "Video reveals a major problem for new Russian soldiers",
-//                   "description": "In a new video posted to social media, newly mobilized Russian soldiers are complaining about their lack of training before being sent to the war with Ukraine.  #CNN #News"
-//               },
-//               "defaultAudioLanguage": "en"
+//   "kind": "youtube#searchResult",
+//   "id": {
+//       "kind": "youtube#video",
+//       "videoId": "_3tMxunybd8"
+//   },
+//   "snippet": {
+//       "publishedAt": "2022-10-13T01:03:04Z",
+//       "channelId": "UCBi2mrWuNuyYy4gbM6fU18Q",
+//       "title": "New Russian attacks hit Zaporizhzhia and other parts of Ukraine",
+//       "description": "New Russian attacks hit Ukraine, with the U.S. State Department confirming another American citizen has been killed fighting for ...",
+//       "thumbnails": {
+//           "default": {
+//               "url": "https://i.ytimg.com/vi/_3tMxunybd8/default.jpg",
+//               "width": 120,
+//               "height": 90
 //           },
-//           "contentDetails": {
-//               "duration": "PT3M29S",
-//               "dimension": "2d",
-//               "definition": "hd",
-//               "caption": "true",
-//               "licensedContent": true,
-//               "contentRating": {},
-//               "projection": "rectangular"
+//           "medium": {
+//               "url": "https://i.ytimg.com/vi/_3tMxunybd8/mqdefault.jpg",
+//               "width": 320,
+//               "height": 180
 //           },
-//           "statistics": {
-//               "viewCount": "1830264",
-//               "likeCount": "16287",
-//               "favoriteCount": "0",
-//               "commentCount": "3979"
+//           "high": {
+//               "url": "https://i.ytimg.com/vi/_3tMxunybd8/hqdefault.jpg",
+//               "width": 480,
+//               "height": 360
 //           }
-//       }
-//   ],
-//   "pageInfo": {
-//       "totalResults": 1,
-//       "resultsPerPage": 1
+//       },
+//       "channelTitle": "ABC News",
+//       "liveBroadcastContent": "none",
+//       "publishTime": "2022-10-13T01:03:04Z"
 //   }
 // }
+
+//2.После правим PromiseAll със всяко едно videoId
+// useEffect(() => {
+//   Promise.all(
+//     demoAlbum.videosIds.map((vidId) =>
+//       fetchFromApi(
+//         `/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${vidId}`
+//       )
+//     )
+//   ).then((videosFromPlaylistRes) => {
+//     setCurrentPlaylistVideos(videosFromPlaylistRes);
+//     setPlaylistImage(
+//       currentPlaylistVideos[0].items[0].snippet.thumbnails.high.url
+//     );
+//     setPlaylistTitle(demoAlbum.title);
+//     setPlatlistVideosCount(currentPlaylistVideos.length);
+//   });
+// });

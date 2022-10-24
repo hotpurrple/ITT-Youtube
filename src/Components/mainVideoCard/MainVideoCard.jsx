@@ -4,7 +4,7 @@ import { Typography, Card, CardContent, CardMedia } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
 import { MainVideoCardDotsBtn } from "../";
 import "./mainVideoCard.css";
-
+import { useSelector } from "react-redux";
 import {
   demoThumbnailUrl,
   demoVideoUrl,
@@ -15,6 +15,7 @@ import {
 
 export default function MainVideoCard(props) {
   let videoData = props.video;
+  const user = useSelector((state) => state.loggedUser.user);
 
   return (
     <Card
@@ -82,10 +83,13 @@ export default function MainVideoCard(props) {
           </Typography>
         </Link>
       </CardContent>
-      <MainVideoCardDotsBtn
-        className="MainVidCardDotsBtn"
-        vidData={videoData}
-      />
+
+      {user && (
+        <MainVideoCardDotsBtn
+          className="MainVidCardDotsBtn"
+          vidData={videoData}
+        />
+      )}
     </Card>
   );
 }
