@@ -2,42 +2,52 @@ import React, { useEffect, useState } from "react";
 import "./playlistPage.css";
 import { Sidebar, PlaylistCard } from "..";
 import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
-// import { useSelector, useDispatch } from "react-redux";
 
 import { demoPlaylistIds } from "../../utils/constants";
 import fetchFromApi from "../../utils/fetchFromAPI";
+import getPlaylistVideos from "../../server/getPlaylistVideos";
 
 export default function Playlist(props) {
-  // const activeUser = useSelector((state) => state.activeUser);
-
   //1.Влизаме на Playlist и взимаме от activeUser всички видеа за този playlist
-  const demoAlbum = {
-    title: "Demo album name",
-    videosIds: demoPlaylistIds,
-  };
+
+  // const demoAlbum = {
+  //   title: "Demo album name",
+  //   videosIds: demoPlaylistIds,
+  // };
+
   //2.После правим PromiseAll със всяко едно videoId
-  const [currentPlaylistVideos, setCurrentPlaylistVideos] = useState([]);
+  // const [currentPlaylistVideos, setCurrentPlaylistVideos] = useState([]);
   const [playlistImage, setPlaylistImage] = useState("");
   const [playlistTitle, setPlaylistTitle] = useState("");
   const [playlistVideosCount, setPlatlistVideosCount] = useState("");
 
-  useEffect(() => {
-    Promise.all(
-      demoAlbum.videosIds.map((vidId) =>
-        fetchFromApi(
-          `/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${vidId}`
-        )
-      )
-    ).then((videosFromPlaylistRes) => {
-      setCurrentPlaylistVideos(videosFromPlaylistRes);
-      setPlaylistImage(
-        currentPlaylistVideos[0].items[0].snippet.thumbnails.high.url
-      );
-      setPlaylistTitle(demoAlbum.title);
-      setPlatlistVideosCount(currentPlaylistVideos.length);
-    });
-  });
+  // setCurrentPlaylistVideos(getPlaylistVideos("Playlist 1"));
+  // useEffect(() => {
+  //   setCurrentPlaylistVideos(getPlaylistVideos("Playlist 1"));
+  // }, []);
+  // console.log(currentPlaylistVideos);
+  // setPlaylistImage(
+  //   currentPlaylistVideos[0].items[0].snippet.thumbnails.high.url
+  // );
+
+  let currentPlaylistVideos = getPlaylistVideos("Playlist 1");
+  // console.log(currentPlaylistVideos);
+  // useEffect(() => {
+  //   Promise.all(
+  //     demoAlbum.videosIds.map((vidId) =>
+  //       fetchFromApi(
+  //         `/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${vidId}`
+  //       )
+  //     )
+  //   ).then((videosFromPlaylistRes) => {
+  //     setCurrentPlaylistVideos(videosFromPlaylistRes);
+  //     setPlaylistImage(
+  //       currentPlaylistVideos[0].items[0].snippet.thumbnails.high.url
+  //     );
+  //     setPlaylistTitle(demoAlbum.title);
+  //     setPlatlistVideosCount(currentPlaylistVideos.length);
+  //   });
+  // });
 
   return (
     <div className="playlistsPage">
@@ -73,331 +83,9 @@ export default function Playlist(props) {
       </div>
 
       <div className="playlistPageRight">
-        {/* {currentPlaylistVideos.map((vid) => {
+        {currentPlaylistVideos.map((vid) => {
           return <PlaylistCard videoData={vid} />;
-        })} */}
-        <div className="playlistCard">
-          <Link to={`/videos/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/videos/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>
-        <div className="playlistCard">
-          <Link to={`/video/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/videos/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>
-        <div className="playlistCard">
-          <Link to={`/videos/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/videos/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>
-        <div className="playlistCard">
-          <Link to={`/video/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/video/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>
-        <div className="playlistCard">
-          <Link to={`/video/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/video/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>
-        <div className="playlistCard">
-          <Link to={`/video/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/video/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>
-        <div className="playlistCard">
-          <Link to={`/video/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/video/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>
-        <div className="playlistCard">
-          <Link to={`/video/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/video/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>
-        <div className="playlistCard">
-          <Link to={`/video/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/video/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>
-        <div className="playlistCard">
-          <Link to={`/video/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/video/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>
-        <div className="playlistCard">
-          <Link to={`/video/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/video/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>
-        <div className="playlistCard">
-          <Link to={`/video/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/video/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>
-        <div className="playlistCard">
-          <Link to={`/video/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/video/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>
-        <div className="playlistCard">
-          <Link to={`/video/oMR0E1Yijvs`}>
-            <img
-              className="playlistCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt="videoImage"
-            ></img>
-          </Link>
-
-          <div className="playlistCardRightPart">
-            <Link to={`/video/oMR0E1Yijvs`}>
-              <Typography variant="h6" className="playlistCardTitle">
-                Video reveals a major problem for new Russian soldiers
-              </Typography>
-            </Link>
-
-            <Link to={`/channel/UCupvZG-5ko_eiXAupbDfxWw`}>
-              <Typography variant="subtitle2" className="playlistCardSubtitle">
-                CNN
-              </Typography>
-            </Link>
-          </div>
-        </div>
+        })}
       </div>
     </div>
   );

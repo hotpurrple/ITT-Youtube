@@ -4,26 +4,27 @@ import { Link } from "react-router-dom";
 import "./playlistCard.css";
 
 function PlaylistCard({ videoData }) {
+  console.log(videoData);
   return (
     <div className="playlistCard">
-      <Link to={`/videos/${videoData.items[0].id}`}>
+      <Link to={`/videos/${videoData.id.videoId}`}>
         <img
           className="playlistCardImg"
-          src={videoData.items[0].snippet.thumbnails.high.url}
+          src={videoData.snippet.thumbnails.high.url}
           alt="videoImage"
         ></img>
       </Link>
 
       <div className="playlistCardRightPart">
-        <Link to={`/videos/${videoData.items[0].id}`}>
+        <Link to={`/videos/${videoData.id.videoId}`}>
           <Typography variant="h6" className="playlistCardTitle">
-            {videoData.items[0].snippet.title}
+            {videoData.snippet.title}
           </Typography>
         </Link>
 
-        <Link to={`/channel/${videoData.items[0].snippet.channelId}`}>
+        <Link to={`/channel/${videoData.snippet.channelId}`}>
           <Typography variant="subtitle2" className="playlistCardSubtitle">
-            {videoData.items[0].snippet.channelTitle}
+            {videoData.snippet.channelTitle}
           </Typography>
         </Link>
       </div>
