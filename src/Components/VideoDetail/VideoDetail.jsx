@@ -26,6 +26,7 @@ function VideoDetail() {
     const [videoDetails, setVideoDetails] = useState({})
     const [channelDetails, setChannelDetails] = useState({})
     const currentVideo = useSelector(state => state.currentVideo.currentVideo)
+    const [currentVid, setCurrentVid] = useState({})
 
     useEffect(() => {
         fetchFromApi(`/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${url}`)
@@ -41,10 +42,12 @@ function VideoDetail() {
                 let creationDate = data.items[0].snippet.publishedAt.split("T")[0].split("-").reverse().join(".")
                 let shortDescription = data.items[0].snippet.description.slice(0, 200)
                 let obj = { title, views, likes, creationDate, shortDescription }
-                // let toBeDispatched = {url, creationDate, title, thumbnail, channelTitle}
                 addToVideosHistory(url, published_accurately, title, thumbnail, channelTitle)
-                dispatch(setCurrentVideo({
+                setCurrentVid({
                     url, 
+                    likes: likes,
+                    is_liked: false,
+                    is_disliked: false,
                     id: {
                         videoId: url
                     },
@@ -58,7 +61,8 @@ function VideoDetail() {
                             }
                         }
                     }
-                }))
+                })
+
                 setVideoDetails({ ...obj },)
                 return [data.items[0].snippet.channelId, shortDescription]
             })
@@ -75,14 +79,14 @@ function VideoDetail() {
                     })
             })
 
-    }, [url, currentVideo])
+    }, [url, currentVid])
 
     return (
         <>
             <div className="videoPageContainer">
                 <div className="videoDetails">
                     <VideoPlayer link={url} />
-                    <VideoInformation props={videoDetails} />
+                    <VideoInformation currentVid={currentVid} props={videoDetails} />
                     <VideoDescription props={channelDetails} />
                     <VideoComments url={url} />
                 </div>

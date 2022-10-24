@@ -14,7 +14,8 @@ import updateUserDislikedVideos from '../../server/updateUserDislikedVideos';
 import isVideoDisliked from '../../server/isVideoDisliked';
 import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { dislikeCurrentVideo, likeCurrentVideo } from '../../store/currentVideo';
 
 export default function SingleVideoButton(props) {
     const { name, icon, index_number } = props
@@ -22,26 +23,20 @@ export default function SingleVideoButton(props) {
     const location = useLocation()
     const url = location.pathname.split("/videos/")[1]
     const currentVideo = useSelector(state => state.currentVideo)
-  
+    let currentVid = props.currentVid
     const videoButtonFunction = () => {
         switch (index_number) {
             case 0:
-                updateUserLikedVideos(currentVideo.currentVideo)
-                if (isVideoDisliked(currentVideo.currentVideo)) {
-                    updateUserDislikedVideos(currentVideo.currentVideo)
-                    props.setCurrentVidDisliked(isVideoDisliked(currentVideo.currentVideo) ? <ThumbDownIcon /> : <ThumbDownOffAltOutlinedIcon />)
-                }
-                props.setCurrentVidLiked(isCurrentVideoLiked(currentVideo.currentVideo) ? <ThumbUpAltIcon /> : <ThumbUpOutlinedIcon />)
+                updateUserLikedVideos(currentVid)
+                isCurrentVideoLiked(currentVid.url) ? props.setCurrentVidLiked(<ThumbUpAltIcon />) :
+                props.setCurrentVidLiked(<ThumbUpOutlinedIcon />)
+                props.setCurrentVidDisliked(<ThumbDownOffAltOutlinedIcon />)
                 return
             case 1:
-                updateUserDislikedVideos(currentVideo.currentVideo)
-
-                if (isCurrentVideoLiked(currentVideo.currentVideo)) {
-                    updateUserLikedVideos(currentVideo.currentVideo)
-                    props.setCurrentVidLiked(isCurrentVideoLiked(currentVideo.currentVideo) ? <ThumbUpAltIcon /> : <ThumbUpOutlinedIcon />)
-                }
-
-                props.setCurrentVidDisliked(isVideoDisliked(currentVideo.currentVideo) ? <ThumbDownIcon /> : <ThumbDownOffAltOutlinedIcon />)
+                updateUserDislikedVideos(currentVid)
+                isVideoDisliked(currentVid.url) ? props.setCurrentVidDisliked(<ThumbDownIcon />) :
+                    props.setCurrentVidDisliked(<ThumbDownOffAltOutlinedIcon />)
+                props.setCurrentVidLiked(<ThumbUpOutlinedIcon />)
                 return
             case 3:
                 return setDialogShown(!dialogShown)

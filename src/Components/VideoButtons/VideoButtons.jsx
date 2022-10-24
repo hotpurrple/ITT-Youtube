@@ -15,23 +15,21 @@ import isVideoDisliked from "../../server/isVideoDisliked";
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentVideo } from "../../store/currentVideo";
+import { isVidDisliked, isVidLiked, setCurrentVideo } from "../../store/currentVideo";
 
 export default function VideoButtons(props) {
     const currentVideo = useSelector(state => state.currentVideo.currentVideo)
-    const [currentVidLiked, setCurrentVidLiked] = useState(<ThumbUpOutlinedIcon />)
+    let currentVid = props.currentVid
     const url = useLocation().pathname.split("/videos/")[1]
-    // isCurrentVideoLiked(currentVideo) ?<ThumbUpAltIcon /> : 
-    // isVideoDisliked(currentVideo) ? <ThumbDownIcon/> : 
-    const [currentVidDisliked, setCurrentVidDisliked] = useState(<ThumbDownOffAltOutlinedIcon />)
-    
+
+    const [currentVidLiked, setCurrentVidLiked] = useState(null)
+    const [currentVidDisliked, setCurrentVidDisliked] = useState(null)
+
     useEffect(() => {
-        isCurrentVideoLiked(currentVideo) && setCurrentVidLiked(<ThumbUpAltIcon /> )
-        
-    }, [url, currentVideo])
-    useEffect(() => {
-        isVideoDisliked(currentVideo) && setCurrentVidDisliked(<ThumbDownIcon/> )
-    }, [url, currentVideo])
+        isCurrentVideoLiked(currentVid.url) ? setCurrentVidLiked(<ThumbUpAltIcon />) : setCurrentVidLiked(<ThumbUpOutlinedIcon />)
+        isVideoDisliked(currentVid.url) ? setCurrentVidDisliked(<ThumbDownIcon />) : setCurrentVidDisliked(<ThumbDownOffAltOutlinedIcon />)
+    }, [url, currentVid])
+
 
     const icons = [currentVidLiked, currentVidDisliked, <SendOutlinedIcon />,
         <PlaylistAddOutlinedIcon />,
@@ -46,9 +44,9 @@ export default function VideoButtons(props) {
         <>
             <div className="videoButtons">
                 {icons.map((e, i) => {
-                    return <SingleVideoButton setCurrentVidDisliked={setCurrentVidDisliked} setCurrentVidLiked={setCurrentVidLiked} 
-                    key={i} index_number={i} 
-                    icon={e} name={names[i]} />
+                    return <SingleVideoButton currentVid={currentVid} setCurrentVidDisliked={setCurrentVidDisliked} setCurrentVidLiked={setCurrentVidLiked}
+                        key={i} index_number={i}
+                        icon={e} name={names[i]} />
                 })}
             </div>
         </>
