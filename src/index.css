@@ -1,13 +1,20 @@
-@font-face{
-    font-family: "Roboto";
-    src: url("./fonts/Roboto-Regular.ttf") format("truetype");
-  }
+@font-face {
+  font-family: "Roboto";
+  src: url("./fonts/Roboto-Regular.ttf") format("truetype");
+}
 
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Roboto" !important;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto" !important;
 
+}
+
+
+.MainVidCardDotsBtn {
+  position: absolute;
+  right: 15px;
+  bottom: 20px;
 }

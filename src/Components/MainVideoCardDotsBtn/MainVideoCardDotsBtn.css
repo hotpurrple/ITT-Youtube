@@ -1,0 +1,8 @@
+.viewPlaylists {
+    margin-top: 1vh;
+    width: 13vw;
+    /* height: 45vh; */
+    display: flex;
+    margin-left: 2vh;
+    flex-direction: column;
+}
