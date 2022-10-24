@@ -6,3 +6,13 @@
     margin-left: 2vh;
     flex-direction: column;
 }
+
+.createNewPlaylistDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.createNewPlaylistDiv input {
+    width: 85%;
+}
