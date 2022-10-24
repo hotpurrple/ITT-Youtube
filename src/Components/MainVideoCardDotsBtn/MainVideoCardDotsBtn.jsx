@@ -2,14 +2,16 @@ import React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
-
 import * as HiIcons from "react-icons/hi";
 import { useState } from "react";
-
 import { Divider, Button, ListItem, ListItemText } from "@mui/material";
-
 import "./MainVideoCardDotsBtn.css";
 
+import createNewPlaylist from "../../server/createNewPlaylist";
+import addVideoToExistingPlaylist from "../../server/addVideoToExistingPlaylist";
+import getUserPlaylistsNames from "../../server/getUserPlaylistsNames";
+
+//!В props има целите данни за конкретното видео
 export default function MainVideoCardDotsBtn(props) {
   const [dialogShown, setDialogShown] = useState(false);
   const [showHiddenMenu, setShowHiddenMenu] = useState(false);
@@ -21,25 +23,28 @@ export default function MainVideoCardDotsBtn(props) {
 
   const handleListItemClick = (playlistName) => {
     console.log(playlistName);
+    //!от текущото видео отива, отива към user.playlists в избрания playlist
+    addVideoToExistingPlaylist(playlistName, props.vidData);
+    setDialogShown(!dialogShown);
   };
 
   const showTheHiddenMenu = () => {
     setShowHiddenMenu(!showHiddenMenu);
   };
 
-  const createNewPlaylist = (e) => {
-    console.log(e);
-    console.log("New playlist name is: " + newPlaylistName);
+  const handleCreateNewPlaylist = () => {
+    if (newPlaylistName) {
+      //   console.log("New playlist name is: " + newPlaylistName);
+      //!от тук новия playlist, заедно с първото видео в него, отива към user.playlists
+      createNewPlaylist(newPlaylistName, props.vidData);
+      setDialogShown(!dialogShown);
+    } else {
+      console.log("no name chosen");
+    }
   };
 
-  let playlists = [
-    "Playlist 1",
-    "Playlist 2",
-    "Playlist 3",
-    "Playlist 4",
-    "Playlist 5",
-  ];
-
+  let userPlaylistsNames = getUserPlaylistsNames() || [];
+  //let userPlaylistsNames = ["Playlist 1", "Playlist 2", "Playlist 3"];
   return (
     <div className={props.className}>
       <IconButton
@@ -52,7 +57,7 @@ export default function MainVideoCardDotsBtn(props) {
       <Dialog onClose={() => setDialogShown(!dialogShown)} open={dialogShown}>
         <DialogTitle> Add to playlist </DialogTitle>
         <ul>
-          {playlists.map((pName) => (
+          {userPlaylistsNames.map((pName) => (
             <ListItem
               button
               onClick={() => handleListItemClick(pName)}
@@ -81,7 +86,11 @@ export default function MainVideoCardDotsBtn(props) {
               placeholder="Enter new playlist name"
               type="text"
             />
-            <Button variant="text" color="primary" onClick={createNewPlaylist}>
+            <Button
+              variant="text"
+              color="primary"
+              onClick={handleCreateNewPlaylist}
+            >
               Add new playlist
             </Button>
           </div>
@@ -90,3 +99,41 @@ export default function MainVideoCardDotsBtn(props) {
     </div>
   );
 }
+
+/*
+
+props.video = {
+  "kind": "youtube#searchResult",
+  "id": {
+      "kind": "youtube#video",
+      "videoId": "oMR0E1Yijvs"
+  },
+  "snippet": {
+      "publishedAt": "2022-10-13T12:03:48Z",
+      "channelId": "UCupvZG-5ko_eiXAupbDfxWw",
+      "title": "Video reveals a major problem for new Russian soldiers",
+      "description": "In a new video posted to social media, newly mobilized Russian soldiers are complaining about their lack of training before being ...",
+      "thumbnails": {
+          "default": {
+              "url": "https://i.ytimg.com/vi/oMR0E1Yijvs/default.jpg",
+              "width": 120,
+              "height": 90
+          },
+          "medium": {
+              "url": "https://i.ytimg.com/vi/oMR0E1Yijvs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+          },
+          "high": {
+              "url": "https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+          }
+      },
+      "channelTitle": "CNN",
+      "liveBroadcastContent": "none",
+      "publishTime": "2022-10-13T12:03:48Z"
+  }
+}
+
+*/
