@@ -73,7 +73,7 @@ export default function Register() {
     const doPassesMatch = (pass, repeat) => {
         let passwordtest = pass?.current?.value
         let repeatpassword = repeat?.current?.value
-        let doPassesMatch = passwordtest.toLowerCase().trim() === repeatpassword.toLowerCase().trim()
+        let doPassesMatch = passwordtest.trim() === repeatpassword.trim()
         if (!doPassesMatch) {
             setMatchingPassCheck("Passwords don't match.")
             setEnableButton({...enableButton, passesMatch: false})
