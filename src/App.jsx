@@ -34,8 +34,8 @@ function App() {
         <Header handleMenuButtonClick={handleMenuButtonClick} />
         <Routes>
           <Route path="/" element={<Feed showSideBar={sideBar} />} />
-          <Route path="/videos/:id" element={<VideoDetail />} />
-          <Route path="/channel/:id" element={<ChannelDetail />} />
+          <Route path="/videos/:id" element={<VideoDetail showSideBar={sideBar} />} />
+          <Route path="/channel/:channelId" element={<ChannelDetail />} />
           <Route
             path="/search/:searchTerm"
             element={<SearchFeed showSideBar={sideBar} />}

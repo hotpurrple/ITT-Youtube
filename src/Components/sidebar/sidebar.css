@@ -11,6 +11,7 @@
     left: -100%;
     transition: 850ms;
     z-index: 11;
+    border-right: 1px solid gray;
 }
 
 .sidebar-menu-Feed.active {
@@ -24,14 +25,15 @@
     background-color: #f9f9f9;
     opacity: 1;
     width: 170px;
-    height: 88vh;
+    height: 92vh;
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 6vh;
+    top: 7vh;
     left: -100%;
     transition: 850ms;
     z-index: 11;
+    border-right: 1px solid gray;
 }
 
 .sidebar-menu-SearchFeed.active {

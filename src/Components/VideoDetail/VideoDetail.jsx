@@ -11,8 +11,9 @@ import numberFormatter from "../../utils/numberFormatter"
 import { useDispatch, useSelector } from "react-redux";
 import RecommendedVideos from "../RecommendedVideos/RecommendedVideos";
 import addToVideosHistory from "../../server/updateUserData";
+import Sidebar from "../sidebar/Sidebar";
 
-function VideoDetail() {
+function VideoDetail(props) {
     const path = useLocation()
     const url = path.pathname.split("/videos/")[1]
     const [videoDetails, setVideoDetails] = useState({})
@@ -22,6 +23,7 @@ function VideoDetail() {
     useEffect(() => {
         fetchFromApi(`/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${url}`)
             .then(data => {
+                console.log(data); //! от тук ще взема видео данни за плейлист
                 let title = data.items[0].snippet.title
                 let thumbnail = data.items[0].snippet.thumbnails.medium.url
                 let channelTitle = data.items[0].snippet.channelTitle
@@ -73,6 +75,14 @@ function VideoDetail() {
     return (
         <>
             <div className="videoPageContainer">
+
+            <Sidebar
+        theClass={
+          props.showSideBar
+            ? `sidebar-menu-SearchFeed active`
+            : `sidebar-menu-SearchFeed`
+        }
+      />
                 <div className="videoDetails">
                     <VideoPlayer link={url} />
                     <VideoInformation currentVid={currentVid} props={videoDetails} />

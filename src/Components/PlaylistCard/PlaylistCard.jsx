@@ -125,7 +125,6 @@ export default PlaylistCard;
 //   }
 // }
 
-
 // {
 //   "url": "oMR0E1Yijvs",
 //   "likes": "17.7K",
@@ -141,5 +140,97 @@ export default PlaylistCard;
 //               "url": "https://i.ytimg.com/vi/oMR0E1Yijvs/mqdefault.jpg"
 //           }
 //       }
+//   }
+// }
+
+
+
+// {
+//   "kind": "youtube#videoListResponse",
+//   "items": [
+//       {
+//           "kind": "youtube#video",
+//           "id": "coX1Mwwmj5Y",
+//           "snippet": {
+//               "publishedAt": "2022-10-20T13:42:26Z",
+//               "channelId": "UC8p1vwvWtl6T73JiExfWs1g",
+//               "title": "Iranian-supplied kamikaze drones usher in new era of warfare in Ukraine",
+//               "description": "Russia's latest onslaught inside Ukraine has been led by Moscow's new weapon of choice -- Iranian-supplied drones. It could be the dawn of a new kind of warfare. David Martin is at the Pentagon to take a look.\n\n#news #russia #ukraine \n\n\"CBS Evening News with Norah O'Donnell\" delivers the latest news and original reporting, and goes beyond the headlines with context and depth. Catch the \"CBS Evening News\" weeknights at 6:30 p.m. ET on the CBS Television Network and at 10 p.m. ET on the CBS News app.\n\nSubscribe to the \"CBS Evening News\" YouTube channel: https://bit.ly/1S7Dhik\nWatch full episodes of \"CBS Evening News\": https://cbsn.ws/23XekKA\nFollow \"CBS Evening News\" on Instagram: https://bit.ly/1T8icTO\nLike \"CBS Evening News\" on Facebook: https://on.fb.me/1KxYobb\nFollow \"CBS Evening News\" on Twitter: https://bit.ly/1O3dTTe\nDownload the CBS News app: https://cbsn.ws/1Xb1WC8\nTry Paramount+ free: https://bit.ly/2OiW1kZ\n\nFor video licensing inquiries, contact: licensing@veritone.com",
+//               "thumbnails": {
+//                   "default": {
+//                       "url": "https://i.ytimg.com/vi/coX1Mwwmj5Y/default.jpg",
+//                       "width": 120,
+//                       "height": 90
+//                   },
+//                   "medium": {
+//                       "url": "https://i.ytimg.com/vi/coX1Mwwmj5Y/mqdefault.jpg",
+//                       "width": 320,
+//                       "height": 180
+//                   },
+//                   "high": {
+//                       "url": "https://i.ytimg.com/vi/coX1Mwwmj5Y/hqdefault.jpg",
+//                       "width": 480,
+//                       "height": 360
+//                   },
+//                   "standard": {
+//                       "url": "https://i.ytimg.com/vi/coX1Mwwmj5Y/sddefault.jpg",
+//                       "width": 640,
+//                       "height": 480
+//                   },
+//                   "maxres": {
+//                       "url": "https://i.ytimg.com/vi/coX1Mwwmj5Y/maxresdefault.jpg",
+//                       "width": 1280,
+//                       "height": 720
+//                   }
+//               },
+//               "channelTitle": "CBS News",
+//               "tags": [
+//                   "Ukraine",
+//                   "russia",
+//                   "moscow",
+//                   "weapon",
+//                   "iran",
+//                   "drones",
+//                   "warfare",
+//                   "aircraft",
+//                   "explosives",
+//                   "war",
+//                   "artillery"
+//               ],
+//               "categoryId": "25",
+//               "liveBroadcastContent": "none",
+//               "localized": {
+//                   "title": "Iranian-supplied kamikaze drones usher in new era of warfare in Ukraine",
+//                   "description": "Russia's latest onslaught inside Ukraine has been led by Moscow's new weapon of choice -- Iranian-supplied drones. It could be the dawn of a new kind of warfare. David Martin is at the Pentagon to take a look.\n\n#news #russia #ukraine \n\n\"CBS Evening News with Norah O'Donnell\" delivers the latest news and original reporting, and goes beyond the headlines with context and depth. Catch the \"CBS Evening News\" weeknights at 6:30 p.m. ET on the CBS Television Network and at 10 p.m. ET on the CBS News app.\n\nSubscribe to the \"CBS Evening News\" YouTube channel: https://bit.ly/1S7Dhik\nWatch full episodes of \"CBS Evening News\": https://cbsn.ws/23XekKA\nFollow \"CBS Evening News\" on Instagram: https://bit.ly/1T8icTO\nLike \"CBS Evening News\" on Facebook: https://on.fb.me/1KxYobb\nFollow \"CBS Evening News\" on Twitter: https://bit.ly/1O3dTTe\nDownload the CBS News app: https://cbsn.ws/1Xb1WC8\nTry Paramount+ free: https://bit.ly/2OiW1kZ\n\nFor video licensing inquiries, contact: licensing@veritone.com"
+//               },
+//               "defaultAudioLanguage": "en"
+//           },
+//           "contentDetails": {
+//               "duration": "PT2M19S",
+//               "dimension": "2d",
+//               "definition": "hd",
+//               "caption": "false",
+//               "licensedContent": true,
+//               "regionRestriction": {
+//                   "blocked": [
+//                       "AU",
+//                       "CA",
+//                       "JP"
+//                   ]
+//               },
+//               "contentRating": {},
+//               "projection": "rectangular"
+//           },
+//           "statistics": {
+//               "viewCount": "14231",
+//               "likeCount": "126",
+//               "favoriteCount": "0",
+//               "commentCount": "114"
+//           }
+//       }
+//   ],
+//   "pageInfo": {
+//       "totalResults": 1,
+//       "resultsPerPage": 1
 //   }
 // }
