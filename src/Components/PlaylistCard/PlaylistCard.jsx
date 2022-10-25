@@ -124,3 +124,22 @@ export default PlaylistCard;
 //       "resultsPerPage": 1
 //   }
 // }
+
+
+// {
+//   "url": "oMR0E1Yijvs",
+//   "likes": "17.7K",
+//   "id": {
+//       "videoId": "oMR0E1Yijvs"
+//   },
+//   "snippet": {
+//       "publishedAt": "2022-10-13T12:03:48Z",
+//       "title": "Video reveals a major problem for new Russian soldiers",
+//       "channelTitle": "CNN",
+//       "thumbnails": {
+//           "medium": {
+//               "url": "https://i.ytimg.com/vi/oMR0E1Yijvs/mqdefault.jpg"
+//           }
+//       }
+//   }
+// }

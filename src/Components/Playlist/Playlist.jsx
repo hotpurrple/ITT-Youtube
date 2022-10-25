@@ -8,6 +8,7 @@ import fetchFromApi from "../../utils/fetchFromAPI";
 import getPlaylistVideos from "../../server/getPlaylistVideos";
 import { Divider } from "@mui/material";
 import { useSelector } from "react-redux";
+import deleteVideoFromPlaylist from "../../server/deleteVideoFromPlaylist";
 
 //тук в props ще дойде името на плейлиста, по който ще бъдат открити видеата
 export default function Playlist(props) {
@@ -27,7 +28,8 @@ export default function Playlist(props) {
   const removeVideoFromPlaylist = (vidId) => {
     //!delete the video from the playlist
     //!някаква ф-я
-    console.log(vidId);
+    deleteVideoFromPlaylist("Playlist 1", vidId);
+    setCurrentPlaylistVideos(getPlaylistVideos("Playlist 1"));
   };
 
   return (
