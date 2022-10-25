@@ -22,6 +22,8 @@ export { default as SearchChannelCard } from "./SearchChannelCard/SearchChannelC
 
 export { default as LibraryPage } from "./LibraryPage/LibraryPage";
 
+export { default as Playlists } from "./Playlists/Playlists";
+export { default as PlaylistsPlaylistCard } from "./PlaylistsPlaylistCard/PlaylistsPlaylistCard";
 export { default as Playlist } from "./Playlist/Playlist";
 export { default as PlaylistCard } from "./PlaylistCard/PlaylistCard";
 

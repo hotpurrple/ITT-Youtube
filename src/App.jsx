@@ -15,6 +15,7 @@ import {
   Register,
   LibraryPage,
   Playlist,
+  Playlists,
 } from "./Components"; //simple import
 
 function App() {
@@ -45,6 +46,10 @@ function App() {
           <Route
             path="library"
             element={<LibraryPage showSideBar={sideBar} />}
+          />
+          <Route
+            path="/playlists"
+            element={<Playlists showSideBar={sideBar} />}
           />
           <Route
             path="/playlist"
