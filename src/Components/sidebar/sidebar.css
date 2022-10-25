@@ -28,7 +28,7 @@
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 7vh;
+    top: 6vh;
     left: -100%;
     transition: 850ms;
     z-index: 11;

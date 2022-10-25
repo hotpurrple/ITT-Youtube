@@ -48,11 +48,16 @@ function App() {
             element={<LibraryPage showSideBar={sideBar} />}
           />
           <Route
-            path="/playlists"
+            path="/all-playlists"
             element={<Playlists showSideBar={sideBar} />}
-          />
+          >
+            {/* <Route
+              path=":playlistName"
+              element={<Playlist showSideBar={sideBar} />}
+            /> */}
+          </Route>
           <Route
-            path="/playlist"
+            path="/playlist/:playlistName"
             element={<Playlist showSideBar={sideBar} />}
           />
         </Routes>

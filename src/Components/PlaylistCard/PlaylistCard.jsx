@@ -20,7 +20,7 @@ function PlaylistCard({ videoData, removeVideoFromPlaylist }) {
 
         <div className="playlistCardRightPart">
           <Link to={`/videos/${videoData.id.videoId}`}>
-            <Typography variant="h6" className="playlistCardTitle">
+            <Typography variant="h5" className="playlistCardTitle">
               {videoData.snippet.title}
             </Typography>
           </Link>

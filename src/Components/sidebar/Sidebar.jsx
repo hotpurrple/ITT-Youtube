@@ -53,17 +53,17 @@ export default function Sidebar(props) {
               </Link>
             </li>
             <li className="item-text">
-              <Link to={"/playlists"} className="sideBar-link">
+              <Link to={"/all-playlists"} className="sideBar-link">
                 <CgIcons.CgPlayList />
                 <span>Playlists</span>
               </Link>
             </li>
-            <li className="item-text">
+            {/* <li className="item-text">
               <Link to={"/playlist"} className="sideBar-link">
                 <CgIcons.CgPlayList />
                 <span>Test Playlist</span>
               </Link>
-            </li>
+            </li> */}
           </>
         ) : (
           <>

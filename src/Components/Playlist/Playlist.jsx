@@ -9,13 +9,16 @@ import getPlaylistVideos from "../../server/getPlaylistVideos";
 import { Divider } from "@mui/material";
 import { useSelector } from "react-redux";
 import deleteVideoFromPlaylist from "../../server/deleteVideoFromPlaylist";
+import { useParams } from "react-router-dom"; //за да можем да вземем query search параметрите от search bar-а
 
 //тук в props ще дойде името на плейлиста, по който ще бъдат открити видеата
 export default function Playlist(props) {
+  const { playlistName } = useParams();
+  console.log(playlistName);
   const user = useSelector((state) => state.loggedUser.user);
 
   const [currentPlaylistVideos, setCurrentPlaylistVideos] = useState(
-    getPlaylistVideos("Playlist 1")
+    getPlaylistVideos(playlistName)
   );
   const [playlistImage, setPlaylistImage] = useState(
     currentPlaylistVideos[0].snippet.thumbnails.high.url
@@ -47,7 +50,7 @@ export default function Playlist(props) {
           <Typography variant="h5" color="initial">
             {playlistTitle}
           </Typography>
-          <Typography variant="subtitle2" color="initial">
+          <Typography variant="body2" color="initial">
             {playlistVideosCount} videos
           </Typography>
           <Divider />
@@ -56,6 +59,7 @@ export default function Playlist(props) {
             variant="h5"
             color="initial"
           >
+          User:
             {user.username}
           </Typography>
         </div>
