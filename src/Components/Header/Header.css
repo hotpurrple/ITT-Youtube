@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 
 .ytlogo {
@@ -51,4 +52,18 @@
     justify-content: center;
     align-items: center;
     gap: 0.3em;
+}
+
+.muiList {
+    position: absolute;
+    right: -5%;
+    bottom: -25vh;
+    width: 25vw !important;
+    z-index: 1;
+    opacity: 1;
+    background-color: white !important;
+}
+
+.MoreVertIcon {
+    cursor: pointer;
 }

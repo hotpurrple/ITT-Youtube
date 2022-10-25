@@ -20,6 +20,5 @@ export const registerUser = (username, password) => {
 
 export const doesUserExist = (username) => {
     const userList = JSON.parse(localStorage.getItem("userList")) || []
-    const checker = new RegExp(username, "gi")
-    return userList.find(e => e.username.match(checker))
+    return userList.find(e => e.username.trim() === username.trim())
 }
