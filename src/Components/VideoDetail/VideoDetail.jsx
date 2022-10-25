@@ -24,7 +24,7 @@ function VideoDetail() {
             .then(data => {
                 let title = data.items[0].snippet.title
                 let thumbnail = data.items[0].snippet.thumbnails.medium.url
-                let highThumbnail = data.items[0].snippet.thumbnails.medium.url
+                let highThumbnail = data.items[0].snippet.thumbnails.high.url
                 let channelTitle = data.items[0].snippet.channelTitle
                 document.title = title
                 let views = numberFormatter(data.items[0].statistics.viewCount)
