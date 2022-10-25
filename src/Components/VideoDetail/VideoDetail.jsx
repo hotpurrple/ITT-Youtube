@@ -26,6 +26,7 @@ function VideoDetail(props) {
                 console.log(data); //! от тук ще взема видео данни за плейлист
                 let title = data.items[0].snippet.title
                 let thumbnail = data.items[0].snippet.thumbnails.medium.url
+                let highThumbnail = data.items[0].snippet.thumbnails.high.url
                 let channelTitle = data.items[0].snippet.channelTitle
                 document.title = title
                 let views = numberFormatter(data.items[0].statistics.viewCount)
@@ -49,6 +50,9 @@ function VideoDetail(props) {
                         thumbnails: {
                             medium: {
                                 url: thumbnail
+                            },
+                            high: {
+                                url: highThumbnail
                             }
                         }
                     }
