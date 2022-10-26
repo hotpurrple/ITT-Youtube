@@ -4,35 +4,38 @@ import fetchFromAPI from "../../utils/fetchFromAPI";
 import { useEffect, useState, useRef } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import { useParams } from "react-router-dom"; //за да можем да вземем query search параметрите от search bar-а
-import { SearchVideoCard, SearchChannelCard } from "../";
+import { SearchVideoCard, SearchChannelCard, BackdropComponent } from "../";
 // import { demoSearchResultsResponse } from "../../utils/constants";
 
 export default function SearchFeed(props) {
-  let params = useParams();
-  console.log(params);
+  const [open, setOpen] = useState(false); //backdrop div
+  const { term } = props; //search term идва от props - lift-ва се от SearchBar през Header, до App, после от App се подава до SearchFeed в props
+  console.log("Term comming from props " + term);
+
   const { searchTerm } = useParams(); //searchTerm ще вземе това, което имаме след search/ в url bar-а, а то трябва да се промени от search bar-а в head
+
   const [searchResults, setSearchResults] = useState([]);
 
   let newResults = 20;
-  console.log("Rerender Search feed component with search term: " + searchTerm);
   const scrollDiv = useRef();
 
-  const loadSearchResults = () => {
-    fetchFromAPI(`/search?part=snippet&q=${searchTerm}&maxResults=20`).then(
-      (data) => {
-        setSearchResults(data.items);
-      }
-    );
-  };
+  console.log("Rerender Search feed component with search term: " + searchTerm);
 
   const loadMoreSearchResults = () => {
+    setOpen(true);
+    console.log("load more search results with search term: " + searchTerm);
     fetchFromAPI(
       `/search?part=snippet&q=${searchTerm}&maxResults=${newResults}`
     ).then((data) => {
-      setSearchResults((oldResults) => [
-        ...oldResults,
-        ...data.items.slice(oldResults.length + 1), //отново получаваме и вече показани резултати, затова трябва да ги изрежем, за да не се дублират. Просто апи-то няма възможност да ни покаже следващите
-      ]);
+      setOpen(false);
+      if (searchResults.length === 0) {
+        setSearchResults(data.items);
+      } else {
+        setSearchResults((oldResults) => [
+          ...oldResults,
+          ...data.items.slice(oldResults.length + 1), //отново получаваме и вече показани резултати, затова трябва да ги изрежем, за да не се дублират. Просто апи-то няма възможност да ни покаже следващите
+        ]);
+      }
     });
     newResults += 20;
   };
@@ -52,16 +55,20 @@ export default function SearchFeed(props) {
 
   useEffect(() => {
     console.log("In use effect");
-    loadSearchResults();
+    loadMoreSearchResults();
     scrollDiv.current.addEventListener("scroll", handleScroll);
+  }, []);
 
-    // return () => {
-    //   scrollDiv.current.removeEventListener("scroll", handleScroll);
-    // };
-  }, [searchTerm]);
+  // useEffect(() => {
+  //   console.log("component unmount");
+  //   return () => {
+  //     scrollDiv.current.removeEventListener("scroll", handleScroll);
+  //   };
+  // });
 
   return (
     <div className="searchFeedMainContainer">
+      <BackdropComponent open={open} />
       <Sidebar
         theClass={
           props.showSideBar

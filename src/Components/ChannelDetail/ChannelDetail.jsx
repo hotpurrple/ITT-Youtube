@@ -8,12 +8,12 @@ import fetchFromApi from "../../utils/fetchFromAPI";
 export default function ChannelDetail(props) {
   const { channelId } = useParams();
   const [channelInfo, setChannelInfo] = useState(null);
-  console.log(channelId);
+  // console.log(channelId);
 
   useEffect(() => {
     fetchFromApi(`/channels?part=snippet%2Cstatistics&id=${channelId}`).then(
       (channelData) => {
-        console.log(channelData);
+        // console.log(channelData);
 
         setChannelInfo(channelData);
       }

@@ -6,7 +6,7 @@ import { demoProfilePicture } from "../../utils/constants";
 
 function MainChannelCard(props) {
   //props.channelDetail идва от Videos component, където принтираме всички картички
-  console.log(props.channelDetails);
+  // console.log(props.channelDetails);
   return (
     <Box
       className="card"

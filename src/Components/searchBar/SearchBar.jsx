@@ -12,7 +12,7 @@ import "./searchBar.css";
 import fetchFromAPI from "../../utils/fetchFromAPI";
 // import debounce from "lodash.debounce";
 
-export default function SearchBar() {
+export default function SearchBar(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
@@ -67,6 +67,7 @@ export default function SearchBar() {
     console.log(searchTerm);
     console.log("after handle submit");
     e.preventDefault(); //защото компонента се води форма и бутона е събмит
+    props.setTheTerm(searchTerm);
 
     if (searchTerm) {
       navigate(`/search/${searchTerm}`); //променяме url-то, за да активираме /search/:searchTerm path, за да ни се зареди searchFeed компонента

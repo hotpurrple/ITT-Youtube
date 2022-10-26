@@ -93,7 +93,7 @@ export default function MainVideoCardDotsBtn(props) {
               color="primary"
               onClick={handleCreateNewPlaylist}
             >
-              Add new playlist
+              Create
             </Button>
           </div>
         )}

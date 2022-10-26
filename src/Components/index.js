@@ -28,3 +28,4 @@ export { default as Playlist } from "./Playlist/Playlist";
 export { default as PlaylistCard } from "./PlaylistCard/PlaylistCard";
 
 export { default as MainVideoCardDotsBtn } from "./MainVideoCardDotsBtn/MainVideoCardDotsBtn";
+export { default as BackdropComponent } from "./BackdropComponent/BackdropComponent";

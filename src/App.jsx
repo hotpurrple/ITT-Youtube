@@ -22,23 +22,38 @@ function App() {
   const [sideBar, setSideBar] = useState(false);
   const toggleSidebar = () => setSideBar(!sideBar);
 
+  const [theSearchedTerm, setTheSearchedTerm] = useState("");
+
+  const setTheTerm = (term) => {
+    setTheSearchedTerm(term);
+  };
+
   const handleMenuButtonClick = (e) => {
     // console.log(e);
     toggleSidebar();
     console.log(sideBar);
   };
+
   return (
     <>
       <CssBaseline />
       <BrowserRouter>
-        <Header handleMenuButtonClick={handleMenuButtonClick} />
+        <Header
+          handleMenuButtonClick={handleMenuButtonClick}
+          setTheTerm={setTheTerm}
+        />
         <Routes>
           <Route path="/" element={<Feed showSideBar={sideBar} />} />
-          <Route path="/videos/:id" element={<VideoDetail showSideBar={sideBar} />} />
+          <Route
+            path="/videos/:id"
+            element={<VideoDetail showSideBar={sideBar} />}
+          />
           <Route path="/channel/:channelId" element={<ChannelDetail />} />
           <Route
             path="/search/:searchTerm"
-            element={<SearchFeed showSideBar={sideBar} />}
+            element={
+              <SearchFeed showSideBar={sideBar} term={theSearchedTerm} />
+            }
           />
           <Route path="*" element={<ErrorPage />} />
           <Route path="login" element={<Login />} />
