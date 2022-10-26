@@ -13,7 +13,7 @@ import getUserPlaylistsNames from "../../server/getUserPlaylistsNames";
 
 //!В props има целите данни за конкретното видео
 export default function MainVideoCardDotsBtn(props) {
-  console.log(props);
+  // console.log(props);
   const [dialogShown, setDialogShown] = useState(false);
   const [showHiddenMenu, setShowHiddenMenu] = useState(false);
 

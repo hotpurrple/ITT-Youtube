@@ -15,8 +15,8 @@ import fetchFromAPI from "../../utils/fetchFromAPI";
 export default function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-
   const navigate = useNavigate();
+  const regex = /[^a-zA-Z0-9 -]/gi;
 
   function myDebounce(funcToDebounce, time) {
     let timerId;
@@ -28,14 +28,16 @@ export default function SearchBar() {
 
   const handleInput = (e) => {
     if (e.target.value.length > 1) {
+      console.log("in handle input");
       console.log(e.target.value);
       setSearchTerm(e.target.value);
+      console.log("after handle input");
     }
   };
 
   useEffect(() => {
     if (searchTerm) {
-      fetchFromAPI(`/search?part=snippet&q=${searchTerm}&maxResults=15`).then(
+      fetchFromAPI(`/search?part=snippet&q=${searchTerm}&maxResults=20`).then(
         (suggestedData) => {
           // console.log(suggestedData);
           let suggestedTitles = suggestedData.items.map((el) => {
@@ -49,7 +51,7 @@ export default function SearchBar() {
           // let suggestedTitles = suggestedData.items.map(
           //   (el) => el.snippet.title
           // );
-          console.log(suggestedTitles);
+          // console.log(suggestedTitles);
           setSuggestions(suggestedTitles);
         }
       );
@@ -60,13 +62,15 @@ export default function SearchBar() {
 
   //оn submit
   const handleSubmit = (e) => {
-    console.log("in handle submit");
+    console.log("In handle submit");
+    console.log(e.target.value);
     console.log(searchTerm);
+    console.log("after handle submit");
     e.preventDefault(); //защото компонента се води форма и бутона е събмит
 
     if (searchTerm) {
       navigate(`/search/${searchTerm}`); //променяме url-то, за да активираме /search/:searchTerm path, за да ни се зареди searchFeed компонента
-      setSearchTerm(""); //накрая зачистваме searchTerm
+      //setSearchTerm(""); //накрая зачистваме searchTerm
       setSuggestions([]);
     }
   };
@@ -95,41 +99,47 @@ export default function SearchBar() {
         // the component is re-rendered with the default values ( which is an empty array since nothing is selected).
         // I used hooks in the parent component and passed the values to the key prop, whenever reset is needed.
 
-        //value={searchTerm}
+        // value={searchTerm}
         //open={searchTerm.length > 2}
         //PopperComponen={компонент/елемент}
+        // defaultValue={}
         freeSolo={true}
         onChange={handleSubmit}
         onInput={debounceInput}
         options={suggestions}
         //какво ще се покаже в popper полетата
         getOptionLabel={(option) => {
-          return `${option.title}`;
+          // return `${option.title}`;
+          if (option["title"]) {
+            return option["title"];
+          }
+          if (typeof option === "string") {
+            return option;
+          }
+          return "";
         }}
         //какъв елемент/компонент ще се покаже в popper менюто
         renderOption={(props, option, state) => {
           return (
-            <Link to={`/search/${option.title}`} key={option.id}>
-              {option.title}
-            </Link>
+            <h5 className="searchBarh4">
+              <Link
+                className="searchBarLink"
+                to={`/search/${option.title}`}
+                key={option.id}
+              >
+                {/* {option.title.slice(0, 40).replaceAll(regex, " ")} */}
+                {option.title.slice(0, 40).replaceAll("/", "")}
+              </Link>
+            </h5>
           );
         }}
-        // renderOption={(props, option, state) => {
-        //   //какъв елемент/компонент ще се покаже в popper менюто
-        //   return (
-        //     <div
-        //       key={option.id}
-        //       onClick={() => navigate(`/search/${option.title}`)}
-        //     >
-        //       {option.title}
-        //     </div>
-        //   );
-        // }}
         renderInput={(params) => (
           <TextField
+            value={searchTerm}
             {...params}
             sx={{
               "& fieldset": { border: "none" },
+              // width: "110%", //това изискване не може да бъде изпълнено - popper-а избутва и X бутона към лупата
             }}
             // size="small"
           />

@@ -8,11 +8,22 @@ import { SearchVideoCard, SearchChannelCard } from "../";
 // import { demoSearchResultsResponse } from "../../utils/constants";
 
 export default function SearchFeed(props) {
+  let params = useParams();
+  console.log(params);
   const { searchTerm } = useParams(); //searchTerm ще вземе това, което имаме след search/ в url bar-а, а то трябва да се промени от search bar-а в head
   const [searchResults, setSearchResults] = useState([]);
-  let newResults = 20;
 
+  let newResults = 20;
+  console.log("Rerender Search feed component with search term: " + searchTerm);
   const scrollDiv = useRef();
+
+  const loadSearchResults = () => {
+    fetchFromAPI(`/search?part=snippet&q=${searchTerm}&maxResults=20`).then(
+      (data) => {
+        setSearchResults(data.items);
+      }
+    );
+  };
 
   const loadMoreSearchResults = () => {
     fetchFromAPI(
@@ -34,13 +45,14 @@ export default function SearchFeed(props) {
       scrollDiv.current.scrollHeight - scrollDiv.current.offsetHeight ===
       scrollDiv.current.scrollTop
     ) {
-      console.log("sdfsf");
+      console.log("scrolling");
       loadMoreSearchResults();
     }
   };
 
   useEffect(() => {
-    loadMoreSearchResults();
+    console.log("In use effect");
+    loadSearchResults();
     scrollDiv.current.addEventListener("scroll", handleScroll);
 
     // return () => {
