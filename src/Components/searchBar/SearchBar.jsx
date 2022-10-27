@@ -16,7 +16,7 @@ export default function SearchBar(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
-  const regex = /[^a-zA-Z0-9 -]/gi;
+  // const regex = /[^a-zA-Z0-9 -]/gi;
 
   function myDebounce(funcToDebounce, time) {
     let timerId;

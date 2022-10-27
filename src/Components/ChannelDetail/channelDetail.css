@@ -1,0 +1,8 @@
+.channelDetailMainDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.channelCoverImage {
+    width: 100%;
+}

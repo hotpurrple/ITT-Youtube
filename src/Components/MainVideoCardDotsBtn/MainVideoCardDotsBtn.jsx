@@ -2,10 +2,10 @@ import React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
-import * as HiIcons from "react-icons/hi";
 import { useState } from "react";
 import { Divider, Button, ListItem, ListItemText } from "@mui/material";
 import "./MainVideoCardDotsBtn.css";
+import { NotificationSnackbar } from "../";
 
 import createNewPlaylist from "../../server/createNewPlaylist";
 import addVideoToExistingPlaylist from "../../server/addVideoToExistingPlaylist";
@@ -17,16 +17,21 @@ export default function MainVideoCardDotsBtn(props) {
   const [dialogShown, setDialogShown] = useState(false);
   const [showHiddenMenu, setShowHiddenMenu] = useState(false);
 
+  const [openNotification, setOpenNotification] = useState(false);
+  const [playlistNotificationName, setPlaylistNotificationName] = useState("");
+
   const [newPlaylistName, setNewPlaylistName] = useState("");
   const handleNewPlaylistNameInput = (e) => {
     setNewPlaylistName(e.target.value);
   };
 
   const handleListItemClick = (playlistName) => {
-    console.log(playlistName);
     //!от текущото видео отива, отива към user.playlists в избрания playlist
     addVideoToExistingPlaylist(playlistName, props.vidData);
     setDialogShown(!dialogShown);
+
+    setPlaylistNotificationName(playlistName);
+    setOpenNotification(true);
   };
 
   const showTheHiddenMenu = () => {
@@ -35,17 +40,23 @@ export default function MainVideoCardDotsBtn(props) {
 
   const handleCreateNewPlaylist = () => {
     if (newPlaylistName) {
-      //   console.log("New playlist name is: " + newPlaylistName);
       //!от тук новия playlist, заедно с първото видео в него, отива към user.playlists
       createNewPlaylist(newPlaylistName, props.vidData);
       setDialogShown(!dialogShown);
+
+      setOpenNotification(true);
+      setPlaylistNotificationName(newPlaylistName);
     } else {
       console.log("no name chosen");
     }
   };
 
+  const handleCloseNotification = () => {
+    setOpenNotification(false);
+  };
+
   let userPlaylistsNames = getUserPlaylistsNames() || [];
-  //let userPlaylistsNames = ["Playlist 1", "Playlist 2", "Playlist 3"];
+
   return (
     <div className={props.className}>
       <IconButton
@@ -53,7 +64,6 @@ export default function MainVideoCardDotsBtn(props) {
         onClick={() => setDialogShown(!dialogShown)}
       >
         {props.icon}
-        {/* <HiIcons.HiDotsHorizontal /> */}
       </IconButton>
 
       <Dialog onClose={() => setDialogShown(!dialogShown)} open={dialogShown}>
@@ -98,6 +108,13 @@ export default function MainVideoCardDotsBtn(props) {
           </div>
         )}
       </Dialog>
+
+      <NotificationSnackbar
+        open={openNotification}
+        handleCloseNotification={handleCloseNotification}
+        severity="success"
+        playlistName={playlistNotificationName}
+      />
     </div>
   );
 }

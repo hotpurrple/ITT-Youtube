@@ -1,6 +1,5 @@
 import React from "react";
 import { categoriesForCategoriesBar } from "../../utils/constants";
-
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { useState } from "react";
@@ -9,7 +8,6 @@ export default function CategoriesBar(props) {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
-    console.log(newValue);
     setValue(newValue);
   };
 
@@ -26,7 +24,7 @@ export default function CategoriesBar(props) {
         pb: "5px",
         width: "100%",
         "& .MuiTabs-indicator": {
-          display: "none",
+          display: "none", //за да няма черта под текущо селектирания tab
         },
       }}
     >

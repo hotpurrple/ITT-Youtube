@@ -10,8 +10,7 @@ import {
 } from "..";
 
 import fetchFromAPI from "../../utils/fetchFromAPI";
-
-import { demoVideosResponse } from "../../utils/constants";
+// import { demoVideosResponse } from "../../utils/constants";
 
 export default function Feed(props) {
   const [selectedCategory, setSelectedCategory] = useState("new"); //първоначално ни зарежда видеа от категория New
