@@ -7,7 +7,7 @@
 .videoPageContainer {
     margin-top: 1vh;
     height: 90vh;
-    width: 100vw;
+    width: 100%;
     /* border: 1px solid red; */
     display: flex;
     justify-content: center;
@@ -15,15 +15,15 @@
 }
 
 .videoDetails {
-    height: 720px;
-    width: 1280px;
+    height: 75.392vh;
+    width: 66.667vw;
     /* border: 1px solid blue; */
 }
 
 .recommended {
     position: relative;
     height: fit-content;
-    width: 402px;
+    width: 20.938vw;
     /* border: 1px solid green; */
 }
 

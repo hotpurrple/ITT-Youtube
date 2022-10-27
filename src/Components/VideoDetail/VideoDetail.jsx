@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import "./videodetail.css";
 import VideoInformation from "../VideoInformation/VideoInformation";
@@ -12,14 +12,14 @@ import { useDispatch, useSelector } from "react-redux";
 import RecommendedVideos from "../RecommendedVideos/RecommendedVideos";
 import addToVideosHistory from "../../server/updateUserData";
 import Sidebar from "../sidebar/Sidebar";
+import { setCurrentVideo } from "../../store/currentVideo";
 
 function VideoDetail(props) {
-  const path = useLocation();
-  const url = path.pathname.split("/videos/")[1];
+  const url = useParams().id
   const [videoDetails, setVideoDetails] = useState({});
   const [channelDetails, setChannelDetails] = useState({});
   const [currentVid, setCurrentVid] = useState({});
-
+  const dispatch = useDispatch()
   useEffect(() => {
     fetchFromApi(`/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${url}`)
       .then((data) => {
@@ -47,6 +47,28 @@ function VideoDetail(props) {
           thumbnail,
           channelTitle
         );
+
+            // dispatch(setCurrentVideo({
+            //     url,
+            //     likes: likes,
+            //     id: {
+            //       videoId: url,
+            //     },
+            //     snippet: {
+            //       publishedAt: published_accurately,
+            //       title,
+            //       channelTitle,
+            //       thumbnails: {
+            //         medium: {
+            //           url: thumbnail,
+            //         },
+            //         high: {
+            //           url: highThumbnail,
+            //         },
+            //       },
+            //     },
+            //   }))
+
         setCurrentVid({
           url,
           likes: likes,

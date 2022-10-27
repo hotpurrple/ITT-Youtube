@@ -4,6 +4,7 @@
     gap: 0.4vw;
     text-overflow: ellipsis;
     margin-bottom: 0.5vh;
+    width: 20.938vw;
 }
 
 .videoPageCard p {
@@ -11,6 +12,6 @@
 }
 
 .videoPageCard img {
-    width: 168px;
+    width: 8.750vw;
     height: 94px;
 }

@@ -1,7 +1,7 @@
 * {
-    font-family: "Google Sans","Noto Sans Myanmar UI",arial,sans-serif;
+    font-family: "Google Sans", "Noto Sans Myanmar UI", arial, sans-serif;
     color: #202124;
-    
+
 }
 
 * a {
@@ -43,13 +43,23 @@
     margin-bottom: 5vh;
 }
 
+.regTextField {
+    /* margin-bottom: 9% !important; */
+    /* height: 40% !important; */
+}
+
 .logHref {
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 7vw;
+    /* padding-top: 10%; */
+    /* gap: 9vw; */
+    gap: 2vw;
+    width: 100%;
     bottom: 5%;
+    right: 50%;
+    transform: translate(50%, 0);
 }
 
 .regmessage {

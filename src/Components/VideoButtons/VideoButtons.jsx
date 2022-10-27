@@ -7,7 +7,7 @@ import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import PlaylistAddOutlinedIcon from "@mui/icons-material/PlaylistAddOutlined";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import { isCurrentVideoLiked } from "../../server/updateUserLikedVideos";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import getAllUserLikesForAVideo from "../../server/getAllUserLikesForAVideo";
@@ -17,52 +17,51 @@ import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import { MainVideoCardDotsBtn } from "../";
 
 export default function VideoButtons(props) {
-  let currentVid = props.currentVid;
-  const url = useLocation().pathname.split("/videos/")[1];
+    let currentVid = props.currentVid;
+    const url = useParams().id
+    const [currentVidLiked, setCurrentVidLiked] = useState(null);
+    const [currentVidDisliked, setCurrentVidDisliked] = useState(null);
 
-  const [currentVidLiked, setCurrentVidLiked] = useState(null);
-  const [currentVidDisliked, setCurrentVidDisliked] = useState(null);
+    useEffect(() => {
+        isCurrentVideoLiked(currentVid.url)
+            ? setCurrentVidLiked(<ThumbUpAltIcon />)
+            : setCurrentVidLiked(<ThumbUpOutlinedIcon />);
+        isVideoDisliked(currentVid.url)
+            ? setCurrentVidDisliked(<ThumbDownIcon />)
+            : setCurrentVidDisliked(<ThumbDownOffAltOutlinedIcon />);
+    }, [url, currentVid]);
 
-  useEffect(() => {
-    isCurrentVideoLiked(currentVid.url)
-      ? setCurrentVidLiked(<ThumbUpAltIcon />)
-      : setCurrentVidLiked(<ThumbUpOutlinedIcon />);
-    isVideoDisliked(currentVid.url)
-      ? setCurrentVidDisliked(<ThumbDownIcon />)
-      : setCurrentVidDisliked(<ThumbDownOffAltOutlinedIcon />);
-  }, [url, currentVid]);
-
-  const icons = [
-    currentVidLiked,
-    currentVidDisliked,
-    <SendOutlinedIcon /> /*,<PlaylistAddOutlinedIcon />,
+    const icons = [
+        currentVidLiked,
+        currentVidDisliked,
+        <SendOutlinedIcon /> /*,<PlaylistAddOutlinedIcon />,
     <MoreHorizOutlinedIcon />,*/,
-  ];
+    ];
 
-  let allUserLikes = getAllUserLikesForAVideo(currentVid);
-  const sumOfLikes = Number(props.likes) + Number(allUserLikes) || props.likes;
-  const names = [`${sumOfLikes}`, "Dislike", "Share" /*"Save"*/];
-  return (
-    <>
-      <div className="videoButtons">
-        {icons.map((e, i) => {
-          return (
-            <SingleVideoButton
-              currentVid={currentVid}
-              setCurrentVidDisliked={setCurrentVidDisliked}
-              setCurrentVidLiked={setCurrentVidLiked}
-              key={i}
-              index_number={i}
-              icon={e}
-              name={names[i]}
-            />
-          );
-        })}
-        <MainVideoCardDotsBtn
-          vidData={currentVid}
-          icon={<PlaylistAddOutlinedIcon />}
-        />
-      </div>
-    </>
-  );
+    let allUserLikes = getAllUserLikesForAVideo(currentVid);
+    const sumOfLikes = Number(props.likes) + Number(allUserLikes) || props.likes;
+    const names = [`${sumOfLikes}`, "Dislike", "Share" /*"Save"*/];
+    return (
+        <>
+            <div className="videoButtons">
+                {icons.map((e, i) => {
+                    return (
+                        <SingleVideoButton
+                            currentVid={currentVid}
+                            setCurrentVidDisliked={setCurrentVidDisliked}
+                            setCurrentVidLiked={setCurrentVidLiked}
+                            key={i}
+                            index_number={i}
+                            icon={e}
+                            name={names[i]}
+                        />
+                    );
+                })}
+                <MainVideoCardDotsBtn
+                    vidData={currentVid}
+                    icon={<PlaylistAddOutlinedIcon />}
+                />
+            </div>
+        </>
+    );
 }

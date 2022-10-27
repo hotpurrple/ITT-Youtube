@@ -23,12 +23,12 @@ export default function LibraryPageContent() {
             <div className='libraryPageContentWrapper'>
                 <div className='libraryPageInnerSections'>
                     <div className='LikedSeenPlaylists'>
-                    <LibraryPageSection vidsToShow={vidHistory} icon={<RestoreIcon fontSize='large'/>} className={"libraryPageSection"} name={"History"} />
-                    <Divider/>
-                    <LibraryPageSection vidsToShow={likedVids} icon={<AccessTimeIcon fontSize='large'/>} className={"libraryPageSection"} name={"Liked Videos"} />
-                    <Divider/>
-                    <LibraryPageSection vidsToShow={[]} icon={<PlaylistPlayIcon fontSize='large'/>} className={"libraryPageSection"} name={"Playlists"} />
-                    <Divider/>
+                        <LibraryPageSection vidsToShow={vidHistory} icon={<RestoreIcon fontSize='large' />} className={"libraryPageSection"} name={"History"} />
+                        <Divider />
+                        <LibraryPageSection vidsToShow={likedVids} icon={<AccessTimeIcon fontSize='large' />} className={"libraryPageSection"} name={"Liked Videos"} />
+                        <Divider />
+                        {/* <LibraryPageSection vidsToShow={[]} icon={<PlaylistPlayIcon fontSize='large'/>} className={"libraryPageSection"} name={"Playlists"} /> */}
+                        {/* <Divider/> */}
                     </div>
                 </div>
             </div>

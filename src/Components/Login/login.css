@@ -48,9 +48,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 9vw;
+    /* padding-top: 10%; */
+    /* gap: 9vw; */
+    gap: 10%;
+    width: 100%;
     bottom: 5%;
+    right: 50%;
+    transform: translate(50%, 0);
 }
+/* .regHref * {
+    width: 6vw;
+} */
 
 .loginmessage {
     margin-top: -10vh;

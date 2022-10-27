@@ -6,7 +6,7 @@ import { Divider } from '@mui/material';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import updateUserLikedVideos, { isCurrentVideoLiked } from '../../server/updateUserLikedVideos';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
@@ -14,13 +14,16 @@ import updateUserDislikedVideos from '../../server/updateUserDislikedVideos';
 import isVideoDisliked from '../../server/isVideoDisliked';
 import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import { useSelector } from 'react-redux';
 
 export default function SingleVideoButton(props) {
     const { name, icon, index_number } = props
     const [dialogShown, setDialogShown] = useState(false)
     let currentVid = props.currentVid
-
+    const user = useSelector(state => state.loggedUser.user)
+    const navigate = useNavigate()
     const videoButtonFunction = () => {
+        !user && navigate("/login")
         switch (index_number) {
             case 0:
                 updateUserLikedVideos(currentVid)

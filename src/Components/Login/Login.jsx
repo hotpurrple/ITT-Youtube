@@ -26,8 +26,6 @@ export default function Login() {
     const handleUserLogin = (e) => {
         e.preventDefault()
         const current = doesUserExist(username.current.value)
-        console.log(current);
-        console.log(username.current.value, password.current.value);
         if (!current) {
             setErrormsg("USER DOESN'T EXIST")
         } else if (current.username !== username.current.value || current.password !== password.current.value) {

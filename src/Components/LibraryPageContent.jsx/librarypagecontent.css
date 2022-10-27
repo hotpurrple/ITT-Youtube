@@ -2,13 +2,17 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;    
+    /* align-items: center; */
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    height: fit-content;
 }
 
 .libraryPageInnerSections {
-    margin-left: 7vh;
-    width: 75%;
-    height: 95%;
+    margin-left: 10vw;
+    /* margin-left: 20vh; */
+    width: 85vw;
+    height: fit-content;
 }
 
 .LikedSeenPlaylists {
@@ -16,17 +20,16 @@
     width: 83.5%;
     height: 100%;
 }
+
 .singleLibrarySectionHead {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 1vw;
     justify-content: space-between;
-    margin-bottom: 2vh;
+    width: 95%;
+    /* padding-top: 1vh; */
 }
 
-.middledivplaceholder {
-    width: 50%;
-}
 
 .libraryIconAndTitle {
     display: flex;
@@ -42,12 +45,13 @@
     height: fit-content;
     display: flex;
     flex-wrap: wrap;
-    gap: 2%;
+    gap: 1%;
 }
 
 .libraryPageCard {
     height: 210px;
-    margin-top: 5vh;
+    margin-top: 3vh;
+    /* margin-bottom: 2vh; */
     width: 13vw;
     font-size: 0.8rem;
     text-overflow: ellipsis;
