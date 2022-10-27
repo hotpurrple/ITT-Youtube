@@ -12,10 +12,6 @@ export default function RecommendedVideos(props) {
         hasMore: true
     })
 
-    const layoutClasses = "videoPageCard"
-        
-    
-
     useEffect(() => {
         fetchFromApi(`/search?relatedToVideoId=${url}&part=id%2Csnippet&type=video&maxResults=100`)
             .then(data => {

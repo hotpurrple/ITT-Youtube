@@ -56,14 +56,17 @@
 
 .muiList {
     position: absolute;
-    right: -5%;
-    bottom: -25vh;
-    width: 25vw !important;
+    right: 0;
+    /* bottom: -25vh; */
+    width: 15vw !important;
     z-index: 1;
     opacity: 1;
-    background-color: white !important;
 }
 
 .MoreVertIcon {
     cursor: pointer;
+}
+.muiMenu {
+    position: absolute;
+    /* right: 500px !important; */
 }
