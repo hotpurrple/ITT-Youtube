@@ -45,7 +45,8 @@ function VideoDetail(props) {
           published_accurately,
           title,
           thumbnail,
-          channelTitle
+          channelTitle,
+          views
         );
 
             // dispatch(setCurrentVideo({
@@ -79,6 +80,7 @@ function VideoDetail(props) {
             publishedAt: published_accurately,
             title,
             channelTitle,
+            views,
             thumbnails: {
               medium: {
                 url: thumbnail,

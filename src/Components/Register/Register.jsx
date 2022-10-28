@@ -86,9 +86,9 @@ export default function Register() {
 
 
     }
-    const UpdateRegName = debounce(() => validateRegisterName(username), 700)
-    const UpdateRegPass = debounce(() => validateRegisterPass(password), 700)
-    const DoPasswordsMatch = debounce(() => doPassesMatch(password, repeatPassword), 700)
+    const UpdateRegName = debounce(() => validateRegisterName(username), 1200)
+    const UpdateRegPass = debounce(() => validateRegisterPass(password), 1200)
+    const DoPasswordsMatch = debounce(() => doPassesMatch(password, repeatPassword), 1200)
     return (
         <>
             <div className="regcontainer">

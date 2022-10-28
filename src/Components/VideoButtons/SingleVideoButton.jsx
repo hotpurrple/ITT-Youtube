@@ -3,7 +3,6 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
 import { Divider } from '@mui/material';
-import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -27,7 +26,7 @@ export default function SingleVideoButton(props) {
         switch (index_number) {
             case 0:
                 updateUserLikedVideos(currentVid)
-
+                
                 isCurrentVideoLiked(currentVid.url) ? props.setCurrentVidLiked(<ThumbUpAltIcon />) :
                     props.setCurrentVidLiked(<ThumbUpOutlinedIcon />)
                 props.setCurrentVidDisliked(<ThumbDownOffAltOutlinedIcon />)
