@@ -25,8 +25,8 @@ export default function VideoDescription(props) {
                 </div>
                 <div className="descriptionTextWrapper">
                     <div className="descriptionText">
-                        {expandedDesc ? shortDescription.slice(0, 200) : shortDescription}
-                        <h6 className='showMoreButton' onClick={() => setExpandedDesc(!expandedDesc)}>{expandedDesc 
+                        {!expandedDesc ? shortDescription.slice(0, 200) : shortDescription}
+                        <h6 className='showMoreButton' onClick={() => setExpandedDesc(!expandedDesc)}>{!expandedDesc 
                         ? "SHOW MORE" : "SHOW LESS"}</h6>
                     </div>
                 </div>

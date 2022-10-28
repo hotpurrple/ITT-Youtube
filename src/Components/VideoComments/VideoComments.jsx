@@ -86,9 +86,8 @@ export default function VideoComments(props) {
         let likes = 0
         AddUserComment(url, text, username, pfp, likes, time)
         setCommentsList({
-            allItems: [...commentsList.allItems],
+            ...commentsList,
             items: [UserComment(url, text, username, pfp, likes, time), ...commentsList.items],
-            hasMore: false
         })
         commentTextField.current.value = ""
         setShowAddCommentButton(false)
@@ -114,10 +113,7 @@ export default function VideoComments(props) {
         fetchFromApi(`/commentThreads?part=snippet&videoId=${url}&maxResults=100`)
             .then(data => {
                 let arr = [...data.items]
-                // arr = arr)
-                console.log(arr);
                 let partialArr = arr.slice(0, 15)
-
                 setCommentsList({
                     allItems: [...arr],
                     items: [...GetUserComments(url), ...partialArr],
@@ -129,8 +125,7 @@ export default function VideoComments(props) {
     const loadmore = () => {
         if (commentsList.items.length >= 100) {
             setCommentsList({
-                allItems: commentsList.allItems,
-                items: commentsList.items,
+                ...commentsList,
                 hasMore: false
             })
         } else {
@@ -143,8 +138,7 @@ export default function VideoComments(props) {
                 })
                 if (newArr.length < 15) {
                     setCommentsList({
-                        allItems: commentsList.allItems,
-                        items: commentsList.items,
+                       ...commentsList,
                         hasMore: false
                     })
                 }
