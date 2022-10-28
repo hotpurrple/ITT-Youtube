@@ -8,8 +8,7 @@
     position: relative;
     margin-top: 2vh;
     width: 100%;
-    height: 20vh;
-
+    /* height: 20vh; */
 }
 
 .channelInformation {
@@ -47,20 +46,22 @@
 .descriptionTextWrapper {
     font-size: 0.9rem;
     padding-left: 5%;
-    position: absolute;
-    top: 30%;
+    /* position: absolute; */
+    /* top: 30%; */
     width: 100%;
     border-bottom: 2px solid #0000001a;
     padding-bottom: 1.3vh;
+    margin-bottom: 3vh;
 
 }
 
 .descriptionText {
+    margin-top: 1.3vh;
     text-overflow: ellipsis;
-    width: 50%;
+    width: 60%;
 }
 
-h6 {
+.showMoreButton {
     padding-left: 0.5vw;
     margin-top: 2vh;
     color: #606060;

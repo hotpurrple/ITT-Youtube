@@ -34,7 +34,6 @@ export default function Header(props) {
     const user = useSelector((state) => state.loggedUser.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [isMenuShown, setIsMenuShown] = useState(false);
 
     const [anchorEl, setAnchorEl] = useState(null)
     const open = Boolean(anchorEl);

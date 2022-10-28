@@ -38,7 +38,7 @@ function VideoDetail(props) {
           .split("-")
           .reverse()
           .join(".");
-        let shortDescription = data.items[0].snippet.description.slice(0, 200);
+        let shortDescription = data.items[0].snippet.description
         let obj = { title, views, likes, creationDate, shortDescription };
         addToVideosHistory(
           url,

@@ -57,7 +57,7 @@ export default function CommentCard(props) {
                         <span className='likeButtonLikeAmount' onClick={handleUserLikeComment}>
                             {isLiked} {totalLikesOfComment}</span>
                         <span onClick={handleUserDislikeComment} >{isDisliked}</span>
-                        <p className='commentCardReply'>REPLY</p>
+                        {/* <p className='commentCardReply'>REPLY</p> */}
                     </span>
                 </div>
             </div>
