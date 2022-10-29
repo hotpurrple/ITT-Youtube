@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button';
 import VideoPageCard from '../VideoPageCard/VideoPageCard.jsx';
 // import pseudoRecommended from '../../utils/pseudoRecommended.mjs';
-
+import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
+import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
 
 export default function LibraryPageSection(props) {
     // let arr = pseudoRecommended
-   
+    const [arrLength, setArrLength] = useState(5)
     return (
         <>
             <div className='singleLibrarySection'>
@@ -16,10 +17,14 @@ export default function LibraryPageSection(props) {
                     <Button className='libraryButton' variant="text">SEE ALL</Button>
                 </div>
                 <div className='libraryVideoPageCards'>
-                    {props.vidsToShow.map(e => {
+                    {props.vidsToShow.slice(0,arrLength).map(e => {
                         return <VideoPageCard layoutClass="libraryPageCard" url={e.id.videoId} key={e.id.videoId} props={e.snippet} />
                     })}
                 </div>
+                <span className='libraryExpandControls'>
+                <KeyboardArrowDownOutlinedIcon onClick={() => setArrLength(arrLength+5)} fontSize='large'/>
+                <KeyboardArrowUpOutlinedIcon onClick={() => arrLength > 5 && setArrLength(arrLength-5)} fontSize='large'/>
+                </span>
             </div>
         </>
     )

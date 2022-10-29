@@ -6,7 +6,7 @@ const currentUser = () => {
 
 
 
-const addToVideosHistory = (VIDEO_ID, PUBLISHED_AT, TITLE, THUMBNAIL_URL, CHANNEL_TITLE) => {
+const addToVideosHistory = (VIDEO_ID, PUBLISHED_AT, TITLE, THUMBNAIL_URL, CHANNEL_TITLE, VIEWS) => {
     let is_anyone_logged = currentUser()
     if (is_anyone_logged) {
         let userList = JSON.parse(localStorage.getItem("userList"))
@@ -28,6 +28,7 @@ const addToVideosHistory = (VIDEO_ID, PUBLISHED_AT, TITLE, THUMBNAIL_URL, CHANNE
                 }
             },
             "channelTitle": CHANNEL_TITLE,
+            "views": VIEWS
         }
     }
         if (currentUser.videos_history.length === 0 || currentUser.videos_history[0].id.videoId !== VIDEO_ID) {
