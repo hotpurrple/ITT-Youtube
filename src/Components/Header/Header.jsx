@@ -13,7 +13,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { SearchBar } from "../";
-import { mahniGo } from "../../store/loggedUser";
+import { logUserOut } from "../../store/loggedUser";
 import Brightness3OutlinedIcon from "@mui/icons-material/Brightness3Outlined";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Menu from '@mui/material/Menu';
@@ -39,7 +39,7 @@ export default function Header(props) {
     const handleLoginFromHomePage = (ev) => {
         //if there's an active user, call the function to log out and update the state to 0 logged users
         if (user) {
-            dispatch(mahniGo());
+            dispatch(logUserOut());
             return;
         }
         navigate("/login");

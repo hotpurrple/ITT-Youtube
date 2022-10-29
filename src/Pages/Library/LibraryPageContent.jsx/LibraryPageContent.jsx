@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import { currentUser } from '../../server/serverLogin.js';
+import { currentUser } from '../../../server/serverLogin.js';
 import LibraryPageSection from './LibraryPageSection'
 import "./librarypagecontent.css"
 import { Divider } from '@mui/material'

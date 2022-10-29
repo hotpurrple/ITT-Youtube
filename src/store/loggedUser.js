@@ -14,11 +14,11 @@ export const loggedUser = createSlice({
   name: 'loggedUser',
   initialState,
   reducers: {
-    logniGo: (state, action) => {
+    logUserIn: (state, action) => {
         logUser(action.payload)
         state.user = currentUser()
     },
-    mahniGo: (state) => {
+    logUserOut: (state) => {
         logOutUsers()
         state.user = ""
     },
@@ -26,6 +26,6 @@ export const loggedUser = createSlice({
   },
 })
 
-export const { logniGo, mahniGo} = loggedUser.actions
+export const { logUserIn, logUserOut} = loggedUser.actions
 
 export default loggedUser.reducer

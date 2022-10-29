@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import "./register.css";
-import GoogleLogo from "../Login/googlelogo.png";
+import GoogleLogo from "../../Login/Login/googlelogo.png";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
-import { registerUser } from "../../server/serverRegister";
-import { doesUserExist } from "../../server/serverRegister";
+import { registerUser } from "../../../server/serverRegister.mjs";
+import { doesUserExist } from "../../../server/serverRegister.mjs";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import debounce from "lodash.debounce"
@@ -48,7 +48,7 @@ export default function Register() {
         let isPasswordValid =
             password?.current?.value.match(/^(?=(.*[a-z]){3,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%?^&*()\-__+.]){1,}).{8,}$/)
         if (!isPasswordValid) {
-            setPasswordInvalidReason(`Please select a password containing a symbol, number and uppercase letter.`)
+            setPasswordInvalidReason(`Please select an 8 character long password containing a symbol, number and uppercase letter.`)
             setEnableButton({ ...enableButton, correctPassword: false })
 
         } else {
@@ -81,7 +81,6 @@ export default function Register() {
             setEnableButton({ ...enableButton, passesMatch: true })
 
         }
-
 
     }
     const UpdateRegName = debounce(() => validateRegisterName(username), 450)

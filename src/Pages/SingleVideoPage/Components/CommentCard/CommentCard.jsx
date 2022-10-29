@@ -3,14 +3,13 @@ import "./commentcard.css"
 import CommentProfilePic from '../VideoComments/CommentProfilePic'
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
-import dateCalculator from "../../utils/dateCalculator"
-import updateUserLikedComments from '../../server/updateUserLikedComments';
-import updateUserDislikedComments from "../../server/updateUserDislikedComments"
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import { isCommentLiked, isCommentDisliked } from '../../server/isCommentLiked';
-import getUserCommentLikes from '../../server/getUserCommentLikes';
-
+import dateCalculator from '../../../../utils/dateCalculator.mjs';
+import { isCommentDisliked, isCommentLiked } from '../../../../server/isCommentLiked';
+import getUserCommentLikes  from '../../../../server/getUserCommentLikes';
+import updateUserDislikedComments from "../../../../server/updateUserDislikedComments"
+import updateUserLikedComments from "../../../../server/updateUserLikedComments"
 export default function CommentCard(props) {
     const { likeCount, publishedAt, authorDisplayName, textDisplay, authorProfileImageUrl } = props.props.snippet.topLevelComment.snippet
     const formattedDate = dateCalculator(publishedAt)

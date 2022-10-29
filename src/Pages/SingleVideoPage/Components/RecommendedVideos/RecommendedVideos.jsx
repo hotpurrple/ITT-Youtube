@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import fetchFromApi from '../../utils/fetchFromAPI'
-import VideoPageCard from '../VideoPageCard/VideoPageCard'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { CircularProgress } from '@mui/material';
+import fetchFromApi from '../../../../utils/fetchFromAPI';
+import VideoPageCard from '../VideoPageCard/VideoPageCard';
 
 export default function RecommendedVideos(props) {
     const url = props.url
@@ -60,7 +60,7 @@ export default function RecommendedVideos(props) {
     return (
         <>
             <InfiniteScroll className='infiniteScroll'
-                dataLength={recVideos.items.length} //This is important field to render the next data
+                dataLength={recVideos.items.length} 
                 next={loadMore}
                 hasMore={recVideos.hasMore}
                 loader={<CircularProgress className='recommendedVideosSpinner' size={20} color="inherit" />}

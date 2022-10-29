@@ -17,11 +17,6 @@ import {
     Playlists,
 } from "./Components"; //simple import
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-const darkTheme = createTheme({
-    palette: {
-      mode: 'light',
-    },
-  });
 function App() {
     const [sideBar, setSideBar] = useState(false);
     const toggleSidebar = () => setSideBar(!sideBar);
@@ -40,8 +35,6 @@ function App() {
 
     return (
         <>
-            <div className="darkModeWrapper">
-            <ThemeProvider theme={darkTheme}>
                 <CssBaseline />
                 <BrowserRouter>
                     <Header
@@ -83,8 +76,6 @@ function App() {
                         />
                     </Routes>
                 </BrowserRouter>
-            </ThemeProvider>
-            </div>
         </>
     );
 }

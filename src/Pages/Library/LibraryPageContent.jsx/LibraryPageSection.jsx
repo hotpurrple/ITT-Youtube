@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button';
-import VideoPageCard from '../VideoPageCard/VideoPageCard.jsx';
 // import pseudoRecommended from '../../utils/pseudoRecommended.mjs';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
+import VideoPageCard from '../../SingleVideoPage/Components/VideoPageCard/VideoPageCard';
 
 export default function LibraryPageSection(props) {
     // let arr = pseudoRecommended
