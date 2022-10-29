@@ -12,21 +12,11 @@ import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import SendIcon from "@mui/icons-material/Send";
-import { Divider } from "@mui/material";
 import { SearchBar } from "../";
 import { mahniGo } from "../../store/loggedUser";
 import Brightness3OutlinedIcon from "@mui/icons-material/Brightness3Outlined";
-import TranslateOutlinedIcon from "@mui/icons-material/TranslateOutlined";
-import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
-import KeyboardAltOutlinedIcon from "@mui/icons-material/KeyboardAltOutlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import FeedbackOutlinedIcon from "@mui/icons-material/FeedbackOutlined";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 export default function Header(props) {
     const location = useLocation();
 
@@ -73,25 +63,8 @@ export default function Header(props) {
                         </Link>
                     </div>
 
-                    {/* <div className="headerCenter"> */}
-                    {/* <TextField
-              id="outlined-basic"
-              className="searchbar"
-              size="small"
-              placeholder="Search"
-              variant="outlined"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton>
-                      <SearchIcon />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            /> */}
                     <SearchBar setTheTerm={props.setTheTerm} />
-                    {/* </div> */}
+                
                     <div className="headerRight">
                         <MoreVertIcon id="basic-button" onClick={handleClick} className="MoreVertIcon" />
                         <Menu className="muiMenu"

@@ -45,7 +45,9 @@ export default function SearchFeed(props) {
     // console.log(scrollDiv.current.offsetHeight);
     // console.log(scrollDiv.current.scrollTop);
     if (
-      scrollDiv.current.scrollHeight - scrollDiv.current.offsetHeight === scrollDiv.current.scrollTop) {
+      scrollDiv.current.scrollHeight - scrollDiv.current.offsetHeight ===
+      scrollDiv.current.scrollTop
+    ) {
       console.log("scrolling");
       loadMoreSearchResults();
     }
@@ -55,14 +57,7 @@ export default function SearchFeed(props) {
     console.log("In use effect");
     loadMoreSearchResults();
     scrollDiv.current.addEventListener("scroll", handleScroll);
-  }, []);
-
-  // useEffect(() => {
-  //   console.log("component unmount");
-  //   return () => {
-  //     scrollDiv.current.removeEventListener("scroll", handleScroll);
-  //   };
-  // });
+  }, [searchTerm]);
 
   return (
     <div className="searchFeedMainContainer">

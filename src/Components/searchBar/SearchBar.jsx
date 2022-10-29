@@ -84,7 +84,8 @@ export default function SearchBar(props) {
         display: "flex",
         border: "1px solid gray",
         borderRadius: "10px",
-        width: "360px",
+        //width: "360px",
+        width: "25%",
         justifyContent: "center",
         padding: "0px 0px 0px 5px",
       }}
@@ -92,7 +93,8 @@ export default function SearchBar(props) {
     >
       <Autocomplete
         style={{
-          width: 500,
+          // width: 500,
+          width: "85%",
           backgroundColor: "#ffffff",
         }}
         // key={somethingMeaningful}
@@ -140,7 +142,7 @@ export default function SearchBar(props) {
             {...params}
             sx={{
               "& fieldset": { border: "none" },
-              // width: "110%", //това изискване не може да бъде изпълнено - popper-а избутва и X бутона към лупата
+              // fontSize: "1vw",
             }}
             // size="small"
           />

@@ -1,15 +1,12 @@
 .searchFeedMainContainer {
     display: flex;
-    flex-direction: row;
     background-color: #f9f9f9;
 }
 
 .searchCardContainer {
     display: flex;
-
     height: 93vh;
     width: 100%;
-
 }
 
 .searchCardsScrollContainer {

@@ -47,10 +47,10 @@ export default function Playlist(props) {
       <div className="playlistPageLeft">
         <div className="playlistMainCard">
           <img src={playlistImage} alt="somePic"></img>
-          <Typography variant="h5" color="initial">
+          <Typography variant="h5" color="initial" fontSize={"1.5vw"}>
             {playlistTitle}
           </Typography>
-          <Typography variant="body2" color="initial">
+          <Typography variant="body2" color="initial" fontSize={"1vw"}>
             {playlistVideosCount} videos
           </Typography>
           <Divider />
@@ -58,8 +58,9 @@ export default function Playlist(props) {
             className="playlistMainCardUsernameContainer"
             variant="h5"
             color="initial"
+            fontSize={"1.5vw"}
           >
-          User:
+            User:
             {user.username}
           </Typography>
         </div>

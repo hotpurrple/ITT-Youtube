@@ -15,6 +15,7 @@ export default function Sidebar(props) {
   return (
     <div className={props.theClass}>
       <ul className="sidebar-ul">
+      
         {/* {sidebarData.map((el, idx) => {
           return (
             <li key={idx} className={el.cName}>

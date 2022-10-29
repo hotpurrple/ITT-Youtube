@@ -3,13 +3,23 @@ import "./playlists.css";
 import Sidebar from "../sidebar/Sidebar";
 import getUserPlaylists from "../../server/getUserPlaylists";
 import PlaylistsPlaylistCard from "../PlaylistsPlaylistCard/PlaylistsPlaylistCard";
-import { Outlet } from "react-router-dom";
+
+import Typography from "@mui/material/Typography";
+import { useSelector } from "react-redux";
 
 function Playlists(props) {
   const [userPlaylists, setUserPlaylists] = useState(getUserPlaylists());
+  const currentUser = useSelector((state) => state.loggedUser.user);
 
   return (
     <div className="playlistsPageContainer">
+      <Typography
+        variant="h4"
+        color="initial"
+        sx={{ display: "flex", justifyContent: "center" }}
+      >
+        {currentUser.username}'s playlists:
+      </Typography>
       <Sidebar
         theClass={
           props.showSideBar
@@ -22,20 +32,7 @@ function Playlists(props) {
         {userPlaylists.map((pList) => (
           <PlaylistsPlaylistCard pListData={pList} key={pList.title} />
         ))}
-
-        {/* <div className="pListCard">
-          <Link to={`/playlists/:playlistName`}>
-            <img
-              className="pListCardImg"
-              src="https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg"
-              alt=""
-            ></img>
-          </Link>
-
-          <div className="videosInfoDIv">60 videos</div>
-        </div> */}
       </div>
-      {/* <Outlet /> */}
     </div>
   );
 }

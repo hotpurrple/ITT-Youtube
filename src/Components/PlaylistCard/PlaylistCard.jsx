@@ -20,13 +20,21 @@ function PlaylistCard({ videoData, removeVideoFromPlaylist }) {
 
         <div className="playlistCardRightPart">
           <Link to={`/videos/${videoData.id.videoId}`}>
-            <Typography variant="h5" className="playlistCardTitle">
+            <Typography
+              variant="h5"
+              className="playlistCardTitle"
+              fontSize={"1.2vw"}
+            >
               {videoData.snippet.title}
             </Typography>
           </Link>
 
           <Link to={`/channel/${videoData.snippet.channelId}`}>
-            <Typography variant="subtitle2" className="playlistCardSubtitle">
+            <Typography
+              variant="subtitle2"
+              className="playlistCardSubtitle"
+              fontSize={"0.8vw"}
+            >
               {videoData.snippet.channelTitle}
             </Typography>
           </Link>
@@ -142,8 +150,6 @@ export default PlaylistCard;
 //       }
 //   }
 // }
-
-
 
 // {
 //   "kind": "youtube#videoListResponse",

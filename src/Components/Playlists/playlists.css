@@ -11,34 +11,3 @@
     flex-wrap: wrap;
     padding: 10px;
 }
-
-/* 
-.pListCard {
-    display: flex;
-    width: 15%;
-    position: relative;
-    border-radius: 10px;
-    -webkit-box-shadow: 0px 0px 56px -3px rgba(112, 106, 112, 1);
-    -moz-box-shadow: 0px 0px 56px -3px rgba(112, 106, 112, 1);
-    box-shadow: 0px 0px 56px -3px rgba(112, 106, 112, 1);
-}
-
-.pListCardImg {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-}
-
-.videosInfoDIv {
-    bottom: 8px;
-    position: absolute;
-    opacity: 0.8;
-    background-color: black;
-    width: 100%;
-    height: 40%;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-} */
