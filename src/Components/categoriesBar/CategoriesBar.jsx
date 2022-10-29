@@ -12,7 +12,7 @@ export default function CategoriesBar(props) {
   };
 
   return (
-    <Tabs
+    <Tabs className="muiTabs"
       value={value}
       onChange={handleChange}
       variant="scrollable"
