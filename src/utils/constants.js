@@ -231,6 +231,9 @@ export const categoriesForCategoriesBar = [
   { name: "Blackbird" },
   { name: "Bourne" },
   { name: "Dark Souls" },
+  { name: "Костя Копейкин" },
+  { name: "Волен Сидеров" },
+  { name: "HIMARS" },
 ];
 
 //за да има какво да покажем, ако не успеем да fetch-нем правилно някое видео или канал

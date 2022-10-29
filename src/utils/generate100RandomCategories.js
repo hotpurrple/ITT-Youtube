@@ -1,4 +1,5 @@
 import { categoriesForCategoriesBar } from "./constants";
+console.log(categoriesForCategoriesBar);
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
@@ -6,12 +7,12 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
 }
 
-export default function get40RandomCategories() {
+export default function get100RandomCategories() {
   let counter = 0;
   let randomCategories = [];
 
   while (counter <= 100) {
-    let idx = getRandomIntInclusive(0, 227);
+    let idx = getRandomIntInclusive(0, 230);
     if (
       !randomCategories.some(
         (cat) => cat.name === categoriesForCategoriesBar[idx].name
@@ -21,5 +22,6 @@ export default function get40RandomCategories() {
       counter++;
     }
   }
+
   return randomCategories;
 }

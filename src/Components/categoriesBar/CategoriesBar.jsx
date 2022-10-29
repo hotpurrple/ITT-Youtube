@@ -2,15 +2,17 @@ import React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { useState } from "react";
-import get40RandomCategories from "../../utils/generate100RandomCategories";
+import get100RandomCategories from "../../utils/generate100RandomCategories";
 
 export default function CategoriesBar(props) {
   const [value, setValue] = useState(0);
 
   const [randomCategories, setRandomCategories] = useState(
-    get40RandomCategories()
+    get100RandomCategories()
   );
 
+  console.log(randomCategories);
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
