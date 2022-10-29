@@ -8,7 +8,7 @@ export { default as Login } from "./Login/Login";
 export { default as Register } from "./Register/Register";
 
 export { default as Sidebar } from "./sidebar/Sidebar";
-export { default as CategoriesBar } from "./categoriesBar/CategoriesBar";
+export { default as CategoriesBar } from "./CategoriesBar/CategoriesBar";
 
 //Картичките, които се показват, когато се натиска бутон от categories bat компонента
 export { default as MainVideoCard } from "./mainVideoCard/MainVideoCard";

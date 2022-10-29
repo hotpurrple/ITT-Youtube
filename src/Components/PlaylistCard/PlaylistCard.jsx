@@ -41,6 +41,7 @@ function PlaylistCard({ videoData, removeVideoFromPlaylist }) {
         </div>
       </div>
       <IconButton
+        className="removeAlbumBtn"
         aria-label=""
         onClick={() => removeVideoFromPlaylist(videoData.id.videoId)}
       >
