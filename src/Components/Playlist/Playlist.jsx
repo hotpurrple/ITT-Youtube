@@ -23,7 +23,7 @@ export default function Playlist(props) {
   const [playlistImage, setPlaylistImage] = useState(
     currentPlaylistVideos[0].snippet.thumbnails.high.url
   );
-  const [playlistTitle, setPlaylistTitle] = useState("Playlist 1");
+  // const [playlistTitle, setPlaylistTitle] = useState("");
   const [playlistVideosCount, setPlatlistVideosCount] = useState(
     currentPlaylistVideos.length
   );
@@ -31,8 +31,8 @@ export default function Playlist(props) {
   const removeVideoFromPlaylist = (vidId) => {
     //!delete the video from the playlist
     //!някаква ф-я
-    deleteVideoFromPlaylist("Playlist 1", vidId);
-    setCurrentPlaylistVideos(getPlaylistVideos("Playlist 1"));
+    deleteVideoFromPlaylist(playlistName, vidId);
+    setCurrentPlaylistVideos(getPlaylistVideos(playlistName));
   };
 
   return (
@@ -48,7 +48,7 @@ export default function Playlist(props) {
         <div className="playlistMainCard">
           <img src={playlistImage} alt="somePic"></img>
           <Typography variant="h5" color="initial" fontSize={"1.5vw"}>
-            {playlistTitle}
+            {playlistName}
           </Typography>
           <Typography variant="body2" color="initial" fontSize={"1vw"}>
             {playlistVideosCount} videos
