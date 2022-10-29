@@ -10,10 +10,7 @@ export default function deleteVideoFromPlaylist(playlisTitle, vidId) {
 
     console.log(currentPlaylist);
 
-    currentPlaylist.videos.splice(
-      currentPlaylist.videos.findIndex((el) => el.id.videoId === vidId),
-      1
-    );
+    currentPlaylist.videos.splice(currentPlaylist.videos.findIndex((el) => el.id.videoId === vidId),1);
 
     return localStorage.setItem("userList", JSON.stringify(userList));
   }

@@ -12,7 +12,7 @@
 }
 
 .playlistCardImg {
-    /* width: 100%; */
+    margin: 0px 5px 0px 0px;
     height: 100%;
     border-radius: 10px;
     transition: transform .75s;
@@ -35,4 +35,8 @@
 
 .playlistCard:hover .playlistCardImg {
     transform: scale(1.15);
+}
+
+.removeAlbumBtn {
+    align-self: center;
 }

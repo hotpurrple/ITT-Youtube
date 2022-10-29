@@ -1,11 +1,15 @@
 import React from "react";
-import { categoriesForCategoriesBar } from "../../utils/constants";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { useState } from "react";
+import get40RandomCategories from "../../utils/generate100RandomCategories";
 
 export default function CategoriesBar(props) {
   const [value, setValue] = useState(0);
+
+  const [randomCategories, setRandomCategories] = useState(
+    get40RandomCategories()
+  );
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -28,7 +32,7 @@ export default function CategoriesBar(props) {
         },
       }}
     >
-      {categoriesForCategoriesBar.map((c) => (
+      {randomCategories.map((c) => (
         <Tab
           label={c.name}
           variant="outlined"
