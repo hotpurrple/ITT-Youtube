@@ -63,9 +63,9 @@ export default function Feed(props) {
     loadMoreResults(true); //тук казваме, че има промяна в категорията
 
     //on component unmount - премахни listener-а за scroll
-    return () => {
-      scrollDiv.current.removeEventListener("scroll", handleScroll);
-    };
+    // return () => {
+    //   scrollDiv.current.removeEventListener("scroll", handleScroll);
+    // };
   }, [selectedCategory]); //когато selectedCategory се промени, изпълни callback ф-ята в useEffect()
 
   return (
