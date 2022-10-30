@@ -59,7 +59,8 @@ export default function MainVideoCardDotsBtn(props) {
 
   return (
     <div className={props.className}>
-      <IconButton className="threeDotsVideoCard"
+      <IconButton
+        className="threeDotsVideoCard"
         variant="contained"
         onClick={() => setDialogShown(!dialogShown)}
         color={"success"}
@@ -67,7 +68,11 @@ export default function MainVideoCardDotsBtn(props) {
         {props.icon}
       </IconButton>
 
-      <Dialog onClose={() => setDialogShown(!dialogShown)} open={dialogShown}>
+      <Dialog
+        onClose={() => setDialogShown(!dialogShown)}
+        open={dialogShown}
+        // PaperProps={{ sx: { width: "12%" } }}
+      >
         <DialogTitle> Add to playlist </DialogTitle>
         <ul>
           {userPlaylistsNames.map((pName) => (
