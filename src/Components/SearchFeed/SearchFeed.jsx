@@ -28,9 +28,11 @@ export default function SearchFeed(props) {
 
   const loadMoreSearchResults = () => {
     setOpen(true);
-    console.log("load more search results with search term: " + searchTerm);
+    const updatedSearch = window.location.pathname.split("/search/")[1]
+    //it used to fetch with searchTerm, i made it so it fetches with updatedSearch
+    console.log("load more search results with search term: " + updatedSearch);
     fetchFromAPI(
-      `/search?part=snippet&q=${searchTerm}&maxResults=${newResults}`
+      `/search?part=snippet&q=${updatedSearch}&maxResults=${newResults}`
     ).then((data) => {
       setOpen(false);
 
