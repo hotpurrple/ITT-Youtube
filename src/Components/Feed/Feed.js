@@ -23,12 +23,12 @@ export default function Feed(props) {
 
   const loadMoreResults = (isNewCategory) => {
     setOpen(true);
-    console.log(selectedCategory, newResults);
+    // console.log(selectedCategory, newResults);
     fetchFromAPI(
       `/search?part=snippet&q=${selectedCategory}&maxResults=${newResults}`
     ).then((data) => {
       setOpen(false);
-      console.log(data.items);
+      // console.log(data.items);
       if (isNewCategory) {
         //ако категорията е нова - зарези 30 резултата първоначално
         setVideos(data.items);

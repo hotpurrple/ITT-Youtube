@@ -12,13 +12,13 @@ export default function SearchFeed(props) {
 
   const scrollDiv = useRef();
 
-  let newResults = 20;
+  let newResults = 10;
 
   //!Когато сменим searchTerm и влезем компонента се mount-не наново - първоначални 20 резултата
   useEffect(() => {
     console.log("NEW search term: " + searchTerm);
     scrollDiv.current.scrollTo(0, 0);
-    fetchFromAPI(`/search?part=snippet&q=${searchTerm}&maxResults=20`).then(
+    fetchFromAPI(`/search?part=snippet&q=${searchTerm}&maxResults=5`).then(
       (data) => {
         setOpen(false);
         setSearchResults(data.items);
@@ -39,16 +39,30 @@ export default function SearchFeed(props) {
         ...data.items.slice(oldResults.length + 1),
       ]);
     });
-    newResults += 20;
+    newResults += 5;
   };
 
   const handleScroll = () => {
-    if (
-      scrollDiv.current.scrollHeight - scrollDiv.current.offsetHeight ===
-      scrollDiv.current.scrollTop
-    ) {
-      console.log("scrolling");
-      console.log(searchTerm);
+    // console.log(scrollDiv.current.scrollHeight);
+    // console.log(scrollDiv.current.offsetHeight);
+    // console.log(scrollDiv.current.scrollTop);
+    //const endOfPage = scrollDiv.current.scrollHeight - scrollDiv.current.offsetHeight === scrollDiv.current.scrollTop;
+
+    // console.log(scrollDiv.current.innerHeight);
+    // console.log(scrollDiv.current.pageYOffset);
+    // console.log(scrollDiv.current.offsetHeight);
+    //const endOfPage = scrollDiv.current.innerHeight + scrollDiv.current.pageYOffset >= scrollDiv.current.offsetHeight;
+
+    console.log(scrollDiv.current.scrollHeight);
+    console.log(scrollDiv.current.scrollTop);
+    console.log(scrollDiv.current.clientHeight);
+    const endOfPage =
+      scrollDiv.current.scrollHeight - scrollDiv.current.scrollTop <=
+      scrollDiv.current.clientHeight;
+
+    if (endOfPage) {
+      // console.log("load next search results");
+      // console.log(searchTerm);
       loadMoreSearchResults();
     }
   };
