@@ -3,11 +3,7 @@ import "./searchFeed.css";
 import fetchFromAPI from "../../utils/fetchFromAPI";
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import {
-  SearchVideoCard,
-  SearchChannelCard,
-  BackdropComponent,
-} from "../";
+import { SearchVideoCard, SearchChannelCard, BackdropComponent } from "../";
 
 export default function SearchFeed(props) {
   const [open, setOpen] = useState(false);

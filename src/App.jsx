@@ -30,7 +30,7 @@ export default function App() {
   };
 
   const handleClickOutside = (e) => {
-    console.log(e.target);
+    // console.log(e.target);
     // if (!e.target.contains(childRef.current)) { //това е правилното условие, но....
     if (childRef.current.contains(e.target)) {
       setIsOpen(false);

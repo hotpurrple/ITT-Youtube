@@ -114,7 +114,7 @@ export default function SearchBar(props) {
         //какъв елемент/компонент ще се покаже в popper менюто
         renderOption={(props, option, state) => {
           return (
-            <h5 className="searchBarh4">
+            <h5 className="searchBarh4" key={option.id}>
               <Link
                 className="searchBarLink"
                 to={`/search/${option.title}`}
