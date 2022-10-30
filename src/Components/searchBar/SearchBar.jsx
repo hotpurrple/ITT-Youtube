@@ -1,8 +1,8 @@
 import React from "react";
-import { useState, useEffect /*useMemo*/ } from "react";
-import { useNavigate /*redirect*/, Link } from "react-router-dom"; //да се види redirect вместо useNavigate
+import { useState, useEffect} from "react";
+import { useNavigate, Link } from "react-router-dom";
 import {
-  /*Paper,*/ IconButton,
+  IconButton,
   Autocomplete,
   TextField,
   Box,
@@ -10,13 +10,13 @@ import {
 import { Search } from "@mui/icons-material";
 import "./searchBar.css";
 import fetchFromAPI from "../../utils/fetchFromAPI";
-// import debounce from "lodash.debounce";
+
+
 
 export default function SearchBar(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
-  // const regex = /[^a-zA-Z0-9 -]/gi;
 
   function myDebounce(funcToDebounce, time) {
     let timerId;
@@ -47,28 +47,18 @@ export default function SearchBar(props) {
               return { title: el.snippet.title, id: el.id.channelId };
             }
           });
-
-          // let suggestedTitles = suggestedData.items.map(
-          //   (el) => el.snippet.title
-          // );
-          // console.log(suggestedTitles);
           setSuggestions(suggestedTitles);
         }
       );
     }
-  }, [searchTerm]); //когато searchTerm се промени, изпълни callback ф-ята в useEffect()
+  }, [searchTerm]);
 
   let debounceInput = myDebounce(handleInput, 1000);
 
   //оn submit
   const handleSubmit = (e) => {
-    console.log("In handle submit");
-    console.log(e.target.value);
-    console.log(searchTerm);
-    console.log("after handle submit");
-    e.preventDefault(); //защото компонента се води форма и бутона е събмит
-    props.setTheTerm(searchTerm);
-
+    e.preventDefault();
+   
     if (searchTerm) {
       navigate(`/search/${searchTerm}`); //променяме url-то, за да активираме /search/:searchTerm path, за да ни се зареди searchFeed компонента
       //setSearchTerm(""); //накрая зачистваме searchTerm

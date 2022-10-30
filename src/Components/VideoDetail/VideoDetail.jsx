@@ -11,7 +11,7 @@ import numberFormatter from "../../utils/numberFormatter";
 import { useDispatch, useSelector } from "react-redux";
 import RecommendedVideos from "../RecommendedVideos/RecommendedVideos";
 import addToVideosHistory from "../../server/updateUserData";
-import Sidebar from "../sidebar/Sidebar";
+import Sidebar from "../Sidebar/Sidebar";
 import { setCurrentVideo } from "../../store/currentVideo";
 
 function VideoDetail(props) {
@@ -119,13 +119,13 @@ function VideoDetail(props) {
   return (
     <>
       <div className="videoPageContainer">
-        <Sidebar
+        {/* <Sidebar
           theClass={
             props.showSideBar
               ? `sidebar-menu-Video active`
               : `sidebar-menu-Video`
           }
-        />
+        /> */}
         <div className="videoDetails">
           <VideoPlayer link={url} />
           <VideoInformation currentVid={currentVid} props={videoDetails} />

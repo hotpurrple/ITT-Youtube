@@ -11,8 +11,6 @@ export default function CategoriesBar(props) {
     get100RandomCategories()
   );
 
-  console.log(randomCategories);
-  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };

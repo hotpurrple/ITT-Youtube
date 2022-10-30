@@ -10,13 +10,13 @@ export default function LibraryPage(props) {
   return (
     <>
       <div className="libraryPageWrapper">
-        <Sidebar
+        {/* <Sidebar
           theClass={
             props.showSideBar
               ? `sidebar-menu-Library active`
               : `sidebar-menu-Library`
           }
-        />
+        /> */}
         {/* <div
           style={{ width: "155px", height: "840px", border: "1px solid red" }}
         >

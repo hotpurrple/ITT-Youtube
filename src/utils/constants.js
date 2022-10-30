@@ -49,7 +49,7 @@ export const categoriesForCategoriesBar = [
   { name: "Bmw" },
   { name: "Audi A3" },
   { name: "Емануела" },
-  { name: "Raymond garage" },
+  { name: "Rainman Ray repairs" },
   { name: "Gasmonkey" },
   { name: "Drift" },
   { name: "Lego" },

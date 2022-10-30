@@ -1,6 +1,6 @@
 import React from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-
 import * as AiIcons from "react-icons/ai";
 import * as MdIcons from "react-icons/md";
 import * as CgIcons from "react-icons/cg";
@@ -12,10 +12,18 @@ import "./sidebar.css";
 export default function Sidebar(props) {
   const user = useSelector((state) => state.loggedUser.user);
 
+  useEffect(() => {
+    // console.log(props.forwardedRef.current, "sidebar.js");
+  }, []);
+
   return (
-    <div className={props.theClass}>
+    <div
+      ref={props.forwardedRef}
+      className={
+        props.isOpen ? `sidebar-menu-Feed active` : `sidebar-menu-Feed`
+      }
+    >
       <ul className="sidebar-ul">
-      
         {/* {sidebarData.map((el, idx) => {
           return (
             <li key={idx} className={el.cName}>

@@ -41,13 +41,13 @@ export default function Playlist(props) {
 
   return (
     <div className="playlistsPage">
-      <Sidebar
+      {/* <Sidebar
         theClass={
           props.showSideBar
             ? `sidebar-menu-SearchFeed active`
             : `sidebar-menu-SearchFeed`
         }
-      />
+      /> */}
       <div className="playlistPageLeft">
         <div className="playlistMainCard">
           <img

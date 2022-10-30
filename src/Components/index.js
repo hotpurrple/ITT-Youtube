@@ -7,7 +7,7 @@ export { default as ErrorPage } from "./ErrorPage/ErrorPage";
 export { default as Login } from "./Login/Login";
 export { default as Register } from "./Register/Register";
 
-export { default as Sidebar } from "./sidebar/Sidebar";
+export { default as Sidebar } from "./Sidebar/Sidebar";
 export { default as CategoriesBar } from "./CategoriesBar/CategoriesBar";
 
 //Картичките, които се показват, когато се натиска бутон от categories bat компонента
@@ -30,3 +30,4 @@ export { default as PlaylistCard } from "./PlaylistCard/PlaylistCard";
 export { default as MainVideoCardDotsBtn } from "./MainVideoCardDotsBtn/MainVideoCardDotsBtn";
 export { default as BackdropComponent } from "./BackdropComponent/BackdropComponent";
 export { default as NotificationSnackbar } from "./NotificationSnackbar/NotificationSnackbar";
+

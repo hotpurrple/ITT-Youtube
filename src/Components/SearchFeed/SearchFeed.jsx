@@ -2,24 +2,34 @@ import React from "react";
 import "./searchFeed.css";
 import fetchFromAPI from "../../utils/fetchFromAPI";
 import { useEffect, useState, useRef } from "react";
-import Sidebar from "../sidebar/Sidebar";
-import { useParams } from "react-router-dom"; //за да можем да вземем query search параметрите от search bar-а
-import { SearchVideoCard, SearchChannelCard, BackdropComponent } from "../";
-// import { demoSearchResultsResponse } from "../../utils/constants";
+import { useParams } from "react-router-dom";
+import {
+  SearchVideoCard,
+  SearchChannelCard,
+  BackdropComponent,
+  Sidebar,
+} from "../";
 
 export default function SearchFeed(props) {
-  const [open, setOpen] = useState(false); //backdrop div
-  const { term } = props; //search term идва от props - lift-ва се от SearchBar през Header, до App, после от App се подава до SearchFeed в props
-  console.log("Term comming from props " + term);
-
-  const { searchTerm } = useParams(); //searchTerm ще вземе това, което имаме след search/ в url bar-а, а то трябва да се промени от search bar-а в head
-
+  const [open, setOpen] = useState(false);
+  const { searchTerm } = useParams();
   const [searchResults, setSearchResults] = useState([]);
 
-  let newResults = 20;
   const scrollDiv = useRef();
+  const ref = useRef(searchTerm);
+  let newResults = 20;
 
-  console.log("Rerender Search feed component with search term: " + searchTerm);
+  //!Когато сменим searchTerm и влезем компонента се mount-не наново - първоначални 20 резултата
+  useEffect(() => {
+    console.log("NEW search term: " + searchTerm);
+    scrollDiv.current.scrollTo(0, 0);
+    fetchFromAPI(`/search?part=snippet&q=${searchTerm}&maxResults=20`).then(
+      (data) => {
+        setOpen(false);
+        setSearchResults(data.items);
+      }
+    );
+  }, [searchTerm]);
 
   const loadMoreSearchResults = () => {
     setOpen(true);
@@ -28,47 +38,47 @@ export default function SearchFeed(props) {
       `/search?part=snippet&q=${searchTerm}&maxResults=${newResults}`
     ).then((data) => {
       setOpen(false);
-      if (searchResults.length === 0) {
-        setSearchResults(data.items);
-      } else {
-        setSearchResults((oldResults) => [
-          ...oldResults,
-          ...data.items.slice(oldResults.length + 1), //отново получаваме и вече показани резултати, затова трябва да ги изрежем, за да не се дублират. Просто апи-то няма възможност да ни покаже следващите
-        ]);
-      }
+
+      setSearchResults((oldResults) => [
+        ...oldResults,
+        ...data.items.slice(oldResults.length + 1),
+      ]);
     });
     newResults += 20;
   };
 
-  const handleScroll = (e) => {
-    // console.log(scrollDiv.current.scrollHeight);
-    // console.log(scrollDiv.current.offsetHeight);
-    // console.log(scrollDiv.current.scrollTop);
+  const handleScroll = () => {
     if (
       scrollDiv.current.scrollHeight - scrollDiv.current.offsetHeight ===
       scrollDiv.current.scrollTop
     ) {
       console.log("scrolling");
+      console.log(searchTerm);
       loadMoreSearchResults();
     }
   };
 
+  //!The problem is that scrollDiv.current is mutable, so by the time the cleanup function runs, it may have been set to null.
+  //!The solution is to capture any mutable values inside the effect:
   useEffect(() => {
-    console.log("In use effect");
-    loadMoreSearchResults();
+    const instanceOfRef = scrollDiv.current;
     scrollDiv.current.addEventListener("scroll", handleScroll);
-  }, [searchTerm]);
+    return () => {
+      instanceOfRef.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div className="searchFeedMainContainer">
       <BackdropComponent open={open} />
-      <Sidebar
+
+      {/* <Sidebar
         theClass={
           props.showSideBar
             ? `sidebar-menu-SearchFeed active`
             : `sidebar-menu-SearchFeed`
         }
-      />
+      /> */}
 
       <div className="searchCardContainer">
         <div className="searchCardsScrollContainer" ref={scrollDiv}>

@@ -63,7 +63,7 @@ export default function Header(props) {
                         </Link>
                     </div>
 
-                    <SearchBar setTheTerm={props.setTheTerm} />
+                    <SearchBar/>
                 
                     <div className="headerRight">
                         <MoreVertIcon id="basic-button" onClick={handleClick} className="MoreVertIcon" />
