@@ -1,12 +1,11 @@
 import React from "react";
-import { useEffect, useState, useRef } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import * as AiIcons from "react-icons/ai";
 import * as MdIcons from "react-icons/md";
 import * as CgIcons from "react-icons/cg";
 import * as FiIcons from "react-icons/fi";
 import { useSelector } from "react-redux";
-// import { sidebarData } from "./sidebarData";
 import "./sidebar.css";
 
 export default function Sidebar(props) {
