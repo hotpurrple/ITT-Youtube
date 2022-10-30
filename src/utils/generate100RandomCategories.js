@@ -11,7 +11,7 @@ export default function get100RandomCategories() {
   let randomCategories = [];
 
   while (counter <= 100) {
-    let idx = getRandomIntInclusive(0, 230);
+    let idx = getRandomIntInclusive(0, 303);
     if (
       !randomCategories.some(
         (cat) => cat.name === categoriesForCategoriesBar[idx].name

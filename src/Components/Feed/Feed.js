@@ -15,8 +15,9 @@ export default function Feed(props) {
   const [selectedCategory, setSelectedCategory] = useState("new"); //първоначално ни зарежда видеа от категория New
   const [videos, setVideos] = useState([]);
   const [open, setOpen] = useState(false);
+  const [newResults, setNewResults] = useState(20);
 
-  let newResults = 30;
+  // let newResults = 30;
   const scrollDiv = useRef();
 
   useEffect(() => {
@@ -24,12 +25,12 @@ export default function Feed(props) {
     scrollDiv.current.scrollTo(0, 0);
     setOpen(true);
     fetchFromAPI(
-      `/search?part=snippet&q=${selectedCategory}&maxResults=15`
+      `/search?part=snippet&q=${selectedCategory}&maxResults=${newResults}`
     ).then((data) => {
       setOpen(false);
       setVideos(data.items);
     });
-  }, [selectedCategory]); //когато selectedCategory се промени, изпълни callback ф-ята в useEffect()
+  }, [selectedCategory, newResults]); //когато selectedCategory се промени, изпълни callback ф-ята в useEffect()
 
   const loadMoreResults = () => {
     console.log(selectedCategory);
@@ -43,7 +44,8 @@ export default function Feed(props) {
         ...data.items.slice(oldResults.length + 1),
       ]);
     });
-    newResults += 10;
+    // newResults += 10;
+    setNewResults(newResults + 10);
   };
 
   const handleScroll = (e) => {
