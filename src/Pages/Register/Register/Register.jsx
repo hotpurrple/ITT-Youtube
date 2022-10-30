@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import "./register.css";
-import GoogleLogo from "../Login/googlelogo.png";
+import GoogleLogo from "../../Login/Login/googlelogo.png";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
-import { registerUser } from "../../server/serverRegister";
-import { doesUserExist } from "../../server/serverRegister";
+import { registerUser } from "../../../server/serverRegister.mjs";
+import { doesUserExist } from "../../../server/serverRegister.mjs";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import debounce from "lodash.debounce"
@@ -48,8 +48,7 @@ export default function Register() {
         let isPasswordValid =
             password?.current?.value.match(/^(?=(.*[a-z]){3,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%?^&*()\-__+.]){1,}).{8,}$/)
         if (!isPasswordValid) {
-            setPasswordInvalidReason(`Password is not strong enough. Please make sure it's at least 6 characters long and it
-            contains at least one number and special character.`)
+            setPasswordInvalidReason(`Please select an 8 character long password containing a symbol, number and uppercase letter.`)
             setEnableButton({ ...enableButton, correctPassword: false })
 
         } else {
@@ -60,8 +59,7 @@ export default function Register() {
     const validateRegisterName = (usernametest) => {
         let isUsernameValid = usernametest?.current?.value.match(/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/gi)
         if (!isUsernameValid) {
-            setUsernameInvalidReason(`Invalid username. Please ensure it's 8-20 characters 
-            long and lacks special characters and empty spaces.`)
+            setUsernameInvalidReason(`Your username should be 8-20 characters long with no spaces or special symbols.`)
             setEnableButton({ ...enableButton, correctUsername: false })
         } else {
             setUsernameInvalidReason("")
@@ -84,11 +82,10 @@ export default function Register() {
 
         }
 
-
     }
-    const UpdateRegName = debounce(() => validateRegisterName(username), 1200)
-    const UpdateRegPass = debounce(() => validateRegisterPass(password), 1200)
-    const DoPasswordsMatch = debounce(() => doPassesMatch(password, repeatPassword), 1200)
+    const UpdateRegName = debounce(() => validateRegisterName(username), 450)
+    const UpdateRegPass = debounce(() => validateRegisterPass(password), 450)
+    const DoPasswordsMatch = debounce(() => doPassesMatch(password, repeatPassword), 450)
     return (
         <>
             <div className="regcontainer">
@@ -111,7 +108,7 @@ export default function Register() {
                             label="Username"
                         />
                         <TextField className="regTextField"
-                            style={{minHeight: "7.5rem", width:"100%"}}
+                            style={{minHeight: "6.3rem", width:"100%"}}
                             inputRef={password}
                             required
                             type="password"

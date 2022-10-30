@@ -18,9 +18,6 @@ export default function VideoDescription(props) {
                         </div>
                     </div>
                     <div className="channelSubscribeArea">
-                        <Button variant="contained" color="error">
-                            SUBSCRIBE
-                        </Button>
                     </div>
                 </div>
                 <div className="descriptionTextWrapper">

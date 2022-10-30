@@ -1,9 +1,9 @@
 import React from "react";
 import LibraryPageContent from "../LibraryPageContent.jsx/LibraryPageContent";
 import "./librarypage.css";
-import YoureNotLoggedIn from "../YoureNotLoggedIn/YoureNotLoggedIn";
+import YoureNotLoggedIn from "../../LoginProtectionPage/YoureNotLoggedIn/YoureNotLoggedIn";
 import { useSelector } from "react-redux";
-import { Sidebar } from "..";
+import  Sidebar  from "../../../Components/sidebar/Sidebar";
 
 export default function LibraryPage(props) {
   const logged = useSelector((state) => state.loggedUser.user);

@@ -4,15 +4,14 @@ import SortIcon from '@mui/icons-material/Sort';
 import CommentProfilePic from './CommentProfilePic';
 import Guest from "./guest.jpg"
 import TextField from '@mui/material/TextField';
-import CommentCard from "../CommentCard/CommentCard"
-import pseudoComments from "../../utils/pseudoComments"
+import pseudoComments from "../../../../utils/pseudoComments"
 import InfiniteScroll from 'react-infinite-scroll-component';
-import fetchFromApi from '../../utils/fetchFromAPI';
+import fetchFromApi from '../../../../utils/fetchFromAPI';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Button } from '@mui/material';
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import AddUserComment, { GetUserComments, UserComment } from '../../server/addUserComment.mjs';
+import AddUserComment, { GetUserComments, UserComment } from '../../../../server/addUserComment.mjs';
 import { useRef } from 'react';
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -23,6 +22,7 @@ import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import FiberNewIcon from '@mui/icons-material/FiberNew';
 import ElderlyWomanIcon from '@mui/icons-material/ElderlyWoman';
+import CommentCard from '../CommentCard/CommentCard';
 
 export default function VideoComments(props) {
 

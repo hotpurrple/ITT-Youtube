@@ -4,10 +4,10 @@ import "./login.css"
 import GoogleLogo from "./googlelogo.png"
 import { Link } from "react-router-dom"
 import Button from '@mui/material/Button';
-import { doesUserExist } from '../../server/serverRegister';
+import { doesUserExist } from '../../../server/serverRegister.mjs';
 import { useRef } from "react"
 import { useNavigate } from "react-router-dom";
-import { logniGo } from '../../store/loggedUser';
+import { logUserIn } from '../../../store/loggedUser';
 import { useDispatch, useSelector } from "react-redux"
 import { useState } from 'react';
 
@@ -31,7 +31,7 @@ export default function Login() {
         } else if (current.username !== username.current.value || current.password !== password.current.value) {
             setErrormsg("INCORRECT DETAILS")
         } else {
-            dispatch(logniGo(current.username))
+            dispatch(logUserIn(current.username))
             navigate("/")
         }
 

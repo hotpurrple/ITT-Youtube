@@ -1,11 +1,12 @@
 import React from 'react'
 import "./videopagecard.css"
 import { Link } from 'react-router-dom'
-import dateCalculator from '../../utils/dateCalculator.mjs'
-import numberFormatter from '../../utils/numberFormatter'
+import dateCalculator from '../../../../utils/dateCalculator.mjs'
+import numberFormatter from '../../../../utils/numberFormatter'
 
 export default function VideoPageCard(props) {
     const {title, channelTitle, publishedAt, views} = props.props
+    console.log(props.props);
     const formattedDate = dateCalculator(publishedAt)
     //api doesnt return recommended video views 
     const randomViews = numberFormatter(Math.floor(Math.random() * (900000 - 100 + 1)) + 100)
@@ -20,7 +21,7 @@ export default function VideoPageCard(props) {
                 <div className='videoPageCardDetails'>
                     <h3>{title}</h3>
                     <p>{channelTitle}</p>
-                    <p>{views} Views - {formattedDate}</p>
+                    <p>{views || randomViews} Views - {formattedDate}</p>
                 </div>
             </div></Link>
         </>

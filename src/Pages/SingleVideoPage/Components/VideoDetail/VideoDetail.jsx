@@ -2,17 +2,23 @@ import React, { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import "./videodetail.css";
-import VideoInformation from "../VideoInformation/VideoInformation";
 import VideoDescription from "../VideoDescription/VideoDescription";
-import fetchFromApi from "../../utils/fetchFromAPI";
+import fetchFromApi from "../../../../utils/fetchFromAPI";
 import VideoComments from "../VideoComments/VideoComments";
 import { useState } from "react";
-import numberFormatter from "../../utils/numberFormatter";
+import numberFormatter from "../../../../utils/numberFormatter";
 import { useDispatch, useSelector } from "react-redux";
+import addToVideosHistory from "../../../../server/updateUserData";
+import Sidebar from "../../../../Components/sidebar/Sidebar";
+import { setCurrentVideo } from "../../../../store/currentVideo";
+import VideoInformation from "../VideoInformation/VideoInformation";
 import RecommendedVideos from "../RecommendedVideos/RecommendedVideos";
+<<<<<<< HEAD:src/Components/VideoDetail/VideoDetail.jsx
 import addToVideosHistory from "../../server/updateUserData";
 import Sidebar from "../Sidebar/Sidebar";
 import { setCurrentVideo } from "../../store/currentVideo";
+=======
+>>>>>>> e2c4cc73375261843e306d178234e3804e10a7cd:src/Pages/SingleVideoPage/Components/VideoDetail/VideoDetail.jsx
 
 function VideoDetail(props) {
   const url = useParams().id

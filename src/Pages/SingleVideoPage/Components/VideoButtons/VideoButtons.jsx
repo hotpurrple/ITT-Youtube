@@ -6,15 +6,15 @@ import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutl
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import PlaylistAddOutlinedIcon from "@mui/icons-material/PlaylistAddOutlined";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
-import { isCurrentVideoLiked } from "../../server/updateUserLikedVideos";
+import { isCurrentVideoLiked } from "../../../../server/updateUserLikedVideos";
 import { useLocation, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
-import getAllUserLikesForAVideo from "../../server/getAllUserLikesForAVideo";
-import isVideoDisliked from "../../server/isVideoDisliked";
+import getAllUserLikesForAVideo from "../../../../server/getAllUserLikesForAVideo";
+import isVideoDisliked from "../../../../server/isVideoDisliked";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-import { MainVideoCardDotsBtn } from "../";
+import { MainVideoCardDotsBtn } from "../../../../Components";
 
 export default function VideoButtons(props) {
     let currentVid = props.currentVid;

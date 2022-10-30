@@ -59,9 +59,10 @@ export default function MainVideoCardDotsBtn(props) {
 
   return (
     <div className={props.className}>
-      <IconButton
+      <IconButton className="threeDotsVideoCard"
         variant="contained"
         onClick={() => setDialogShown(!dialogShown)}
+        color={"success"}
       >
         {props.icon}
       </IconButton>
