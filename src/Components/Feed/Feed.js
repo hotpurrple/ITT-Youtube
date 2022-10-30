@@ -3,7 +3,6 @@ import React from "react";
 import "./feed.css";
 import { useState, useEffect, useRef } from "react";
 import {
-  Sidebar,
   CategoriesBar,
   MainVideoCard,
   MainChannelCard,
@@ -73,11 +72,6 @@ export default function Feed(props) {
   return (
     <div className="feedMainContainer">
       <BackdropComponent open={open} />
-      {/* <Sidebar
-        theClass={
-          props.showSideBar ? `sidebar-menu-Feed active` : `sidebar-menu-Feed`
-        }
-      /> */}
 
       <div className="resultsPlusCategoriesContainer">
         <CategoriesBar //categories tab bar with tabs

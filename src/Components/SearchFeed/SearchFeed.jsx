@@ -7,7 +7,6 @@ import {
   SearchVideoCard,
   SearchChannelCard,
   BackdropComponent,
-  Sidebar,
 } from "../";
 
 export default function SearchFeed(props) {
@@ -16,7 +15,7 @@ export default function SearchFeed(props) {
   const [searchResults, setSearchResults] = useState([]);
 
   const scrollDiv = useRef();
-  const ref = useRef(searchTerm);
+
   let newResults = 20;
 
   //!Когато сменим searchTerm и влезем компонента се mount-не наново - първоначални 20 резултата
@@ -71,14 +70,6 @@ export default function SearchFeed(props) {
   return (
     <div className="searchFeedMainContainer">
       <BackdropComponent open={open} />
-
-      {/* <Sidebar
-        theClass={
-          props.showSideBar
-            ? `sidebar-menu-SearchFeed active`
-            : `sidebar-menu-SearchFeed`
-        }
-      /> */}
 
       <div className="searchCardContainer">
         <div className="searchCardsScrollContainer" ref={scrollDiv}>
