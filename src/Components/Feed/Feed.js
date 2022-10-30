@@ -10,54 +10,50 @@ import {
 } from "..";
 
 import fetchFromAPI from "../../utils/fetchFromAPI";
-// import { demoVideosResponse } from "../../utils/constants";
 
 export default function Feed(props) {
   const [selectedCategory, setSelectedCategory] = useState("new"); //първоначално ни зарежда видеа от категория New
   const [videos, setVideos] = useState([]);
-  const [open, setOpen] = useState(false); //backdrop div
-  // const [newResults, setNewResults] = useState(30);
+  const [open, setOpen] = useState(false);
 
   let newResults = 30;
   const scrollDiv = useRef();
 
-  const loadMoreResults = (isNewCategory) => {
+  useEffect(() => {
+    console.log("New selected category is: " + selectedCategory);
+    scrollDiv.current.scrollTo(0, 0);
     setOpen(true);
-    // console.log(selectedCategory, newResults);
+    fetchFromAPI(
+      `/search?part=snippet&q=${selectedCategory}&maxResults=15`
+    ).then((data) => {
+      setOpen(false);
+      setVideos(data.items);
+    });
+  }, [selectedCategory]); //когато selectedCategory се промени, изпълни callback ф-ята в useEffect()
+
+  const loadMoreResults = () => {
+    console.log(selectedCategory);
+    setOpen(true);
     fetchFromAPI(
       `/search?part=snippet&q=${selectedCategory}&maxResults=${newResults}`
     ).then((data) => {
       setOpen(false);
-      // console.log(data.items);
-      if (isNewCategory) {
-        //ако категорията е нова - зарези 30 резултата първоначално
-        setVideos(data.items);
-      } else {
-        //ако категорията не е нова, значи скролвамe
-        setVideos((oldResults) => [
-          ...oldResults,
-          ...data.items.slice(oldResults.length + 1), //отново получаваме и вече показани резултати, затова трябва да ги изрежем, за да не се дублират. Просто апи-то няма възможност да ни покаже следващите
-        ]);
-      }
+      setVideos((oldResults) => [
+        ...oldResults,
+        ...data.items.slice(oldResults.length + 1),
+      ]);
     });
+    newResults += 10;
   };
 
   const handleScroll = (e) => {
-    if (
-      scrollDiv.current.scrollHeight - scrollDiv.current.offsetHeight ===
-      scrollDiv.current.scrollTop
-    ) {
-      console.log("scrolling");
-      newResults += 20;
-      loadMoreResults(false);
+    const endOfPage =
+      scrollDiv.current.scrollHeight - scrollDiv.current.scrollTop <=
+      scrollDiv.current.clientHeight;
+    if (endOfPage) {
+      loadMoreResults();
     }
   };
-
-  useEffect(() => {
-    scrollDiv.current.scrollTo(0, 0); //при промяна в избраната категория искаме отново да започнем да скролваме от началото на елемента
-    newResults = 30; //при промяна в избраната категория искаме отново да започнем от 30 резултата
-    loadMoreResults(true); //тук казваме, че има промяна в категорията
-  }, [selectedCategory]); //когато selectedCategory се промени, изпълни callback ф-ята в useEffect()
 
   //!The problem is that scrollDiv.current is mutable, so by the time the cleanup function runs, it may have been set to null.
   //!The solution is to capture any mutable values inside the effect:
@@ -75,7 +71,6 @@ export default function Feed(props) {
 
       <div className="resultsPlusCategoriesContainer">
         <CategoriesBar //categories tab bar with tabs
-          selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
         />
 
