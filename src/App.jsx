@@ -1,83 +1,85 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { CssBaseline } from "@mui/material"; ///CSSBaseLine - нещо, като глобален ресет на стилове. Нещо, като reset.css - иначе ми се разместват рендерираните видеа
 import {
-    Header,
-    Feed,
-    VideoDetail,
-    ChannelDetail,
-    SearchFeed,
-    ErrorPage,
-    Login,
-    Register,
-    LibraryPage,
-    Playlist,
-    Playlists,
+  Header,
+  Feed,
+  VideoDetail,
+  ChannelDetail,
+  SearchFeed,
+  ErrorPage,
+  Login,
+  Register,
+  LibraryPage,
+  Playlist,
+  Playlists,
+  Sidebar,
 } from "./Components"; //simple import
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-function App() {
-    const [sideBar, setSideBar] = useState(false);
-    const toggleSidebar = () => setSideBar(!sideBar);
 
-    const [theSearchedTerm, setTheSearchedTerm] = useState("");
+export default function App() {
+  const childRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
 
-    const setTheTerm = (term) => {
-        setTheSearchedTerm(term);
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+  const handleMenuButtonClick = (e) => {
+    toggleSidebar();
+  };
+
+  const handleClickOutside = (e) => {
+    // console.log(e.target);
+    // if (!e.target.contains(childRef.current)) { //това е правилното условие, но....
+    if (childRef.current.contains(e.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener(`click`, handleClickOutside);
+    return () => {
+      document.removeEventListener(`click`, handleClickOutside);
     };
+  }, []);
 
-    const handleMenuButtonClick = (e) => {
-        // console.log(e);
-        toggleSidebar();
-        console.log(sideBar);
-    };
+  return (
+    <>
+      <CssBaseline />
+      <BrowserRouter>
+        <Header handleMenuButtonClick={handleMenuButtonClick} />
 
-    return (
-        <>
-                <CssBaseline />
-                <BrowserRouter>
-                    <Header
-                        handleMenuButtonClick={handleMenuButtonClick}
-                        setTheTerm={setTheTerm}
-                    />
-                    <Routes>
-                        <Route path="/" element={<Feed showSideBar={sideBar} />} />
-                        <Route
-                            path="/videos/:id"
-                            element={<VideoDetail showSideBar={sideBar} />}
-                        />
-                        <Route path="/channel/:channelId" element={<ChannelDetail />} />
-                        <Route
-                            path="/search/:searchTerm"
-                            element={
-                                <SearchFeed showSideBar={sideBar} term={theSearchedTerm} />
-                            }
-                        />
-                        <Route path="*" element={<ErrorPage />} />
-                        <Route path="login" element={<Login />} />
-                        <Route path="register" element={<Register />} />
-                        <Route
-                            path="library"
-                            element={<LibraryPage showSideBar={sideBar} />}
-                        />
-                        <Route
-                            path="/all-playlists"
-                            element={<Playlists showSideBar={sideBar} />}
-                        >
-                            {/* <Route
-              path=":playlistName"
-              element={<Playlist showSideBar={sideBar} />}
-            /> */}
-                        </Route>
-                        <Route
-                            path="/playlist/:playlistName"
-                            element={<Playlist showSideBar={sideBar} />}
-                        />
-                    </Routes>
-                </BrowserRouter>
-        </>
-    );
+        <Sidebar isOpen={isOpen} forwardedRef={childRef} />
+
+        <Routes>
+          <Route path="/" element={<Feed /*showSideBar={sideBar}*/ />} />
+          <Route
+            path="/videos/:id"
+            element={<VideoDetail /*showSideBar={sideBar}*/ />}
+          />
+          <Route path="/channel/:channelId" element={<ChannelDetail />} />
+          <Route
+            path="/search/:searchTerm"
+            element={<SearchFeed /*showSideBar={sideBar}*/ />}
+          />
+          <Route path="*" element={<ErrorPage />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route
+            path="library"
+            element={<LibraryPage /*showSideBar={sideBar}*/ />}
+          />
+          <Route
+            path="/all-playlists"
+            element={<Playlists /*showSideBar={sideBar}*/ />}
+          ></Route>
+          <Route
+            path="/playlist/:playlistName"
+            element={<Playlist /*showSideBar={sideBar}*/ />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
 }
-
-export default App;

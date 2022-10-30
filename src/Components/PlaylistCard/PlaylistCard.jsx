@@ -1,11 +1,15 @@
 import { Typography, IconButton } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./playlistCard.css";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import { Button } from "@mui/material";
 
 import * as AiIcons from "react-icons/ai";
 
 function PlaylistCard({ videoData, removeVideoFromPlaylist }) {
+  const [dialogShown, setDialogShown] = useState(false);
   // console.log(videoData);
   return (
     <div className="playlistCard">
@@ -43,10 +47,22 @@ function PlaylistCard({ videoData, removeVideoFromPlaylist }) {
       <IconButton
         className="removeAlbumBtn"
         aria-label=""
-        onClick={() => removeVideoFromPlaylist(videoData.id.videoId)}
+        onClick={() => setDialogShown(true)}
       >
         <AiIcons.AiFillDelete />
       </IconButton>
+
+      <Dialog onClose={() => setDialogShown(!dialogShown)} open={dialogShown}>
+        <DialogTitle> Are you sure that you want to delete it? </DialogTitle>
+
+        <Button
+          variant="text"
+          color="primary"
+          onClick={() => removeVideoFromPlaylist(videoData.id.videoId)}
+        >
+          Delete the video
+        </Button>
+      </Dialog>
     </div>
   );
 }

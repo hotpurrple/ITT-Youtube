@@ -38,6 +38,9 @@ function MainChannelCard(props) {
               height: "180px",
               width: "180px",
               mb: 2,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           />
           <Typography variant="h5">

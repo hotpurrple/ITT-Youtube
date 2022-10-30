@@ -16,104 +16,104 @@ import { SearchBar } from "../";
 import { logUserOut } from "../../store/loggedUser";
 import Brightness3OutlinedIcon from "@mui/icons-material/Brightness3Outlined";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import Menu from '@mui/material/Menu';
+import Menu from "@mui/material/Menu";
 export default function Header(props) {
-    const location = useLocation();
+  const location = useLocation();
 
-    let pageWithoutHeader = location.pathname.match(/login|register/gi);
-    const user = useSelector((state) => state.loggedUser.user);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  let pageWithoutHeader = location.pathname.match(/login|register/gi);
+  const user = useSelector((state) => state.loggedUser.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const [anchorEl, setAnchorEl] = useState(null)
-    const open = Boolean(anchorEl);
-    const handleClick = (e) => {
-        setAnchorEl(e.target);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (e) => {
+    setAnchorEl(e.target);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
+  const handleLoginFromHomePage = (ev) => {
+    //if there's an active user, call the function to log out and update the state to 0 logged users
+    if (user) {
+      dispatch(logUserOut());
+      return;
+    }
+    navigate("/login");
+  };
+  return (
+    <>
+      {!pageWithoutHeader && (
+        <header className="header">
+          <div className="headerLeft">
+            <IconButton onClick={props.handleMenuButtonClick}>
+              <MenuIcon
+                sx={{
+                  color: "black",
+                }}
+              />
+            </IconButton>
+            <Link to={`/`}>
+              <img className="ytlogo" src={YoutubeLogo} alt="logo" />
+            </Link>
+          </div>
 
+          <SearchBar />
 
-    const handleLoginFromHomePage = (ev) => {
-        //if there's an active user, call the function to log out and update the state to 0 logged users
-        if (user) {
-            dispatch(logUserOut());
-            return;
-        }
-        navigate("/login");
-    };
-    return (
-        <>
-
-            {!pageWithoutHeader && (
-
-                <header className="header">
-                    <div className="headerLeft">
-                        <IconButton onClick={props.handleMenuButtonClick}>
-                            <MenuIcon
-                                sx={{
-                                    color: "black",
-                                }}
-                            />
-                        </IconButton>
-                        <Link to={`/`}>
-                            <img className="ytlogo" src={YoutubeLogo} alt="logo" />
-                        </Link>
-                    </div>
-
-                    <SearchBar setTheTerm={props.setTheTerm} />
-                
-                    <div className="headerRight">
-                        <MoreVertIcon id="basic-button" onClick={handleClick} className="MoreVertIcon" />
-                        <Menu className="muiMenu"
-                            id="basic-menu"
-                            anchorEl={anchorEl}
-                            open={open}
-                            onClose={handleClose}
-                            MenuListProps={{
-                                'aria-labelledby': 'basic-button',
-                            }}
-                            anchorReference="anchorPosition"
-                            anchorPosition={{ top: 50, left: 1470}}
-                            anchorOrigin={{
-                              vertical: 'top',
-                              horizontal: 'left',
-                            }}
-                            transformOrigin={{
-                              vertical: 'top',
-                              horizontal: 'left',
-                            }}
-                        >
-                            <List className="muiList">
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <Brightness3OutlinedIcon />
-                                </ListItemIcon>
-                                <ListItemText primary="Appearance: Light" />
-                                <IconButton size="small">
-                                    <ArrowForwardIosIcon />
-                                </IconButton>
-                            </ListItemButton>
-                            </List>
-                        </Menu>
-                        {/* <MoreVertIcon
+          <div className="headerRight">
+            <MoreVertIcon
+              id="basic-button"
+              onClick={handleClick}
+              className="MoreVertIcon"
+            />
+            <Menu
+              className="muiMenu"
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+              anchorReference="anchorPosition"
+              anchorPosition={{ top: 50, left: 1470 }}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+            >
+              <List className="muiList">
+                <ListItemButton>
+                  <ListItemIcon>
+                    <Brightness3OutlinedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Appearance: Light" />
+                  <IconButton size="small">
+                    <ArrowForwardIosIcon />
+                  </IconButton>
+                </ListItemButton>
+              </List>
+            </Menu>
+            {/* <MoreVertIcon
                             className="MoreVertIcon"
                             onClick={() => setIsMenuShown(!isMenuShown)}
                         /> */}
-                        <Button
-                            onClick={handleLoginFromHomePage}
-                            className="userButton"
-                            variant="outlined"
-                        >
-                            <AccountCircleIcon />
-                            {user ? <>Sign out</> : <>Sign in</>}
-                        </Button>
-                    </div>
-                </header>
-            )}
-
-        </>
-    );
+            <Button
+              onClick={handleLoginFromHomePage}
+              className="userButton"
+              variant="outlined"
+            >
+              <AccountCircleIcon />
+              {user ? <>Sign out</> : <>Sign in</>}
+            </Button>
+          </div>
+        </header>
+      )}
+    </>
+  );
 }

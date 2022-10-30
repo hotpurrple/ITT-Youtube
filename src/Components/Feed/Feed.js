@@ -3,7 +3,6 @@ import React from "react";
 import "./feed.css";
 import { useState, useEffect, useRef } from "react";
 import {
-  Sidebar,
   CategoriesBar,
   MainVideoCard,
   MainChannelCard,
@@ -49,33 +48,30 @@ export default function Feed(props) {
       scrollDiv.current.scrollTop
     ) {
       console.log("scrolling");
-      // setNewResults(newResults + 20);
       newResults += 20;
       loadMoreResults(false);
     }
   };
 
   useEffect(() => {
-    scrollDiv.current.addEventListener("scroll", handleScroll);
     scrollDiv.current.scrollTo(0, 0); //при промяна в избраната категория искаме отново да започнем да скролваме от началото на елемента
-    // setNewResults(30); //при промяна в избраната категория искаме отново да започнем от 30 резултата
     newResults = 30; //при промяна в избраната категория искаме отново да започнем от 30 резултата
     loadMoreResults(true); //тук казваме, че има промяна в категорията
-
-    //on component unmount - премахни listener-а за scroll
-    // return () => {
-    //   scrollDiv.current.removeEventListener("scroll", handleScroll);
-    // };
   }, [selectedCategory]); //когато selectedCategory се промени, изпълни callback ф-ята в useEffect()
+
+  //!The problem is that scrollDiv.current is mutable, so by the time the cleanup function runs, it may have been set to null.
+  //!The solution is to capture any mutable values inside the effect:
+  useEffect(() => {
+    const instanceOfRef = scrollDiv.current;
+    scrollDiv.current.addEventListener("scroll", handleScroll);
+    return () => {
+      instanceOfRef.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div className="feedMainContainer">
       <BackdropComponent open={open} />
-      <Sidebar
-        theClass={
-          props.showSideBar ? `sidebar-menu-Feed active` : `sidebar-menu-Feed`
-        }
-      />
 
       <div className="resultsPlusCategoriesContainer">
         <CategoriesBar //categories tab bar with tabs

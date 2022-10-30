@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./playlists.css";
-import Sidebar from "../sidebar/Sidebar";
 import getUserPlaylists from "../../server/getUserPlaylists";
 import PlaylistsPlaylistCard from "../PlaylistsPlaylistCard/PlaylistsPlaylistCard";
 
@@ -20,13 +19,6 @@ function Playlists(props) {
       >
         {currentUser.username}'s playlists:
       </Typography>
-      <Sidebar
-        theClass={
-          props.showSideBar
-            ? `sidebar-menu-SearchFeed active`
-            : `sidebar-menu-SearchFeed`
-        }
-      />
 
       <div className="playlistsCardsContainer">
         {userPlaylists.map((pList) => (
