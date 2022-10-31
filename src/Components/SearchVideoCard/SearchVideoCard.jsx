@@ -13,9 +13,11 @@ import {
   demoVideoDescription,
 } from "../../utils/constants";
 import MainVideoCardDotsBtn from "../MainVideoCardDotsBtn/MainVideoCardDotsBtn";
+import { useSelector } from "react-redux";
 
 export default function SearchVideoCard(props) {
   let videoData = props.video;
+  const user = useSelector((state) => state.loggedUser.user);
 
   return (
     <Card
@@ -96,49 +98,14 @@ export default function SearchVideoCard(props) {
           </Typography>
         </Link>
       </CardContent>
-      <MainVideoCardDotsBtn
-        className="MainVidCardDotsBtn"
-        vidData={videoData}
-        icon={<HiIcons.HiDotsHorizontal />}
-      />
+
+      {user && (
+        <MainVideoCardDotsBtn
+          className="MainVidCardDotsBtn"
+          vidData={videoData}
+          icon={<HiIcons.HiDotsHorizontal />}
+        />
+      )}
     </Card>
   );
 }
-
-/*
-
-props.video = {
-  "kind": "youtube#searchResult",
-  "id": {
-      "kind": "youtube#video",
-      "videoId": "oMR0E1Yijvs"
-  },
-  "snippet": {
-      "publishedAt": "2022-10-13T12:03:48Z",
-      "channelId": "UCupvZG-5ko_eiXAupbDfxWw",
-      "title": "Video reveals a major problem for new Russian soldiers",
-      "description": "In a new video posted to social media, newly mobilized Russian soldiers are complaining about their lack of training before being ...",
-      "thumbnails": {
-          "default": {
-              "url": "https://i.ytimg.com/vi/oMR0E1Yijvs/default.jpg",
-              "width": 120,
-              "height": 90
-          },
-          "medium": {
-              "url": "https://i.ytimg.com/vi/oMR0E1Yijvs/mqdefault.jpg",
-              "width": 320,
-              "height": 180
-          },
-          "high": {
-              "url": "https://i.ytimg.com/vi/oMR0E1Yijvs/hqdefault.jpg",
-              "width": 480,
-              "height": 360
-          }
-      },
-      "channelTitle": "CNN",
-      "liveBroadcastContent": "none",
-      "publishTime": "2022-10-13T12:03:48Z"
-  }
-}
-
-*/

@@ -31,7 +31,6 @@ function PlaylistsPlaylistCard({ pListData }) {
           <img
             className="pListCardImg"
             src={noVideosInPlaylist}
-            //src="https://images.gutefrage.net/media/fragen/bilder/meine-kamera-auf-windows-10-funktioniert-nicht-was-tun/0_big.jpg?v=1584606917000"
             alt=""
           ></img>
         </Link>

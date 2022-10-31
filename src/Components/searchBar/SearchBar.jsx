@@ -12,7 +12,6 @@ import "./searchBar.css";
 import fetchFromAPI from "../../utils/fetchFromAPI";
 
 
-
 export default function SearchBar(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -28,10 +27,7 @@ export default function SearchBar(props) {
 
   const handleInput = (e) => {
     if (e.target.value.length > 1) {
-      console.log("in handle input");
-      console.log(e.target.value);
       setSearchTerm(e.target.value);
-      console.log("after handle input");
     }
   };
 
@@ -61,7 +57,6 @@ export default function SearchBar(props) {
    
     if (searchTerm) {
       navigate(`/search/${searchTerm}`); //променяме url-то, за да активираме /search/:searchTerm path, за да ни се зареди searchFeed компонента
-      //setSearchTerm(""); //накрая зачистваме searchTerm
       setSuggestions([]);
     }
   };

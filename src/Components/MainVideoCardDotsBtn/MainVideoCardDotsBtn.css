@@ -16,3 +16,13 @@
 .createNewPlaylistDiv input {
     width: 85%;
 }
+
+.dotsDialog {
+    width: 200px;
+}
+
+.dotsDialogInput {
+    font-size: 0.9rem;
+    height: 26px;
+    padding-left: 2px;
+}

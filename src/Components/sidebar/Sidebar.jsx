@@ -23,16 +23,6 @@ export default function Sidebar(props) {
       }
     >
       <ul className="sidebar-ul">
-        {/* {sidebarData.map((el, idx) => {
-          return (
-            <li key={idx} className={el.cName}>
-              <Link to={el.path} className="sideBar-link">
-                {el.icon}
-                <span>{el.name}</span>
-              </Link>
-            </li>
-          );
-        })} */}
 
         {user ? (
           <>
@@ -66,12 +56,6 @@ export default function Sidebar(props) {
                 <span>Playlists</span>
               </Link>
             </li>
-            {/* <li className="item-text">
-              <Link to={"/playlist"} className="sideBar-link">
-                <CgIcons.CgPlayList />
-                <span>Test Playlist</span>
-              </Link>
-            </li> */}
           </>
         ) : (
           <>

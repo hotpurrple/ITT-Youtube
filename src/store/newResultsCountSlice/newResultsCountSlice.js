@@ -14,7 +14,10 @@ export const newResultsCountSlice = createSlice({
       state.value += 5;
     },
     setToInitialValue: (state) => {
+      console.log("setToInitialValue");
+      console.log(state.value);
       state.value = 15;
+      console.log(state.value);
     },
   },
 });

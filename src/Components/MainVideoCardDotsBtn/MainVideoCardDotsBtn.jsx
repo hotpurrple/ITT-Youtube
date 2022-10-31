@@ -71,7 +71,7 @@ export default function MainVideoCardDotsBtn(props) {
       <Dialog
         onClose={() => setDialogShown(!dialogShown)}
         open={dialogShown}
-        // PaperProps={{ sx: { width: "12%" } }}
+        PaperProps={{ sx: { width: "200px" } }}
       >
         <DialogTitle> Add to playlist </DialogTitle>
         <ul>
@@ -92,6 +92,9 @@ export default function MainVideoCardDotsBtn(props) {
           variant="text"
           color="primary"
           onClick={() => showTheHiddenMenu()}
+          sx={{
+            padding: "15px",
+          }}
         >
           Create new playlist
         </Button>
@@ -99,6 +102,7 @@ export default function MainVideoCardDotsBtn(props) {
         {showHiddenMenu && (
           <div className="createNewPlaylistDiv">
             <input
+              className="dotsDialogInput"
               value={newPlaylistName}
               onInput={handleNewPlaylistNameInput}
               placeholder="Enter new playlist name"
@@ -108,6 +112,9 @@ export default function MainVideoCardDotsBtn(props) {
               variant="text"
               color="primary"
               onClick={handleCreateNewPlaylist}
+              sx={{
+                padding: "15px",
+              }}
             >
               Create
             </Button>
