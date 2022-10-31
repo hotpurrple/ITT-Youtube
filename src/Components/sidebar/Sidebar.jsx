@@ -39,18 +39,6 @@ export default function Sidebar(props) {
               </Link>
             </li>
             <li className="item-text">
-              <Link to={"/history"} className="sideBar-link">
-                <AiIcons.AiOutlineHistory />
-                <span>History</span>
-              </Link>
-            </li>
-            <li className="item-text">
-              <Link to={"/liked"} className="sideBar-link">
-                <AiIcons.AiOutlineLike />
-                <span>Liked</span>
-              </Link>
-            </li>
-            <li className="item-text">
               <Link to={"/all-playlists"} className="sideBar-link">
                 <CgIcons.CgPlayList />
                 <span>Playlists</span>

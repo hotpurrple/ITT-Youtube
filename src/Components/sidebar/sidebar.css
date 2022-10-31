@@ -3,7 +3,7 @@
     background-color: #ffffff;
     opacity: 1;
     width: 170px;
-    height: 40vh;
+    height: 22vh;
     display: flex;
     justify-content: center;
     position: fixed;
@@ -20,75 +20,6 @@
     left: 5px;
     transition: 350ms;
 }
-
-
-/* ако сме на searchFeed */
-.sidebar-menu-SearchFeed {
-    background-color: #ffffff;
-    opacity: 1;
-    width: 170px;
-    height: 40vh;
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 7vh;
-    left: -100%;
-    transition: 850ms;
-    z-index: 11;
-    border: 2px solid darkgrey;
-    border-radius: 20px;
-    overflow: auto
-}
-
-.sidebar-menu-SearchFeed.active {
-    left: 5px;
-    transition: 350ms;
-}
-
-
-.sidebar-menu-Library {
-    background-color: #ffffff;
-    opacity: 1;
-    width: 170px;
-    height: 40vh;
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 7vh;
-    left: -100%;
-    transition: 850ms;
-    border: 2px solid darkgrey;
-    border-radius: 20px;
-    overflow: auto
-}
-
-.sidebar-menu-Library.active {
-    left: 5px;
-    transition: 350ms;
-}
-
-
-.sidebar-menu-Video {
-    background-color: #ffffff;
-    opacity: 1;
-    width: 170px;
-    height: 40vh;
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 8vh;
-    left: -100%;
-    transition: 850ms;
-    border: 2px solid darkgrey;
-    border-radius: 20px;
-    overflow: auto
-}
-
-.sidebar-menu-Video.active {
-    left: 5px;
-    transition: 350ms;
-}
-
 
 
 .item-text {
