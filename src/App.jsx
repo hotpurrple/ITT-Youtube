@@ -44,6 +44,7 @@ export default function App() {
     };
   }, []);
 
+
   return (
     <>
       <CssBaseline />
@@ -61,7 +62,7 @@ export default function App() {
           <Route path="/channel/:channelId" element={<ChannelDetail />} />
           <Route
             path="/search/:searchTerm"
-            element={<SearchFeed /*showSideBar={sideBar}*/ />}
+            element={<SearchFeed  /*showSideBar={sideBar}*/ />}
           />
           <Route path="*" element={<ErrorPage />} />
           <Route path="login" element={<Login />} />

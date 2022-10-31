@@ -17,6 +17,9 @@ import { logUserOut } from "../../store/loggedUser";
 import Brightness3OutlinedIcon from "@mui/icons-material/Brightness3Outlined";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Menu from "@mui/material/Menu";
+import Dictaphone from "../SpeechRecognition/SpeechRecognition";
+
+
 export default function Header(props) {
   const location = useLocation();
 
@@ -60,6 +63,7 @@ export default function Header(props) {
           </div>
 
           <SearchBar />
+          <Dictaphone/>
 
           <div className="headerRight">
             <MoreVertIcon

@@ -38,3 +38,29 @@
     background-color: darkgrey;
 
 }
+
+.muiSearchBox {
+    display: flex;
+    align-items: center;
+}
+
+.KeyboardVoiceIcon {
+    transform: translate(200%);
+}
+
+.voiceSearchWrapper {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50vh;
+    width: 50vw;
+    border: 2px solid #000;
+    background-color: white;
+    box-shadow: 24;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    gap: 10vh;
+}

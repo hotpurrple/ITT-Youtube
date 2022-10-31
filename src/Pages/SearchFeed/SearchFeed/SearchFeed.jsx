@@ -211,7 +211,6 @@ import { SearchVideoCard, SearchChannelCard, BackdropComponent } from "../../../
 export default function SearchFeed(props) {
   const [open, setOpen] = useState(false);
   const { searchTerm } = useParams();
-
   const [searchResults, setSearchResults] = useState([]);
   const [searchKeyWord, setSearchKeyword] = useState(searchTerm);
   const scrollDiv = useRef();

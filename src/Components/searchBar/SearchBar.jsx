@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState, useEffect} from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams, useLocation } from "react-router-dom";
 import {
   IconButton,
   Autocomplete,
@@ -10,7 +10,11 @@ import {
 import { Search } from "@mui/icons-material";
 import "./searchBar.css";
 import fetchFromAPI from "../../utils/fetchFromAPI";
-
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
+import Modal from '@mui/material/Modal';
+import ReplayIcon from '@mui/icons-material/Replay';
+import CloseIcon from '@mui/icons-material/Close';
 
 export default function SearchBar(props) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -25,11 +29,22 @@ export default function SearchBar(props) {
     };
   }
 
+  //IF WE DONT USE TEXT TO SPEECH WE HAVE TO DELETE THIS
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition
+  } = useSpeechRecognition();
+
   const handleInput = (e) => {
     if (e.target.value.length > 1) {
       setSearchTerm(e.target.value);
     }
   };
+
+  //IF WE DONT USE TEXT TO SPEECH WE HAVE TO DELETE THIS
+  const voiceSpeechTextField = useRef()
 
   useEffect(() => {
     if (searchTerm) {
@@ -61,8 +76,21 @@ export default function SearchBar(props) {
     }
   };
 
+//IF WE DONT USE TEXT TO SPEECH WE HAVE TO DELETE THIS
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const location = useLocation().pathname
+  useEffect(() => {
+    if (location.includes("search")) {
+        voiceSpeechTextField.current.value = location.split("/search/")[1]
+    }
+  }, [location])
+
   return (
-    <Box
+
+<>
+    <Box className="muiSearchBox"
       component={"form"}
       sx={{
         backgroundColor: "#ffffff",
@@ -123,6 +151,7 @@ export default function SearchBar(props) {
         }}
         renderInput={(params) => (
           <TextField
+          inputRef={voiceSpeechTextField} //IF WE DONT USE TEXT TO SPEECH WE HAVE TO DELETE THIS REF
             value={searchTerm}
             {...params}
             sx={{
@@ -142,6 +171,48 @@ export default function SearchBar(props) {
       >
         <Search />
       </IconButton>
+
+
+   
+    <KeyboardVoiceIcon className="KeyboardVoiceIcon" onClick={() => {
+        handleOpen()
+        SpeechRecognition.startListening()
+    }}/>
     </Box>
+    
+    {/* IF WE DONT USE TEXT TO SPEECH WE HAVE TO DELETE THIS MODAL */}
+    <Modal className="voiceSearchModal" 
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+       <div className="voiceSearchWrapper">
+        <h2>{transcript}</h2>
+        <div className="voiceSearchButtons">
+        <IconButton onClick={() => {
+            if (transcript) {
+            navigate(`/search/${transcript}`)
+            handleClose()
+            }
+        }}>
+            <KeyboardVoiceIcon fontSize="large"/>
+            <h6>Search</h6>
+        </IconButton>
+        <IconButton onClick={SpeechRecognition.startListening}>
+            <ReplayIcon fontSize="large"/>
+            <h6>Retry</h6>
+        </IconButton>
+        <IconButton onClick={resetTranscript}>
+            <CloseIcon fontSize="large"/>
+            <h6>Reset search</h6>
+        </IconButton>
+        </div>
+        <div>
+    </div>
+       </div>
+      </Modal>
+      {/* IF WE DONT USE TEXT TO SPEECH WE HAVE TO DELETE THIS MODAL */}
+    </>
   );
 }
