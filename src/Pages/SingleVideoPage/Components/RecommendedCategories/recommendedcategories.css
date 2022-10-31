@@ -1,0 +1,10 @@
+.recommendedWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recommendedWrapper * {
+    overflow: none;
+}
+
