@@ -203,10 +203,10 @@
 //!Слави вариант с малка корекция при newResults - вече е част от state-а, а не проста променлива
 import React from "react";
 import "./searchFeed.css";
-import fetchFromAPI from "../../utils/fetchFromAPI";
+import fetchFromAPI from "../../../utils/fetchFromAPI";
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import { SearchVideoCard, SearchChannelCard, BackdropComponent } from "../";
+import { SearchVideoCard, SearchChannelCard, BackdropComponent } from "../../../Components";
 
 export default function SearchFeed(props) {
   const [open, setOpen] = useState(false);

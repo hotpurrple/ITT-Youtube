@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./playlists.css";
-import getUserPlaylists from "../../server/getUserPlaylists";
-import PlaylistsPlaylistCard from "../PlaylistsPlaylistCard/PlaylistsPlaylistCard";
+import getUserPlaylists from "../../../server/getUserPlaylists";
+import PlaylistsPlaylistCard from "../../../Components/PlaylistsPlaylistCard/PlaylistsPlaylistCard";
 
 import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";

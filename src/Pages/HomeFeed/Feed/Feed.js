@@ -7,14 +7,14 @@ import {
   MainVideoCard,
   MainChannelCard,
   BackdropComponent,
-} from "..";
+} from "../../../Components";
 
-import fetchFromAPI from "../../utils/fetchFromAPI";
+import fetchFromAPI from "../../../utils/fetchFromAPI";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setToInitialValue,
   increment,
-} from "../../store/newResultsCountSlice/newResultsCountSlice";
+} from "../../../store/newResultsCountSlice/newResultsCountSlice";
 
 export default function Feed(props) {
   const dispatch = useDispatch();

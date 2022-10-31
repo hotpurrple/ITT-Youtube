@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import "./playlistPage.css";
-import { PlaylistCard } from "..";
+import { PlaylistCard } from "../../../Components";
 import { Typography } from "@mui/material";
 
-import getPlaylistVideos from "../../server/getPlaylistVideos";
+import getPlaylistVideos from "../../../server/getPlaylistVideos";
 import { Divider } from "@mui/material";
 import { useSelector } from "react-redux";
-import deleteVideoFromPlaylist from "../../server/deleteVideoFromPlaylist";
-import deletePlaylist from "../../server/deletePlaylist";
+import deleteVideoFromPlaylist from "../../../server/deleteVideoFromPlaylist";
+import deletePlaylist from "../../../server/deletePlaylist";
 import { useParams } from "react-router-dom"; //за да можем да вземем query search параметрите от search bar-а
-import noVideosInPlaylist from "../../assets/images/noVideosInPlaylist.jpg";
+import noVideosInPlaylist from "../../../assets/images/noVideosInPlaylist.jpg";
 
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
