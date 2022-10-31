@@ -10,18 +10,29 @@ import {
 } from "..";
 
 import fetchFromAPI from "../../utils/fetchFromAPI";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setToInitialValue,
+  increment,
+} from "../../store/newResultsCountSlice/newResultsCountSlice";
 
 export default function Feed(props) {
-  const [selectedCategory, setSelectedCategory] = useState("new"); //първоначално ни зарежда видеа от категория New
+  const dispatch = useDispatch();
+  const selectedCategory = useSelector((state) => state.selectedCategory.value);
+
   const [videos, setVideos] = useState([]);
   const [open, setOpen] = useState(false);
-  const [newResults, setNewResults] = useState(20);
+  const [endOfPage, setEndOfPage] = useState(false);
 
-  // let newResults = 30;
+  const newResults = useSelector((state) => state.newResults.value);
+
   const scrollDiv = useRef();
 
   useEffect(() => {
-    console.log("New selected category is: " + selectedCategory);
+    dispatch(setToInitialValue());
+    console.log(
+      "Rerender, because of changed searchKeyword. Render count = " + newResults
+    );
     scrollDiv.current.scrollTo(0, 0);
     setOpen(true);
     fetchFromAPI(
@@ -30,10 +41,18 @@ export default function Feed(props) {
       setOpen(false);
       setVideos(data.items);
     });
-  }, [selectedCategory, newResults]); //когато selectedCategory се промени, изпълни callback ф-ята в useEffect()
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    if (endOfPage) {
+      loadMoreResults();
+      setEndOfPage(false);
+    }
+  }, [endOfPage]);
 
   const loadMoreResults = () => {
-    console.log(selectedCategory);
+    console.log("Rerender, because endOfPage is changed");
+    console.log("Load more results of " + selectedCategory + " category");
     setOpen(true);
     fetchFromAPI(
       `/search?part=snippet&q=${selectedCategory}&maxResults=${newResults}`
@@ -41,11 +60,11 @@ export default function Feed(props) {
       setOpen(false);
       setVideos((oldResults) => [
         ...oldResults,
-        ...data.items.slice(oldResults.length + 1),
+        ...data.items.slice(oldResults.length),
       ]);
     });
-    // newResults += 10;
-    setNewResults(newResults + 10);
+
+    // setNewResults(newResults + 5);
   };
 
   const handleScroll = (e) => {
@@ -53,7 +72,8 @@ export default function Feed(props) {
       scrollDiv.current.scrollHeight - scrollDiv.current.scrollTop <=
       scrollDiv.current.clientHeight;
     if (endOfPage) {
-      loadMoreResults();
+      setEndOfPage(true);
+      dispatch(increment());
     }
   };
 
@@ -65,7 +85,7 @@ export default function Feed(props) {
     return () => {
       instanceOfRef.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [selectedCategory]);
 
   return (
     <div className="feedMainContainer">
@@ -73,7 +93,7 @@ export default function Feed(props) {
 
       <div className="resultsPlusCategoriesContainer">
         <CategoriesBar //categories tab bar with tabs
-          setSelectedCategory={setSelectedCategory}
+        // setSelectedCategory={setSelectedCategory}
         />
 
         <div className="resultsContainer" ref={scrollDiv}>

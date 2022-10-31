@@ -3,9 +3,12 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { useState } from "react";
 import get100RandomCategories from "../../utils/generate100RandomCategories";
+import { useDispatch } from "react-redux";
+import { changeSelectedCategory } from "../../store/selectedCategorySlice/selectedCategorySlice";
 
 export default function CategoriesBar(props) {
   const [value, setValue] = useState(0);
+  const dispatch = useDispatch();
 
   const [randomCategories, setRandomCategories] = useState(
     get100RandomCategories()
@@ -16,7 +19,8 @@ export default function CategoriesBar(props) {
   };
 
   return (
-    <Tabs className="muiTabs"
+    <Tabs
+      className="muiTabs"
       value={value}
       onChange={handleChange}
       variant="scrollable"
@@ -54,7 +58,8 @@ export default function CategoriesBar(props) {
               borderColor: "#605f60",
             },
           }}
-          onClick={() => props.setSelectedCategory(c.name)}
+          // onClick={() => props.setSelectedCategory(c.name)}
+          onClick={() => dispatch(changeSelectedCategory(c.name))}
           key={c.name}
         />
       ))}
