@@ -199,7 +199,7 @@ export default function SearchBar(props) {
             <KeyboardVoiceIcon fontSize="large"/>
             <h6>Search</h6>
         </IconButton>
-        <IconButton onClick={SpeechRecognition.startListening}>
+        <IconButton onClick={() => SpeechRecognition.startListening({language: "bg"})}>
             <ReplayIcon fontSize="large"/>
             <h6>Retry</h6>
         </IconButton>
