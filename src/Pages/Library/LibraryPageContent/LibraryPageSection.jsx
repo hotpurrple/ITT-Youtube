@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Button from '@mui/material/Button';
-// import pseudoRecommended from '../../utils/pseudoRecommended.mjs';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
 import VideoPageCard from '../../SingleVideoPage/Components/VideoPageCard/VideoPageCard';
 import { v4 as uuid } from 'uuid';
-import gigafetcher from '../../../utils/videoUpload';
 
 export default function LibraryPageSection(props) {
-    // let arr = pseudoRecommended
     const [arrLength, setArrLength] = useState(5)
     return (
         <>
@@ -16,7 +13,7 @@ export default function LibraryPageSection(props) {
                 <div className='singleLibrarySectionHead'>
                     <div className='libraryIconAndTitle'>{props.icon} <h4>{props.name}</h4></div>
                     <div className='middledivplaceholder'></div>
-                    <Button className='libraryButton' variant="text">SEE ALL</Button>
+                    <Button className='libraryButton' variant="text" onClick={() => setArrLength(5)}>SHRINK</Button>
                 </div>
                 <div className='libraryVideoPageCards'>
                     {props.vidsToShow.slice(0, arrLength).map(e => {

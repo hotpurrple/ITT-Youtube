@@ -8,7 +8,6 @@
     margin-top: 1vh;
     height: 90vh;
     width: 100%;
-    /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     gap: 1.4vw;
@@ -17,14 +16,12 @@
 .videoDetails {
     height: 75.392vh;
     width: 66.667vw;
-    /* border: 1px solid blue; */
 }
 
 .recommended {
     position: relative;
     height: fit-content;
     width: 20.938vw;
-    /* border: 1px solid green; */
 }
 
 .descriptionAndComments {

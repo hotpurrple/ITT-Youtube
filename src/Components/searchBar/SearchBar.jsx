@@ -26,12 +26,12 @@ export default function SearchBar(props) {
     };
   }
 
-  //IF WE DONT USE TEXT TO SPEECH WE HAVE TO DELETE THIS
   const {
     transcript,
     listening,
     resetTranscript,
     browserSupportsSpeechRecognition,
+    isMicrophoneAvailable,
   } = useSpeechRecognition();
 
   const handleInput = (e) => {
@@ -40,7 +40,6 @@ export default function SearchBar(props) {
     }
   };
 
-  //IF WE DONT USE TEXT TO SPEECH WE HAVE TO DELETE THIS
   const voiceSpeechTextField = useRef();
 
   useEffect(() => {
@@ -73,7 +72,6 @@ export default function SearchBar(props) {
     }
   };
 
-  //IF WE DONT USE TEXT TO SPEECH WE HAVE TO DELETE THIS
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -153,9 +151,7 @@ export default function SearchBar(props) {
               {...params}
               sx={{
                 "& fieldset": { border: "none" },
-                // fontSize: "1vw",
               }}
-              // size="small"
             />
           )}
         />
@@ -178,7 +174,6 @@ export default function SearchBar(props) {
         />
       </Box>
 
-      {/* IF WE DONT USE TEXT TO SPEECH WE HAVE TO DELETE THIS MODAL */}
       <Modal
         className="voiceSearchModal"
         open={open}
@@ -187,8 +182,8 @@ export default function SearchBar(props) {
         aria-describedby="modal-modal-description"
       >
         <div className="voiceSearchWrapper">
-          <h2>{transcript}</h2>
-          <div className="voiceSearchButtons">
+          {isMicrophoneAvailable ? <h2>{transcript}</h2> : <h2>You need to enable your microphone first.</h2>}
+          {isMicrophoneAvailable && <div className="voiceSearchButtons">
             <IconButton
               onClick={() => {
                 if (transcript) {
@@ -212,11 +207,10 @@ export default function SearchBar(props) {
               <CloseIcon fontSize="large" />
               <h6>Reset search</h6>
             </IconButton>
-          </div>
+          </div>}
           <div></div>
         </div>
       </Modal>
-      {/* IF WE DONT USE TEXT TO SPEECH WE HAVE TO DELETE THIS MODAL */}
     </>
   );
 }
