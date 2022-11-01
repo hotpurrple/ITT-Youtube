@@ -4,8 +4,7 @@ export default function getPlaylistVideos(playlistName) {
     let currentUser = userList.find((e) => e.is_logged); //търсим да вземем текущо логнатия
 
     if (currentUser) {
-
-      //   return currentUser.playlists.playlistName.videos;
+      
       return currentUser.playlists.find((p) => p.title === playlistName).videos;
     } else {
       return null;

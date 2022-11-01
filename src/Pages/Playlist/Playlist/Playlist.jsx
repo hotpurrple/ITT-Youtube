@@ -8,7 +8,7 @@ import { Divider } from "@mui/material";
 import { useSelector } from "react-redux";
 import deleteVideoFromPlaylist from "../../../server/deleteVideoFromPlaylist";
 import deletePlaylist from "../../../server/deletePlaylist";
-import { useParams } from "react-router-dom"; //за да можем да вземем query search параметрите от search bar-а
+import { useParams } from "react-router-dom";
 import noVideosInPlaylist from "../../../assets/images/noVideosInPlaylist.jpg";
 
 import Dialog from "@mui/material/Dialog";
@@ -16,35 +16,43 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-//тук в props ще дойде името на плейлиста, по който ще бъдат открити видеата
 export default function Playlist(props) {
   const navigate = useNavigate();
+  //!Взимаме името на плейлиста от url-то, чрез useParams
   const { playlistName } = useParams();
   const [dialogShown, setDialogShown] = useState(false);
-  // console.log("Playlist name: " + playlistName);
+
   const user = useSelector((state) => state.loggedUser.user);
 
+  //!Взимаме си видеата от плейлиста със съответното име
   const [currentPlaylistVideos, setCurrentPlaylistVideos] = useState(
     getPlaylistVideos(playlistName)
   );
-  // console.log("Playlist videos: " + currentPlaylistVideos);
 
+  //!главната картинка на картичката отляво - ако е празен албума, сложи default-ната снимка за празен албум
   const [playlistImage, setPlaylistImage] = useState(
     currentPlaylistVideos[0]?.snippet?.thumbnails?.high?.url
       ? currentPlaylistVideos[0].snippet.thumbnails.high.url
       : noVideosInPlaylist
   );
-  // console.log("Playlist image: " + playlistImage);
 
+  //!Броят видеа е равен на дължината на масива с видеа
   const [playlistVideosCount, setPlatlistVideosCount] = useState(
     currentPlaylistVideos.length > 0 ? currentPlaylistVideos.length : 0
   );
-  // console.log("Playlist videos count: " + playlistVideosCount);
 
+  //!Триене на видео от текущия плейлист по id-то на видеото
   const removeVideoFromPlaylist = (vidId) => {
     //!delete the video from the playlist
     deleteVideoFromPlaylist(playlistName, vidId);
+    //!сетни наново видеата от текущия плейлист, вече без изтритото
     setCurrentPlaylistVideos(getPlaylistVideos(playlistName));
+  };
+
+  //!Триене на текущо разглеждания плейлист по името му
+  const deleteCurrentPlaylist = () => {
+    deletePlaylist(playlistName);
+    navigate("/all-playlists");
   };
 
   return (
@@ -52,11 +60,7 @@ export default function Playlist(props) {
       <div className="playlistPageLeft">
         <div className="playlistMainCard">
           <img
-            src={
-              playlistImage
-                ? playlistImage
-                : "https://images.gutefrage.net/media/fragen/bilder/meine-kamera-auf-windows-10-funktioniert-nicht-was-tun/0_big.jpg?v=1584606917000"
-            }
+            src={playlistImage}
             alt="somePic"
           ></img>
           <Typography variant="h5" color="initial" fontSize={"1.5vw"}>
@@ -105,11 +109,7 @@ export default function Playlist(props) {
             <Button
               variant="text"
               color="primary"
-              onClick={() => {
-                deletePlaylist(playlistName);
-                //redirect to playlists
-                navigate("/all-playlists");
-              }}
+              onClick={() => deleteCurrentPlaylist()}
             >
               Delete playlist
             </Button>
