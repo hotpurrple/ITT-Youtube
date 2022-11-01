@@ -19,12 +19,15 @@ export default function MainVideoCard(props) {
   const user = useSelector((state) => state.loggedUser.user);
 
   return (
+
     <Card
       className="card"
       sx={{
         width: 360,
+        backgroundColor: "#f9f9f9",
       }}
     >
+
       <Link
         to={
           videoData.id.videoId
@@ -41,10 +44,11 @@ export default function MainVideoCard(props) {
           }}
         />
       </Link>
+
       <CardContent
         sx={{
           backgroundColor: "#f9f9f9", //"#181818", //dark
-          height: "94px",
+          height: "60px",
         }}
       >
         <Link
@@ -92,6 +96,7 @@ export default function MainVideoCard(props) {
           icon={<HiIcons.HiDotsHorizontal />}
         />
       )}
+
     </Card>
   );
 }

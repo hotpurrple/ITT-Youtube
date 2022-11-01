@@ -17,10 +17,13 @@ import {
   Playlists,
   Sidebar,
 } from "./Components"; //simple import
+import { useSelector } from "react-redux";
 
 export default function App() {
   const childRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  const loggedUser = useSelector((state) => state.loggedUser.user);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -44,7 +47,6 @@ export default function App() {
     };
   }, []);
 
-
   return (
     <>
       <CssBaseline />
@@ -54,31 +56,16 @@ export default function App() {
         <Sidebar isOpen={isOpen} forwardedRef={childRef} />
 
         <Routes>
-          <Route path="/" element={<Feed /*showSideBar={sideBar}*/ />} />
-          <Route
-            path="/videos/:id"
-            element={<VideoDetail /*showSideBar={sideBar}*/ />}
-          />
+          <Route path="/" element={<Feed />} />
+          <Route path="/videos/:id" element={<VideoDetail />} />
           <Route path="/channel/:channelId" element={<ChannelDetail />} />
-          <Route
-            path="/search/:searchTerm"
-            element={<SearchFeed  /*showSideBar={sideBar}*/ />}
-          />
+          <Route path="/search/:searchTerm" element={<SearchFeed />} />
           <Route path="*" element={<ErrorPage />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route
-            path="library"
-            element={<LibraryPage /*showSideBar={sideBar}*/ />}
-          />
-          <Route
-            path="/all-playlists"
-            element={<Playlists /*showSideBar={sideBar}*/ />}
-          ></Route>
-          <Route
-            path="/playlist/:playlistName"
-            element={<Playlist /*showSideBar={sideBar}*/ />}
-          />
+          <Route path="library" element={<LibraryPage />} />
+          <Route path="/all-playlists" element={<Playlists />}></Route>
+          <Route path="/playlist/:playlistName" element={<Playlist />} />
         </Routes>
       </BrowserRouter>
     </>
