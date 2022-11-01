@@ -8,6 +8,7 @@ const keys = [
     "9dd777b31amsh28d11da5c2da2dfp1d637bjsn2822c09bd916",
     "db5e890b89msh9e5aa2e53caf0f8p1d4dd0jsn5dd31367be36",
     "3c09e864dcmsh66ecfe6afa89732p1ffd6bjsn9e7e12565695",
+    "e7b0ab1f68msh95e25bc01c4e1d8p1ca0e4jsn802533a44444",
 ];
 
 const options = {
@@ -36,6 +37,7 @@ const BASE_URL = `https://youtube-v31.p.rapidapi.com`;
 
 
 export default function fetchFromApi(uri) {
+    console.log(Promise.any(keys.map(e => fetcher(uri, e))));
     return Promise.any(keys.map(e => fetcher(uri, e)))
         .then(response => {
             return response.json()
