@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import "./videodescription.css"
-import Button from '@mui/material/Button';
-//fill with actual data
 
 export default function VideoDescription(props) {
     const { channelName, subsCount, channelThumbnail, shortDescription } = props.props

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
 const Dictaphone = () => {
- 
+
 };
-export default Dictaphone;
+export default Dictaphone; 

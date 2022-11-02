@@ -30,10 +30,6 @@ export default function CommentCard(props) {
         }
         setIsLiked(isCommentLiked(props.props.id) ? likedIcon : notLikedIcon)
         setIsDisliked(isCommentDisliked(props.props.id) ? dislikedIcon : notDislikedIcon)
-
-        // if (isCommentLiked(props.props.id)) {
-        //     setIsLiked(notLikedIcon)
-        // }
     }
 
     let notLikedIcon = <ThumbUpOutlinedIcon fontSize="small" />
@@ -56,7 +52,6 @@ export default function CommentCard(props) {
                         <span className='likeButtonLikeAmount' onClick={handleUserLikeComment}>
                             {isLiked} {totalLikesOfComment}</span>
                         <span onClick={handleUserDislikeComment} >{isDisliked}</span>
-                        {/* <p className='commentCardReply'>REPLY</p> */}
                     </span>
                 </div>
             </div>

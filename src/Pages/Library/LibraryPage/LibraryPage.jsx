@@ -1,5 +1,5 @@
 import React from "react";
-import LibraryPageContent from "../LibraryPageContent.jsx/LibraryPageContent";
+import LibraryPageContent from "../LibraryPageContent/LibraryPageContent";
 import "./librarypage.css";
 import YoureNotLoggedIn from "../../LoginProtectionPage/YoureNotLoggedIn/YoureNotLoggedIn";
 import { useSelector } from "react-redux";

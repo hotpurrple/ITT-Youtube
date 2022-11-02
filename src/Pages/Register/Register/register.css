@@ -43,18 +43,12 @@
     margin-bottom: 5vh;
 }
 
-.regTextField {
-    /* margin-bottom: 9% !important; */
-    /* height: 40% !important; */
-}
 
 .logHref {
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* padding-top: 10%; */
-    /* gap: 9vw; */
     gap: 2vw;
     width: 100%;
     bottom: 5%;

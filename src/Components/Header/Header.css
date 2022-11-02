@@ -1,7 +1,6 @@
 .header {
     width: 100vw;
     height: 6.1vh;
-    /* border: 1px solid red; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -43,7 +42,6 @@
 .muiList {
     position: absolute;
     right: 0;
-    /* bottom: -25vh; */
     width: 15vw !important;
     z-index: 1;
     opacity: 1;
@@ -54,5 +52,4 @@
 }
 .muiMenu {
     position: absolute;
-    /* right: 500px !important; */
 }

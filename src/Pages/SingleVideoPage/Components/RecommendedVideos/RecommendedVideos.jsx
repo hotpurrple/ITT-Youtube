@@ -4,8 +4,6 @@ import { CircularProgress } from '@mui/material';
 import fetchFromApi from '../../../../utils/fetchFromAPI';
 import VideoPageCard from '../VideoPageCard/VideoPageCard';
 import RecommendedCategories from '../RecommendedCategories/RecommendedCategories';
-import Backdrop from '@mui/material/Backdrop';
-import Button from '@mui/material/Button';
 import "./recommendedvideos.css"
 
 export default function RecommendedVideos(props) {

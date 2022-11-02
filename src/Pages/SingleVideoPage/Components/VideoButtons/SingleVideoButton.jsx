@@ -1,11 +1,11 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
 import { Divider } from '@mui/material';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import updateUserLikedVideos, { isCurrentVideoLiked } from '../../../../server/updateUserLikedVideos';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
@@ -38,7 +38,7 @@ export default function SingleVideoButton(props) {
                     props.setCurrentVidDisliked(<ThumbDownOffAltOutlinedIcon />)
                 props.setCurrentVidLiked(<ThumbUpOutlinedIcon />)
                 return
-            case 3:
+            case 2:
                 return setDialogShown(!dialogShown)
         }
 

@@ -9,7 +9,6 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import RestoreIcon from '@mui/icons-material/Restore';
 
 export default function LibraryPageContent() {
-    const videosHistory = useSelector(state => state.loggedUser.user.videos_history)
     const [vidHistory, setVidHistory] = useState([])
     const [likedVids, setLikedVids] = useState([])
     useEffect(() => {
@@ -26,8 +25,6 @@ export default function LibraryPageContent() {
                         <Divider />
                         <LibraryPageSection vidsToShow={likedVids} icon={<AccessTimeIcon fontSize='large' />} className={"libraryPageSection"} name={"Liked Videos"} />
                         <Divider />
-                        {/* <LibraryPageSection vidsToShow={[]} icon={<PlaylistPlayIcon fontSize='large'/>} className={"libraryPageSection"} name={"Playlists"} /> */}
-                        {/* <Divider/> */}
                     </div>
                 </div>
             </div>
