@@ -21,6 +21,7 @@ export default function MainVideoCardDotsBtn(props) {
   const [playlistNotificationName, setPlaylistNotificationName] = useState("");
 
   const [newPlaylistName, setNewPlaylistName] = useState("");
+  
   const handleNewPlaylistNameInput = (e) => {
     setNewPlaylistName(e.target.value);
   };

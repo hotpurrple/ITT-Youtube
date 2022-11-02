@@ -21,3 +21,4 @@ export { default as PlaylistCard } from "./PlaylistCard/PlaylistCard";
 export { default as MainVideoCardDotsBtn } from "./MainVideoCardDotsBtn/MainVideoCardDotsBtn";
 export { default as BackdropComponent } from "./BackdropComponent/BackdropComponent";
 export { default as NotificationSnackbar } from "./NotificationSnackbar/NotificationSnackbar";
+export { default as ConfirmationDialogComponent } from "./ConfirmationDialogComponent/ConfirmationDialogComponent";

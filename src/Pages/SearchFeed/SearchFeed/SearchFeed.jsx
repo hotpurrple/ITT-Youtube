@@ -200,13 +200,17 @@
 //   );
 // }
 
-//!Слави вариант с малка корекция при newResults - вече е част от state-а, а не проста променлива
+//!вариант с малка корекция при newResults - вече е част от state-а, а не проста променлива
 import React from "react";
 import "./searchFeed.css";
 import fetchFromAPI from "../../../utils/fetchFromAPI";
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import { SearchVideoCard, SearchChannelCard, BackdropComponent } from "../../../Components";
+import {
+  SearchVideoCard,
+  SearchChannelCard,
+  BackdropComponent,
+} from "../../../Components";
 
 export default function SearchFeed(props) {
   const [open, setOpen] = useState(false);
@@ -223,7 +227,6 @@ export default function SearchFeed(props) {
 
   useEffect(() => {
     setNewResults(10);
-    console.log("NEW search term: " + searchKeyWord);
     scrollDiv.current.scrollTo(0, 0);
     fetchFromAPI(`/search?part=snippet&q=${searchKeyWord}&maxResults=5`).then(
       (data) => {
@@ -241,12 +244,12 @@ export default function SearchFeed(props) {
   }, [endOfPage]);
 
   const loadMoreSearchResults = () => {
-    console.log(newResults);
+   
     setOpen(true);
     fetchFromAPI(
       `/search?part=snippet&q=${searchKeyWord}&maxResults=${newResults}`
     ).then((data) => {
-      console.log(data.items);
+    
       setOpen(false);
       setSearchResults((oldResults) => [
         ...oldResults,
@@ -257,10 +260,7 @@ export default function SearchFeed(props) {
   };
 
   const handleScroll = () => {
-    if (
-      scrollDiv.current.scrollHeight - scrollDiv.current.scrollTop <=
-      scrollDiv.current.clientHeight
-    ) {
+    if (scrollDiv.current.scrollHeight - scrollDiv.current.scrollTop <= scrollDiv.current.clientHeight) {
       setEndOfPage(true);
     }
   };

@@ -19,20 +19,14 @@ import {
 export default function Feed(props) {
   const dispatch = useDispatch();
   const selectedCategory = useSelector((state) => state.selectedCategory.value);
-
   const [videos, setVideos] = useState([]);
   const [open, setOpen] = useState(false);
   const [endOfPage, setEndOfPage] = useState(false);
-
   const newResults = useSelector((state) => state.newResults.value);
-
   const scrollDiv = useRef();
 
   useEffect(() => {
     dispatch(setToInitialValue());
-    console.log(
-      "Rerender, because of changed searchKeyword. Render count = " + newResults
-    );
     scrollDiv.current.scrollTo(0, 0);
     setOpen(true);
     fetchFromAPI(
@@ -51,8 +45,6 @@ export default function Feed(props) {
   }, [endOfPage]);
 
   const loadMoreResults = () => {
-    console.log("Rerender, because endOfPage is changed");
-    console.log("Load more results of " + selectedCategory + " category");
     setOpen(true);
     fetchFromAPI(
       `/search?part=snippet&q=${selectedCategory}&maxResults=${newResults}`
@@ -64,13 +56,10 @@ export default function Feed(props) {
       ]);
     });
 
-    // setNewResults(newResults + 5);
   };
 
   const handleScroll = (e) => {
-    const endOfPage =
-      scrollDiv.current.scrollHeight - scrollDiv.current.scrollTop <=
-      scrollDiv.current.clientHeight;
+    const endOfPage = scrollDiv.current.scrollHeight - scrollDiv.current.scrollTop <= scrollDiv.current.clientHeight;
     if (endOfPage) {
       setEndOfPage(true);
       dispatch(increment());
@@ -99,10 +88,8 @@ export default function Feed(props) {
         <div className="resultsContainer" ref={scrollDiv}>
           {videos.map((vid, idx) => {
             if (vid.id.videoId) {
-              //значи е видео, а не канал
               return <MainVideoCard video={vid} key={idx} />;
             } else {
-              //значи е канал, а не видео
               return <MainChannelCard channelDetails={vid} key={idx} />;
             }
           })}

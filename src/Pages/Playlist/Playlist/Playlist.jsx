@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./playlistPage.css";
-import { PlaylistCard } from "../../../Components";
+import { ConfirmationDialogComponent, PlaylistCard } from "../../../Components";
 import { Typography } from "@mui/material";
-
 import getPlaylistVideos from "../../../server/getPlaylistVideos";
 import { Divider } from "@mui/material";
 import { useSelector } from "react-redux";
@@ -10,9 +9,6 @@ import deleteVideoFromPlaylist from "../../../server/deleteVideoFromPlaylist";
 import deletePlaylist from "../../../server/deletePlaylist";
 import { useParams } from "react-router-dom";
 import noVideosInPlaylist from "../../../assets/images/noVideosInPlaylist.jpg";
-
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
@@ -59,10 +55,7 @@ export default function Playlist(props) {
     <div className="playlistsPage">
       <div className="playlistPageLeft">
         <div className="playlistMainCard">
-          <img
-            src={playlistImage}
-            alt="somePic"
-          ></img>
+          <img src={playlistImage} alt="somePic"></img>
           <Typography variant="h5" color="initial" fontSize={"1.5vw"}>
             {playlistName}
           </Typography>
@@ -98,22 +91,13 @@ export default function Playlist(props) {
             Delete playlist
           </Button>
 
-          <Dialog
-            onClose={() => setDialogShown(!dialogShown)}
-            open={dialogShown}
-          >
-            <DialogTitle>
-              Are you sure that you want to delete the playlist?
-            </DialogTitle>
-
-            <Button
-              variant="text"
-              color="primary"
-              onClick={() => deleteCurrentPlaylist()}
-            >
-              Delete playlist
-            </Button>
-          </Dialog>
+          <ConfirmationDialogComponent
+            isOpen={dialogShown}
+            question=" Are you sure that you want to delete the playlist?"
+            buttonText="Delete playlist"
+            onBtnClick={deleteCurrentPlaylist}
+            setDialogShown={setDialogShown}
+          />
         </div>
       </div>
 

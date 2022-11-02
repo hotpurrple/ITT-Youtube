@@ -2,13 +2,14 @@ import { Typography, IconButton } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./playlistCard.css";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import { Button } from "@mui/material";
 import * as AiIcons from "react-icons/ai";
+import { ConfirmationDialogComponent } from "../";
 
 export default function PlaylistCard({ videoData, removeVideoFromPlaylist }) {
   const [dialogShown, setDialogShown] = useState(false);
+  const removeVideoFromCurrentPlaylist = () => {
+    removeVideoFromPlaylist(videoData.id.videoId);
+  };
   // console.log(videoData);
   return (
     <div className="playlistCard">
@@ -51,17 +52,14 @@ export default function PlaylistCard({ videoData, removeVideoFromPlaylist }) {
         <AiIcons.AiFillDelete />
       </IconButton>
 
-      <Dialog onClose={() => setDialogShown(!dialogShown)} open={dialogShown}>
-        <DialogTitle> Are you sure that you want to delete it? </DialogTitle>
-
-        <Button
-          variant="text"
-          color="primary"
-          onClick={() => removeVideoFromPlaylist(videoData.id.videoId)}
-        >
-          Delete the video
-        </Button>
-      </Dialog>
+      <ConfirmationDialogComponent
+        isOpen={dialogShown}
+        question="Are you sure that you want to delete it?"
+        buttonText="Delete the video"
+        onBtnClick={removeVideoFromCurrentPlaylist}
+        setDialogShown={setDialogShown}
+      />
+      
     </div>
   );
 }
