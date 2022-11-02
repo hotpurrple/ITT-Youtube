@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useState, useEffect } from "react";
-import { useNavigate, Link, useParams, useLocation } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { IconButton, Autocomplete, TextField, Box } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import "./searchBar.css";
@@ -92,7 +92,6 @@ export default function SearchBar(props) {
           display: "flex",
           border: "1px solid gray",
           borderRadius: "10px",
-          //width: "360px",
           width: "25%",
           justifyContent: "center",
           padding: "0px 0px 0px 5px",
@@ -138,7 +137,6 @@ export default function SearchBar(props) {
                   to={`/search/${option.title}`}
                   key={option.id}
                 >
-                  {/* {option.title.slice(0, 40).replaceAll(regex, " ")} */}
                   {option.title.slice(0, 40).replaceAll("/", "")}
                 </Link>
               </h5>
@@ -182,32 +180,38 @@ export default function SearchBar(props) {
         aria-describedby="modal-modal-description"
       >
         <div className="voiceSearchWrapper">
-          {isMicrophoneAvailable ? <h2>{transcript}</h2> : <h2>You need to enable your microphone first.</h2>}
-          {isMicrophoneAvailable && <div className="voiceSearchButtons">
-            <IconButton
-              onClick={() => {
-                if (transcript) {
-                  navigate(`/search/${transcript}`);
-                  handleClose();
+          {isMicrophoneAvailable ? (
+            <h2>{transcript}</h2>
+          ) : (
+            <h2>You need to enable your microphone first.</h2>
+          )}
+          {isMicrophoneAvailable && (
+            <div className="voiceSearchButtons">
+              <IconButton
+                onClick={() => {
+                  if (transcript) {
+                    navigate(`/search/${transcript}`);
+                    handleClose();
+                  }
+                }}
+              >
+                <KeyboardVoiceIcon fontSize="large" />
+                <h6>Search</h6>
+              </IconButton>
+              <IconButton
+                onClick={() =>
+                  SpeechRecognition.startListening({ language: "bg" })
                 }
-              }}
-            >
-              <KeyboardVoiceIcon fontSize="large" />
-              <h6>Search</h6>
-            </IconButton>
-            <IconButton
-              onClick={() =>
-                SpeechRecognition.startListening({ language: "bg" })
-              }
-            >
-              <ReplayIcon fontSize="large" />
-              <h6>Retry</h6>
-            </IconButton>
-            <IconButton onClick={resetTranscript}>
-              <CloseIcon fontSize="large" />
-              <h6>Reset search</h6>
-            </IconButton>
-          </div>}
+              >
+                <ReplayIcon fontSize="large" />
+                <h6>Retry</h6>
+              </IconButton>
+              <IconButton onClick={resetTranscript}>
+                <CloseIcon fontSize="large" />
+                <h6>Reset search</h6>
+              </IconButton>
+            </div>
+          )}
           <div></div>
         </div>
       </Modal>

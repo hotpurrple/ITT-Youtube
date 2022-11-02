@@ -1,4 +1,4 @@
-//!Нов вариант - начално зареждане на 30 видеа от категория + скрол със стъпка 20 видеа
+//!Нов вариант - начално зареждане на 15 видеа от категория + скрол със стъпка 5 видеа
 import React from "react";
 import "./feed.css";
 import { useState, useEffect, useRef } from "react";
@@ -18,20 +18,19 @@ import {
 
 export default function Feed(props) {
   const dispatch = useDispatch();
-  const selectedCategory = useSelector((state) => state.selectedCategory.value);
+  const selectedCategory = useSelector((state) => state.selectedCategory.value); //"new" категория initial state
   const [videos, setVideos] = useState([]);
   const [open, setOpen] = useState(false);
   const [endOfPage, setEndOfPage] = useState(false);
-  const newResults = useSelector((state) => state.newResults.value);
+  const newResults = useSelector((state) => state.newResults.value); //15 видеа initial state
   const scrollDiv = useRef();
 
   useEffect(() => {
     dispatch(setToInitialValue());
     scrollDiv.current.scrollTo(0, 0);
     setOpen(true);
-    fetchFromAPI(
-      `/search?part=snippet&q=${selectedCategory}&maxResults=${newResults}`
-    ).then((data) => {
+    fetchFromAPI(`/search?part=snippet&q=${selectedCategory}&maxResults=${newResults}`)
+    .then((data) => {
       setOpen(false);
       setVideos(data.items);
     });
@@ -46,16 +45,14 @@ export default function Feed(props) {
 
   const loadMoreResults = () => {
     setOpen(true);
-    fetchFromAPI(
-      `/search?part=snippet&q=${selectedCategory}&maxResults=${newResults}`
-    ).then((data) => {
+    fetchFromAPI(`/search?part=snippet&q=${selectedCategory}&maxResults=${newResults}`)
+    .then((data) => {
       setOpen(false);
       setVideos((oldResults) => [
         ...oldResults,
         ...data.items.slice(oldResults.length),
       ]);
     });
-
   };
 
   const handleScroll = (e) => {

@@ -12,7 +12,7 @@ import noVideosInPlaylist from "../../../assets/images/noVideosInPlaylist.jpg";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-export default function Playlist(props) {
+export default function Playlist() {
   const navigate = useNavigate();
   //!Взимаме името на плейлиста от url-то, чрез useParams
   const { playlistName } = useParams();
@@ -21,9 +21,7 @@ export default function Playlist(props) {
   const user = useSelector((state) => state.loggedUser.user);
 
   //!Взимаме си видеата от плейлиста със съответното име
-  const [currentPlaylistVideos, setCurrentPlaylistVideos] = useState(
-    getPlaylistVideos(playlistName)
-  );
+  const [currentPlaylistVideos, setCurrentPlaylistVideos] = useState(getPlaylistVideos(playlistName));
 
   //!главната картинка на картичката отляво - ако е празен албума, сложи default-ната снимка за празен албум
   const [playlistImage, setPlaylistImage] = useState(
@@ -33,9 +31,7 @@ export default function Playlist(props) {
   );
 
   //!Броят видеа е равен на дължината на масива с видеа
-  const [playlistVideosCount, setPlatlistVideosCount] = useState(
-    currentPlaylistVideos.length > 0 ? currentPlaylistVideos.length : 0
-  );
+  const [playlistVideosCount, setPlatlistVideosCount] = useState(currentPlaylistVideos.length > 0 ? currentPlaylistVideos.length : 0);
 
   //!Триене на видео от текущия плейлист по id-то на видеото
   const removeVideoFromPlaylist = (vidId) => {
@@ -45,7 +41,7 @@ export default function Playlist(props) {
     setCurrentPlaylistVideos(getPlaylistVideos(playlistName));
   };
 
-  //!Триене на текущо разглеждания плейлист по името му
+  //!Триене на текущо разглеждания плейлист по името му - след триенето му, трябва да се върнем на all-playlists
   const deleteCurrentPlaylist = () => {
     deletePlaylist(playlistName);
     navigate("/all-playlists");

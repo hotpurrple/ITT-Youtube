@@ -5,7 +5,7 @@ import PlaylistsPlaylistCard from "../../../Components/PlaylistsPlaylistCard/Pla
 import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
 
-function Playlists(props) {
+function Playlists() {
   //!Взимаме всички плейлисти на текущия юзър
   const [userPlaylists, setUserPlaylists] = useState(getUserPlaylists());
   const currentUser = useSelector((state) => state.loggedUser.user);

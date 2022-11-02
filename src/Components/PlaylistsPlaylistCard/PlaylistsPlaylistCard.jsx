@@ -5,8 +5,6 @@ import Typography from "@mui/material/Typography";
 import noVideosInPlaylist from "../../assets/images/noVideosInPlaylist.jpg";
 
 function PlaylistsPlaylistCard({ pListData }) {
-  console.log(pListData);
-
   if (pListData.videos[0]) {
     return (
       <div className="pListCard">
@@ -25,14 +23,11 @@ function PlaylistsPlaylistCard({ pListData }) {
       </div>
     );
   } else {
+    //ако няма видеа в текущия плейлист - покажи само името на плейлиста, картинката no videos и 0 видеа
     return (
       <div className="pListCard">
         <Link to={`/playlist/${pListData.title}`}>
-          <img
-            className="pListCardImg"
-            src={noVideosInPlaylist}
-            alt=""
-          ></img>
+          <img className="pListCardImg" src={noVideosInPlaylist} alt=""></img>
         </Link>
 
         <Typography className="videosInfoDIv" variant="body1">
