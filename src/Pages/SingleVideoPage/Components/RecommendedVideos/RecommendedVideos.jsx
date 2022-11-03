@@ -51,8 +51,7 @@ export default function RecommendedVideos(props) {
     const loadMore = () => {
         if (recVideos.items.length >= 100) {
             setRecVideos({
-                allItems: recVideos.allItems,
-                items: recVideos.items,
+                ...recVideos,
                 hasMore: false
             })
         } else {
@@ -65,8 +64,7 @@ export default function RecommendedVideos(props) {
                 })
                 if (newArr.length < 15) {
                     setRecVideos({
-                        allItems: recVideos.allItems,
-                        items: recVideos.items,
+                        ...recVideos,
                         hasMore: false
                     })
                 }

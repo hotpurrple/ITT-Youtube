@@ -144,7 +144,7 @@ export default function SearchBar(props) {
           }}
           renderInput={(params) => (
             <TextField
-              inputRef={voiceSpeechTextField} //IF WE DONT USE TEXT TO SPEECH WE HAVE TO DELETE THIS REF
+              inputRef={voiceSpeechTextField} 
               value={searchTerm}
               {...params}
               sx={{

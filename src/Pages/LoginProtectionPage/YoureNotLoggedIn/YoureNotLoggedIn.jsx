@@ -11,7 +11,7 @@ export default function YoureNotLoggedIn() {
                 <VideoLibraryOutlinedIcon className='VideoLibraryOutlinedIcon'/>
                 <div>
                 <p className='enjoy'>Enjoy your favorite videos</p>
-                <p> Sign in to access videos that you’ve liked or saved </p>
+                <p> Sign in to access videos that you've liked or saved </p>
                 </div>
                 <Link to={"/login"}>
                 <Button

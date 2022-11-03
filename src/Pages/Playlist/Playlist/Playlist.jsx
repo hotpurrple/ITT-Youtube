@@ -31,7 +31,7 @@ export default function Playlist() {
   );
 
   //!Броят видеа е равен на дължината на масива с видеа
-  const [playlistVideosCount, setPlatlistVideosCount] = useState(currentPlaylistVideos.length > 0 ? currentPlaylistVideos.length : 0);
+  const [playlistVideosCount, setPlaylistVideosCount] = useState(currentPlaylistVideos.length > 0 ? currentPlaylistVideos.length : 0);
 
   //!Триене на видео от текущия плейлист по id-то на видеото
   const removeVideoFromPlaylist = (vidId) => {

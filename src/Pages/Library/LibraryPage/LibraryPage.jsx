@@ -4,7 +4,7 @@ import "./librarypage.css";
 import YoureNotLoggedIn from "../../LoginProtectionPage/YoureNotLoggedIn/YoureNotLoggedIn";
 import { useSelector } from "react-redux";
 
-export default function LibraryPage(props) {
+export default function LibraryPage() {
   const logged = useSelector((state) => state.loggedUser.user);
   return (
     <>

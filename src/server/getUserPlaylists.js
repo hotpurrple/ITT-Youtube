@@ -4,10 +4,8 @@ export default function getUserPlaylists() {
     let currentUser = userList.find((e) => e.is_logged); //търсим да вземем текущо логнатия
 
     if (currentUser) {
-      // console.log("тук не се насира");
       return currentUser.playlists;
     } else {
-      // console.log("тук се насира");
       return null;
     }
   }

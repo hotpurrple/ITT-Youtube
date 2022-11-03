@@ -208,7 +208,7 @@ export default function VideoComments(props) {
 
 
                 <InfiniteScroll className='infiniteScroll'
-                    dataLength={commentsList.items.length} //This is important field to render the next data
+                    dataLength={commentsList.items.length} 
                     next={loadmore}
                     hasMore={commentsList.hasMore}
                     loader={<CircularProgress className='commentsScrollSpinner' size={20} color="inherit" />}
