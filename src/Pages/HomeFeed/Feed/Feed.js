@@ -24,12 +24,13 @@ export default function Feed(props) {
   const [endOfPage, setEndOfPage] = useState(false);
   const newResults = useSelector((state) => state.newResults.value); //15 видеа initial state
   const scrollDiv = useRef();
+  
 
   useEffect(() => {
     dispatch(setToInitialValue());
     scrollDiv.current.scrollTo(0, 0);
     setOpen(true);
-    fetchFromAPI(`/search?part=snippet&q=${selectedCategory}&maxResults=${newResults}`)
+    fetchFromAPI(`/search?part=snippet&q=${selectedCategory}&maxResults=15`)
     .then((data) => {
       setOpen(false);
       setVideos(data.items);
